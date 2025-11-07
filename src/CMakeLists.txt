@@ -10,18 +10,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
 
-# if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-#     get_target_property(QSC_BIN_OUTPUT_PATH ${PROJECT_NAME} RUNTIME_OUTPUT_DIRECTORY)
-#     set(QSC_DEPLOY_PATH ${QSC_BIN_OUTPUT_PATH})
-
-#     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-#         COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/sndcpy/sndcpy.bat" "${QSC_BIN_OUTPUT_PATH}"
-#         COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/sndcpy/sndcpy.apk" "${QSC_BIN_OUTPUT_PATH}"
-#     )
-# endif()
-
-# QSC_DEPLOY_PATH已在主CMakeLists.txt中设置
-# 重新定义APPLICATION_DIR_PATH供本地使用
 if(APPLE)
     set(APPLICATION_DIR_PATH ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${PROJECT_NAME}.app/Contents/MacOS)
 else()
@@ -30,8 +18,6 @@ endif()
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Core Quick Network Concurrent QuickControls2 WebEngineQuick Gui ShaderTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Core Quick Network Concurrent QuickControls2 WebEngineQuick Gui ShaderTools)
-# find_package(WebP CONFIG REQUIRED)
-find_package(protobuf CONFIG REQUIRED)
 find_package(libyuv CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(LibArchive REQUIRED)
@@ -173,21 +159,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt${QT_VERSION_MAJOR}::GuiPrivate
     Qt${QT_VERSION_MAJOR}::ShaderToolsPrivate
     fluentuiplugin
-    # armcloud_pc_sdk
-    # aliyun-oss-cpp-sdk
     yuv
-    # WebP::webp
-    # WebP::webpdemux
-    # WebP::libwebpmux
-    # WebP::webpdecoder
-    protobuf::libprotoc
-    protobuf::libprotobuf
-    protobuf::libprotobuf-lite
     PkgConfig::FFMPEG
     ${LibArchive_LIBRARIES}
     zstd::libzstd_shared
     OpenSSL::SSL
-    OpenSSL::Crypto
     QtScrcpyCore
 )
 

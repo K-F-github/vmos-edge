@@ -679,7 +679,7 @@
 <context>
     <name>CloudListView</name>
     <message>
-        <location filename="qml/CloudListView.qml" line="89"/>
+        <location filename="qml/CloudListView.qml" line="151"/>
         <source>云机名称</source>
         <oldsource>云机ID</oldsource>
         <translation>اسم الجهاز السحابي</translation>
@@ -689,7 +689,7 @@
         <translation type="vanished">IP</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="100"/>
+        <location filename="qml/CloudListView.qml" line="162"/>
         <source>ADB地址</source>
         <translation>عنوان ADB</translation>
     </message>
@@ -699,45 +699,45 @@
         <translation type="obsolete">نسخة الصورة</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="78"/>
+        <location filename="qml/CloudListView.qml" line="140"/>
         <source>云机ID</source>
         <translation>معرف الجهاز السحابي</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="111"/>
+        <location filename="qml/CloudListView.qml" line="173"/>
         <source>Android版本</source>
         <oldsource>系统版本</oldsource>
         <translation>إصدار Android</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="120"/>
+        <location filename="qml/CloudListView.qml" line="182"/>
         <source>状态</source>
         <translation>الحالة</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="130"/>
+        <location filename="qml/CloudListView.qml" line="192"/>
         <source>创建时间</source>
         <translation>وقت الإنشاء</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="139"/>
+        <location filename="qml/CloudListView.qml" line="201"/>
         <source>操作</source>
         <translation>عملية</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="234"/>
-        <location filename="qml/CloudListView.qml" line="254"/>
-        <location filename="qml/CloudListView.qml" line="273"/>
+        <location filename="qml/CloudListView.qml" line="296"/>
+        <location filename="qml/CloudListView.qml" line="316"/>
+        <location filename="qml/CloudListView.qml" line="335"/>
         <source>复制成功</source>
         <translation>تم النسخ بنجاح</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="339"/>
+        <location filename="qml/CloudListView.qml" line="401"/>
         <source>开机</source>
         <translation>تشغيل</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="355"/>
+        <location filename="qml/CloudListView.qml" line="417"/>
         <source>打开窗口</source>
         <translation>فتح النافذة</translation>
     </message>
@@ -779,8 +779,8 @@
     </message>
     <message>
         <location filename="qml/CreateCloudPhonePopup.qml" line="78"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1356"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1432"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1393"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1435"/>
         <source>镜像上传中...</source>
         <oldsource>下载中...</oldsource>
         <translation>تحميل المرآة قيد التقدم...</translation>
@@ -873,28 +873,34 @@
     </message>
     <message>
         <location filename="qml/CreateCloudPhonePopup.qml" line="617"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="754"/>
         <source>默认机型请在 &quot;设置&quot; - &quot;机型设置&quot; 中进行操作</source>
         <oldsource>默认机型请在 &quot;设置&quot; - &quot;模板设置&quot; 中进行操作</oldsource>
         <translation>الرجاء استخدام الطراز الافتراضي في &quot;الإعدادات&quot; - &quot;إعدادات الطراز&quot;</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="817"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="741"/>
+        <source>局域网IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="856"/>
         <source>自动启动</source>
         <oldsource>创建后立即启动云机</oldsource>
         <translation>بدء تشغيل تلقائي</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="988"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1027"/>
         <source>找不到对应的 ADI 文件路径</source>
         <translation>لم يتم العثور على مسار ملف ADI المقابل</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1014"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1053"/>
         <source>找不到默认模板的 ADI 文件路径</source>
         <translation>تعذر العثور على مسار ملف ADI للقالب الافتراضي</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1453"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1457"/>
         <source>ADI 导入中...</source>
         <translation>جارٍ استيراد ADI...</translation>
     </message>
@@ -908,22 +914,22 @@
         <translation>اختر الصورة</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="759"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="798"/>
         <source>云机名称</source>
         <translation>اسم الجهاز السحابي</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="759"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="798"/>
         <source>云机名称前缀</source>
         <translation>بادئة اسم الجهاز السحابي</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="766"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="805"/>
         <source>请输入云机名称</source>
         <translation>الرجاء إدخال اسم الجهاز السحابي</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="736"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="775"/>
         <source>分辨率</source>
         <translation>دقة الشاشة</translation>
     </message>
@@ -958,18 +964,18 @@
         <translation>موديل الجهاز</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="834"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="873"/>
         <source>将按前缀自动编号生成%1个云机：</source>
         <oldsource> 台云机：</oldsource>
         <translation>سيتم إنشاء %1 آلات افتراضية سحابية مُرقمة تلقائيًا حسب البادئة:</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="834"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="873"/>
         <source>将创建%1台云机：</source>
         <translation>سيتم إنشاء %1 آلة افتراضية:</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="913"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="952"/>
         <source>创建云机数量必须大于0</source>
         <translation>يجب أن يكون عدد الأجهزة السحابية التي تم إنشاؤها أكبر من 0</translation>
     </message>
@@ -988,12 +994,12 @@
         <translation type="vanished">تم تجاوز الحد الأقصى المسموح به لإنشاء العناصر</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1054"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1093"/>
         <source>自定义DNS不能为空</source>
         <translation>DNS المخصص لا يمكن أن يكون فارغًا</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1060"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1099"/>
         <source>无效的DNS地址: </source>
         <translation>عنوان DNS غير صالح:</translation>
     </message>
@@ -1002,13 +1008,13 @@
         <translation type="vanished">(تم التنزيل)</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1148"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1179"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1187"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1218"/>
         <source> (已上传)</source>
         <translation>(تم الرفع)</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1291"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1330"/>
         <source>正在创建云机...</source>
         <translation>جاري إنشاء الجهاز السحابي...</translation>
     </message>
@@ -1019,29 +1025,29 @@
         <translation>يرجى إدخال عنوان DNS</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="789"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="828"/>
         <source>云机数量</source>
         <translation>عدد الأجهزة السحابية</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="811"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="850"/>
         <source>单次可创建云机数量不超过 12 台</source>
         <oldsource>单次可创建云机数量不超过 %1 台</oldsource>
         <translation type="unfinished">يمكن إنشاء عدد لا يزيد عن %1 من الأجهزة السحابية في المرة الواحدة</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="864"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="903"/>
         <source>镜像上传中..</source>
         <oldsource>镜像下载中..</oldsource>
         <translation>تحميل المرآة جارٍ..</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="895"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="934"/>
         <source>取消</source>
         <translation>إلغاء</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="901"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="940"/>
         <source>确定</source>
         <translation>تأكيد</translation>
     </message>
@@ -2019,14 +2025,14 @@
         <translation type="vanished">اختر آلة افتراضية سحابية واحدة على الأقل</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="146"/>
+        <location filename="qml/MainWindow.qml" line="259"/>
         <source>不能包含关机设备，请重新选择</source>
         <translation>لا يمكن تضمين جهاز مغلق، يرجى إعادة الاختيار</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="150"/>
-        <location filename="qml/MainWindow.qml" line="163"/>
-        <location filename="qml/MainWindow.qml" line="172"/>
+        <location filename="qml/MainWindow.qml" line="263"/>
+        <location filename="qml/MainWindow.qml" line="276"/>
+        <location filename="qml/MainWindow.qml" line="285"/>
         <source>不能包含异常设备，请重新选择</source>
         <translation>لا يمكن أن يحتوي على أجهزة خاطئة، يرجى إعادة الاختيار</translation>
     </message>
@@ -2035,46 +2041,46 @@
         <translation type="vanished">لا يمكن أن تتضمن أجهزة الاشتراك الشهري، يرجى إعادة الاختيار</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="159"/>
+        <location filename="qml/MainWindow.qml" line="272"/>
         <source>不能包含已开机设备，请重新选择</source>
         <translation>لا يمكن تضمين جهاز قيد التشغيل، يرجى إعادة الاختيار</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="225"/>
-        <location filename="qml/MainWindow.qml" line="255"/>
+        <location filename="qml/MainWindow.qml" line="338"/>
+        <location filename="qml/MainWindow.qml" line="368"/>
         <source>天</source>
         <translation>سماء</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="226"/>
-        <location filename="qml/MainWindow.qml" line="256"/>
+        <location filename="qml/MainWindow.qml" line="339"/>
+        <location filename="qml/MainWindow.qml" line="369"/>
         <source>时</source>
         <translation>وقت</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="227"/>
-        <location filename="qml/MainWindow.qml" line="257"/>
+        <location filename="qml/MainWindow.qml" line="340"/>
+        <location filename="qml/MainWindow.qml" line="370"/>
         <source>分</source>
         <translation>دقيقة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="228"/>
-        <location filename="qml/MainWindow.qml" line="258"/>
+        <location filename="qml/MainWindow.qml" line="341"/>
+        <location filename="qml/MainWindow.qml" line="371"/>
         <source>秒</source>
         <translation>ثانية</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="315"/>
+        <location filename="qml/MainWindow.qml" line="428"/>
         <source>开始扫描主机...</source>
         <translation>يبدأ فحص المضيف...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="338"/>
+        <location filename="qml/MainWindow.qml" line="451"/>
         <source>主机 %1 已存在</source>
         <translation>المضيف %1 موجود بالفعل</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="444"/>
+        <location filename="qml/MainWindow.qml" line="557"/>
         <source>重命名</source>
         <translation>إعادة تسمية</translation>
     </message>
@@ -2083,63 +2089,63 @@
         <translation type="vanished">أدخل الاسم</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="453"/>
-        <location filename="qml/MainWindow.qml" line="567"/>
-        <location filename="qml/MainWindow.qml" line="604"/>
-        <location filename="qml/MainWindow.qml" line="640"/>
-        <location filename="qml/MainWindow.qml" line="721"/>
-        <location filename="qml/MainWindow.qml" line="757"/>
-        <location filename="qml/MainWindow.qml" line="1159"/>
-        <location filename="qml/MainWindow.qml" line="1265"/>
-        <location filename="qml/MainWindow.qml" line="1474"/>
-        <location filename="qml/MainWindow.qml" line="1495"/>
-        <location filename="qml/MainWindow.qml" line="1516"/>
-        <location filename="qml/MainWindow.qml" line="1597"/>
-        <location filename="qml/MainWindow.qml" line="1618"/>
-        <location filename="qml/MainWindow.qml" line="1656"/>
-        <location filename="qml/MainWindow.qml" line="1679"/>
-        <location filename="qml/MainWindow.qml" line="1702"/>
-        <location filename="qml/MainWindow.qml" line="1817"/>
-        <location filename="qml/MainWindow.qml" line="1939"/>
-        <location filename="qml/MainWindow.qml" line="2246"/>
-        <location filename="qml/MainWindow.qml" line="2300"/>
-        <location filename="qml/MainWindow.qml" line="2550"/>
-        <location filename="qml/MainWindow.qml" line="2568"/>
-        <location filename="qml/MainWindow.qml" line="2586"/>
-        <location filename="qml/MainWindow.qml" line="2604"/>
-        <location filename="qml/MainWindow.qml" line="2636"/>
-        <location filename="qml/MainWindow.qml" line="2655"/>
-        <location filename="qml/MainWindow.qml" line="2701"/>
-        <location filename="qml/MainWindow.qml" line="2720"/>
+        <location filename="qml/MainWindow.qml" line="566"/>
+        <location filename="qml/MainWindow.qml" line="680"/>
+        <location filename="qml/MainWindow.qml" line="717"/>
+        <location filename="qml/MainWindow.qml" line="753"/>
+        <location filename="qml/MainWindow.qml" line="834"/>
+        <location filename="qml/MainWindow.qml" line="870"/>
+        <location filename="qml/MainWindow.qml" line="1271"/>
+        <location filename="qml/MainWindow.qml" line="1377"/>
+        <location filename="qml/MainWindow.qml" line="1586"/>
+        <location filename="qml/MainWindow.qml" line="1607"/>
+        <location filename="qml/MainWindow.qml" line="1628"/>
+        <location filename="qml/MainWindow.qml" line="1709"/>
+        <location filename="qml/MainWindow.qml" line="1730"/>
+        <location filename="qml/MainWindow.qml" line="1768"/>
+        <location filename="qml/MainWindow.qml" line="1791"/>
+        <location filename="qml/MainWindow.qml" line="1814"/>
+        <location filename="qml/MainWindow.qml" line="1929"/>
+        <location filename="qml/MainWindow.qml" line="2051"/>
+        <location filename="qml/MainWindow.qml" line="2358"/>
+        <location filename="qml/MainWindow.qml" line="2412"/>
+        <location filename="qml/MainWindow.qml" line="2662"/>
+        <location filename="qml/MainWindow.qml" line="2680"/>
+        <location filename="qml/MainWindow.qml" line="2698"/>
+        <location filename="qml/MainWindow.qml" line="2716"/>
+        <location filename="qml/MainWindow.qml" line="2748"/>
+        <location filename="qml/MainWindow.qml" line="2767"/>
+        <location filename="qml/MainWindow.qml" line="2813"/>
+        <location filename="qml/MainWindow.qml" line="2832"/>
         <source>取消</source>
         <translation>إلغاء</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="454"/>
-        <location filename="qml/MainWindow.qml" line="566"/>
-        <location filename="qml/MainWindow.qml" line="603"/>
-        <location filename="qml/MainWindow.qml" line="639"/>
-        <location filename="qml/MainWindow.qml" line="720"/>
-        <location filename="qml/MainWindow.qml" line="756"/>
-        <location filename="qml/MainWindow.qml" line="1158"/>
-        <location filename="qml/MainWindow.qml" line="1264"/>
-        <location filename="qml/MainWindow.qml" line="1473"/>
-        <location filename="qml/MainWindow.qml" line="1494"/>
-        <location filename="qml/MainWindow.qml" line="1515"/>
-        <location filename="qml/MainWindow.qml" line="1596"/>
-        <location filename="qml/MainWindow.qml" line="1617"/>
-        <location filename="qml/MainWindow.qml" line="1655"/>
-        <location filename="qml/MainWindow.qml" line="1678"/>
-        <location filename="qml/MainWindow.qml" line="1701"/>
-        <location filename="qml/MainWindow.qml" line="1821"/>
-        <location filename="qml/MainWindow.qml" line="2251"/>
-        <location filename="qml/MainWindow.qml" line="2306"/>
-        <location filename="qml/MainWindow.qml" line="2549"/>
-        <location filename="qml/MainWindow.qml" line="2567"/>
-        <location filename="qml/MainWindow.qml" line="2585"/>
-        <location filename="qml/MainWindow.qml" line="2603"/>
-        <location filename="qml/MainWindow.qml" line="2654"/>
-        <location filename="qml/MainWindow.qml" line="2719"/>
+        <location filename="qml/MainWindow.qml" line="567"/>
+        <location filename="qml/MainWindow.qml" line="679"/>
+        <location filename="qml/MainWindow.qml" line="716"/>
+        <location filename="qml/MainWindow.qml" line="752"/>
+        <location filename="qml/MainWindow.qml" line="833"/>
+        <location filename="qml/MainWindow.qml" line="869"/>
+        <location filename="qml/MainWindow.qml" line="1270"/>
+        <location filename="qml/MainWindow.qml" line="1376"/>
+        <location filename="qml/MainWindow.qml" line="1585"/>
+        <location filename="qml/MainWindow.qml" line="1606"/>
+        <location filename="qml/MainWindow.qml" line="1627"/>
+        <location filename="qml/MainWindow.qml" line="1708"/>
+        <location filename="qml/MainWindow.qml" line="1729"/>
+        <location filename="qml/MainWindow.qml" line="1767"/>
+        <location filename="qml/MainWindow.qml" line="1790"/>
+        <location filename="qml/MainWindow.qml" line="1813"/>
+        <location filename="qml/MainWindow.qml" line="1933"/>
+        <location filename="qml/MainWindow.qml" line="2363"/>
+        <location filename="qml/MainWindow.qml" line="2418"/>
+        <location filename="qml/MainWindow.qml" line="2661"/>
+        <location filename="qml/MainWindow.qml" line="2679"/>
+        <location filename="qml/MainWindow.qml" line="2697"/>
+        <location filename="qml/MainWindow.qml" line="2715"/>
+        <location filename="qml/MainWindow.qml" line="2766"/>
+        <location filename="qml/MainWindow.qml" line="2831"/>
         <source>确定</source>
         <translation>موافق</translation>
     </message>
@@ -2168,14 +2174,14 @@
         <translation type="vanished">إزالة مُجمّعة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1554"/>
+        <location filename="qml/MainWindow.qml" line="1666"/>
         <source>修改镜像</source>
         <oldsource>升级镜像</oldsource>
         <translation>تعديل الصورة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="712"/>
-        <location filename="qml/MainWindow.qml" line="1591"/>
+        <location filename="qml/MainWindow.qml" line="825"/>
+        <location filename="qml/MainWindow.qml" line="1703"/>
         <source>一键新机</source>
         <translation>إعادة ضبط المصنع</translation>
     </message>
@@ -2200,8 +2206,8 @@
         <translation type="vanished">إلغاء التفويض</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="747"/>
-        <location filename="qml/MainWindow.qml" line="1612"/>
+        <location filename="qml/MainWindow.qml" line="860"/>
+        <location filename="qml/MainWindow.qml" line="1724"/>
         <source>重启云机</source>
         <oldsource>批量重启</oldsource>
         <translation>إعادة تشغيل الجهاز السحابي</translation>
@@ -2251,8 +2257,8 @@
         <translation type="vanished">إظهار أجهزة الإيقاف</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2635"/>
-        <location filename="qml/MainWindow.qml" line="2700"/>
+        <location filename="qml/MainWindow.qml" line="2747"/>
+        <location filename="qml/MainWindow.qml" line="2812"/>
         <source>删除</source>
         <translation>حذف</translation>
     </message>
@@ -2261,7 +2267,7 @@
         <translation type="vanished">نقل الجهاز</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="477"/>
+        <location filename="qml/MainWindow.qml" line="590"/>
         <source>下次不再提示</source>
         <translation>لا تظهر هذه الرسالة مرة أخرى</translation>
     </message>
@@ -2290,27 +2296,27 @@
         <translation type="vanished">ترخيص الجهاز</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="829"/>
+        <location filename="qml/MainWindow.qml" line="941"/>
         <source>默认排序</source>
         <translation>الترتيب الافتراضي</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="835"/>
+        <location filename="qml/MainWindow.qml" line="947"/>
         <source>按创建时间降序</source>
         <translation>حسب تاريخ الإنشاء تنازلياً</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="841"/>
+        <location filename="qml/MainWindow.qml" line="953"/>
         <source>按创建时间升序</source>
         <translation>حسب وقت الإنشاء تصاعديًا</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="848"/>
+        <location filename="qml/MainWindow.qml" line="960"/>
         <source>按剩余时长降序</source>
         <translation>حسب المدة المتبقية تنازليًا</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="855"/>
+        <location filename="qml/MainWindow.qml" line="967"/>
         <source>按剩余时长升序</source>
         <translation>حسب المدة المتبقية تصاعدياً</translation>
     </message>
@@ -2327,42 +2333,42 @@
         <translation type="vanished">وضع العرض</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="950"/>
+        <location filename="qml/MainWindow.qml" line="1062"/>
         <source>大视图</source>
         <translation>عرض كبير</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="969"/>
+        <location filename="qml/MainWindow.qml" line="1081"/>
         <source>中视图</source>
         <translation>منظور مركزي</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="988"/>
+        <location filename="qml/MainWindow.qml" line="1100"/>
         <source>小视图</source>
         <translation>عرض صغير</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1839"/>
+        <location filename="qml/MainWindow.qml" line="1951"/>
         <source>设置</source>
         <translation>إعدادات</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1854"/>
+        <location filename="qml/MainWindow.qml" line="1966"/>
         <source>帮助中心</source>
         <translation>مركز المساعدة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1860"/>
+        <location filename="qml/MainWindow.qml" line="1972"/>
         <source>通用设置</source>
         <translation>الإعدادات العامة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2360"/>
+        <location filename="qml/MainWindow.qml" line="2472"/>
         <source>刷新过于频繁，请稍后再试</source>
         <translation>تم التحديث كثيرًا، يرجى المحاولة مرة أخرى لاحقًا</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2602"/>
+        <location filename="qml/MainWindow.qml" line="2714"/>
         <source>删除主机仅适用于永久离线或IP已变更的主机。若主机恢复在线，系统的自动发现功能会重新将其添加至列表。</source>
         <translation>حذف المضيف ينطبق فقط على المضيفين الذين هم في حالة عدم اتصال دائمة أو تغير عنوان IP الخاص بهم. إذا عاد المضيف إلى الاتصال، فستقوم وظيفة الاكتشاف التلقائي للنظام بإضافته مرة أخرى إلى القائمة.</translation>
     </message>
@@ -2375,29 +2381,29 @@
         <translation type="vanished">استبدال الإعدادات</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="564"/>
-        <location filename="qml/MainWindow.qml" line="601"/>
-        <location filename="qml/MainWindow.qml" line="637"/>
-        <location filename="qml/MainWindow.qml" line="718"/>
-        <location filename="qml/MainWindow.qml" line="754"/>
-        <location filename="qml/MainWindow.qml" line="1156"/>
-        <location filename="qml/MainWindow.qml" line="1262"/>
-        <location filename="qml/MainWindow.qml" line="1471"/>
-        <location filename="qml/MainWindow.qml" line="1492"/>
-        <location filename="qml/MainWindow.qml" line="1513"/>
-        <location filename="qml/MainWindow.qml" line="1594"/>
-        <location filename="qml/MainWindow.qml" line="1615"/>
-        <location filename="qml/MainWindow.qml" line="1653"/>
-        <location filename="qml/MainWindow.qml" line="1676"/>
-        <location filename="qml/MainWindow.qml" line="1699"/>
-        <location filename="qml/MainWindow.qml" line="1815"/>
-        <location filename="qml/MainWindow.qml" line="1935"/>
-        <location filename="qml/MainWindow.qml" line="2242"/>
-        <location filename="qml/MainWindow.qml" line="2296"/>
-        <location filename="qml/MainWindow.qml" line="2547"/>
-        <location filename="qml/MainWindow.qml" line="2565"/>
-        <location filename="qml/MainWindow.qml" line="2583"/>
-        <location filename="qml/MainWindow.qml" line="2601"/>
+        <location filename="qml/MainWindow.qml" line="677"/>
+        <location filename="qml/MainWindow.qml" line="714"/>
+        <location filename="qml/MainWindow.qml" line="750"/>
+        <location filename="qml/MainWindow.qml" line="831"/>
+        <location filename="qml/MainWindow.qml" line="867"/>
+        <location filename="qml/MainWindow.qml" line="1268"/>
+        <location filename="qml/MainWindow.qml" line="1374"/>
+        <location filename="qml/MainWindow.qml" line="1583"/>
+        <location filename="qml/MainWindow.qml" line="1604"/>
+        <location filename="qml/MainWindow.qml" line="1625"/>
+        <location filename="qml/MainWindow.qml" line="1706"/>
+        <location filename="qml/MainWindow.qml" line="1727"/>
+        <location filename="qml/MainWindow.qml" line="1765"/>
+        <location filename="qml/MainWindow.qml" line="1788"/>
+        <location filename="qml/MainWindow.qml" line="1811"/>
+        <location filename="qml/MainWindow.qml" line="1927"/>
+        <location filename="qml/MainWindow.qml" line="2047"/>
+        <location filename="qml/MainWindow.qml" line="2354"/>
+        <location filename="qml/MainWindow.qml" line="2408"/>
+        <location filename="qml/MainWindow.qml" line="2659"/>
+        <location filename="qml/MainWindow.qml" line="2677"/>
+        <location filename="qml/MainWindow.qml" line="2695"/>
+        <location filename="qml/MainWindow.qml" line="2713"/>
         <source>操作确认</source>
         <oldsource>系统提示</oldsource>
         <translation>تأكيد العملية</translation>
@@ -2411,8 +2417,8 @@
         <translation type="vanished">لا يمكن أن تحتوي على جهاز توقيت، يرجى إعادة الاختيار</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="565"/>
-        <location filename="qml/MainWindow.qml" line="1472"/>
+        <location filename="qml/MainWindow.qml" line="678"/>
+        <location filename="qml/MainWindow.qml" line="1584"/>
         <source>重置云机将清除云手机上的所有数据，云手机参数不会改变，请谨慎操作！</source>
         <oldsource>确定要重置云机？云机数据将被清空，请谨慎选择！</oldsource>
         <translation>إعادة ضبط الجهاز السحابي سيمحو جميع البيانات على الهاتف السحابي، مع الحفاظ على إعدادات الهاتف السحابي دون تغيير. يرجى توخي الحذر في العملية!</translation>
@@ -2422,8 +2428,8 @@
         <translation type="vanished">هل أنت متأكد من التحديث الفوري للجهاز؟ سيؤدي ذلك إلى مسح البيانات، وتغيير معرف الجهاز وجميع المعرفات الفريدة (سيتم تغيير طراز الجهاز عشوائيًا للأجهزة السحابية القياسية، بينما سيتم تغييره للأجهزة السحابية عالية المستوى).</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="638"/>
-        <location filename="qml/MainWindow.qml" line="1514"/>
+        <location filename="qml/MainWindow.qml" line="751"/>
+        <location filename="qml/MainWindow.qml" line="1626"/>
         <source>删除云机将清除云手机及其所有数据，操作后无法恢复，请谨慎操作！</source>
         <oldsource>删除设备云机数据将被清空，请谨慎删除！</oldsource>
         <translation>حذف الجهاز السحابي سيمحو الهاتف السحابي وجميع بياناته، ولن يمكن استعادتها بعد العملية، يرجى توخي الحذر!</translation>
@@ -2487,12 +2493,12 @@
         <translation type="vanished">هل تبديل الحساب؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1948"/>
+        <location filename="qml/MainWindow.qml" line="2060"/>
         <source>最小化到托盘</source>
         <translation>تصغير إلى الدرج</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2015"/>
+        <location filename="qml/MainWindow.qml" line="2127"/>
         <source>请输入云机名称、IP</source>
         <oldsource>请输入ID、名称、IP</oldsource>
         <translation>يرجى إدخال اسم الآلة السحابية وعنوان IP</translation>
@@ -2518,8 +2524,8 @@
         <translation type="vanished">تم الترخيص</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2038"/>
-        <location filename="qml/MainWindow.qml" line="2044"/>
+        <location filename="qml/MainWindow.qml" line="2150"/>
+        <location filename="qml/MainWindow.qml" line="2156"/>
         <source>添加分组</source>
         <oldsource>新建分组</oldsource>
         <translation>إضافة مجموعة</translation>
@@ -2533,12 +2539,12 @@
         <translation type="vanished">الرجاء إدخال رقم من 1 إلى 500</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2269"/>
+        <location filename="qml/MainWindow.qml" line="2381"/>
         <source>云机播放窗口已打开，请先关闭后同步操作</source>
         <translation>تم فتح نافذة تشغيل الجهاز السحابي، يرجى إغلاقها أولاً ثم متابعة عملية المزامنة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2290"/>
+        <location filename="qml/MainWindow.qml" line="2402"/>
         <source>魔盒设备不能和云机设备一起同步操作，请分开进行同步操作</source>
         <translation>لا يمكن تشغيل جهاز الصندوق السحري وجهاز السحابة في وقت واحد، يرجى إجراء عملية المزامنة بشكل منفصل</translation>
     </message>
@@ -2623,27 +2629,27 @@
         <translation type="vanished">عند إغلاق اللوحة الرئيسية</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3005"/>
+        <location filename="qml/MainWindow.qml" line="3117"/>
         <source>正在更新中...</source>
         <translation>يتم التحديث...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3706"/>
+        <location filename="qml/MainWindow.qml" line="3818"/>
         <source>正在更新CBS程序，请稍候...</source>
         <translation>يتم تحديث برنامج CBS، يرجى الانتظار...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3716"/>
+        <location filename="qml/MainWindow.qml" line="3828"/>
         <source>CBS自动升级完成</source>
         <translation>اكتمال التحديث التلقائي لـ CBS</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1940"/>
+        <location filename="qml/MainWindow.qml" line="2052"/>
         <source>退出程序</source>
         <translation>خروج از برنامه</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="351"/>
+        <location filename="qml/MainWindow.qml" line="464"/>
         <source>IP地址访问异常！</source>
         <translation>عنوان IP وصول غير طبيعي!</translation>
     </message>
@@ -2652,8 +2658,8 @@
         <translation type="vanished">نسخ المعرف</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="536"/>
-        <location filename="qml/MainWindow.qml" line="1460"/>
+        <location filename="qml/MainWindow.qml" line="649"/>
+        <location filename="qml/MainWindow.qml" line="1572"/>
         <source>启动云机</source>
         <oldsource>开机</oldsource>
         <translation>تشغيل الجهاز السحابي</translation>
@@ -2663,47 +2669,47 @@
         <translation type="vanished">إيقاف التشغيل</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="630"/>
-        <location filename="qml/MainWindow.qml" line="1510"/>
+        <location filename="qml/MainWindow.qml" line="743"/>
+        <location filename="qml/MainWindow.qml" line="1622"/>
         <source>删除云机</source>
         <translation>حذف الجهاز السحابي</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="879"/>
+        <location filename="qml/MainWindow.qml" line="991"/>
         <source>列表模式</source>
         <translation>قائمة الوضع</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="895"/>
+        <location filename="qml/MainWindow.qml" line="1007"/>
         <source>窗口模式</source>
         <oldsource>预览模式</oldsource>
         <translation>وضع النافذة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1157"/>
+        <location filename="qml/MainWindow.qml" line="1269"/>
         <source>确定要删除分组吗？</source>
         <translation>هل أنت متأكد من حذف المجموعة؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2584"/>
+        <location filename="qml/MainWindow.qml" line="2696"/>
         <source>重置主机会将该主机上所有的云机和数据清除，确认重置吗？</source>
         <translation>إعادة ضبط المضيف ستمحو جميع السحابات والبيانات الموجودة على هذا المضيف، هل تريد تأكيد إعادة الضبط؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1263"/>
+        <location filename="qml/MainWindow.qml" line="1375"/>
         <source>重启主机会将该主机上所有的云机重启，确认重启吗？</source>
         <translation>إعادة تشغيل المضيف سيعيد تشغيل جميع الأجهزة الافتراضية عليه، هل تريد تأكيد إعادة التشغيل؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="755"/>
-        <location filename="qml/MainWindow.qml" line="1616"/>
+        <location filename="qml/MainWindow.qml" line="868"/>
+        <location filename="qml/MainWindow.qml" line="1728"/>
         <source>重启云机将重新启动云手机系统，运行中的任务可能会中断，请谨慎操作！</source>
         <oldsource>确定要进行重启操作吗？重启指令下发成功后，被重启的云机将在1-3分钟之内完成重启！</oldsource>
         <translation>إعادة تشغيل الجهاز السحابي سيعيد تشغيل نظام الهاتف السحابي، وقد تتوقف المهام قيد التشغيل، يرجى توخي الحذر!</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="602"/>
-        <location filename="qml/MainWindow.qml" line="1493"/>
+        <location filename="qml/MainWindow.qml" line="715"/>
+        <location filename="qml/MainWindow.qml" line="1605"/>
         <source>确定要关闭云手机吗？</source>
         <translation>هل أنت متأكد من إغلاق الهاتف السحابي؟</translation>
     </message>
@@ -2712,108 +2718,119 @@
         <translation type="vanished">تفاصيل المضيف</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1654"/>
-        <location filename="qml/MainWindow.qml" line="2566"/>
+        <location filename="qml/MainWindow.qml" line="1766"/>
+        <location filename="qml/MainWindow.qml" line="2678"/>
         <source>确定要重启主机吗？</source>
         <translation>هل تريد بالتأكيد إعادة تشغيل المضيف؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1692"/>
+        <location filename="qml/MainWindow.qml" line="1804"/>
         <source>清理镜像</source>
         <translation>تنظيف المرآة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2548"/>
+        <location filename="qml/MainWindow.qml" line="2660"/>
         <source>确定要清理未使用的镜像获取更多的存储空间吗？</source>
         <translation>هل تريد بالتأكيد تنظيف الصور غير المستخدمة لتحرير مساحة تخزينية أكبر؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1754"/>
+        <location filename="qml/MainWindow.qml" line="1866"/>
         <source>VMOS Edge</source>
         <translation>&apos;VMOS Edge&apos;</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="136"/>
-        <location filename="qml/MainWindow.qml" line="142"/>
+        <location filename="qml/MainWindow.qml" line="139"/>
+        <location filename="qml/MainWindow.qml" line="196"/>
+        <source>启动 scrcpy_server 失败: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="qml/MainWindow.qml" line="155"/>
-        <location filename="qml/MainWindow.qml" line="168"/>
+        <source>启动 scrcpy_server 失败</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/MainWindow.qml" line="249"/>
+        <location filename="qml/MainWindow.qml" line="255"/>
+        <location filename="qml/MainWindow.qml" line="268"/>
+        <location filename="qml/MainWindow.qml" line="281"/>
         <source>不能包含离线设备，请重新选择</source>
         <translation>لا يمكن تضمين الأجهزة غير المتصلة بالإنترنت، يرجى إعادة الاختيار</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="177"/>
+        <location filename="qml/MainWindow.qml" line="290"/>
         <source>不能包含创建中设备，请重新选择</source>
         <translation>لا يمكن أن تتضمن أجهزة قيد الإنشاء، يرجى إعادة الاختيار</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="674"/>
-        <location filename="qml/MainWindow.qml" line="1537"/>
+        <location filename="qml/MainWindow.qml" line="787"/>
+        <location filename="qml/MainWindow.qml" line="1649"/>
         <source>长度限制 2–11 个字符，仅允许使用 [a–zA–Z0–9_.-]，且首尾字符不得为[._-]</source>
         <translation>طول محدد من 2 إلى 11 حرفًا، مسموح فقط باستخدام [a–zA–Z0–9_.-]، ولا يمكن أن يكون الحرف الأول أو الأخير [._-]</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="719"/>
-        <location filename="qml/MainWindow.qml" line="1595"/>
+        <location filename="qml/MainWindow.qml" line="832"/>
+        <location filename="qml/MainWindow.qml" line="1707"/>
         <source>一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！</source>
         <translation>سيقوم ميزة &quot;جهاز جديد بنقرة واحدة&quot; بمسح جميع البيانات على الهاتف السحابي، وسيتم إعادة إنشاء معلمات الهاتف السحابي، يرجى توخي الحذر أثناء التشغيل!</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="785"/>
+        <location filename="qml/MainWindow.qml" line="898"/>
         <source>一键投屏</source>
         <translation>عرض الشاشة بنقرة واحدة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="805"/>
+        <location filename="qml/MainWindow.qml" line="917"/>
         <source>一键排序</source>
         <translation>ترتيب بنقرة واحدة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="809"/>
+        <location filename="qml/MainWindow.qml" line="921"/>
         <source>已按默认排序</source>
         <translation>تم الفرز حسب الإعداد الافتراضي</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="814"/>
+        <location filename="qml/MainWindow.qml" line="926"/>
         <source>一键关闭</source>
         <translation>إغلاق بنقرة واحدة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="818"/>
+        <location filename="qml/MainWindow.qml" line="930"/>
         <source>已关闭所有云机窗口</source>
         <translation>All cloud machine windows are closed</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1127"/>
+        <location filename="qml/MainWindow.qml" line="1239"/>
         <source>修改分组名称</source>
         <translation>تعديل اسم المجموعة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1403"/>
+        <location filename="qml/MainWindow.qml" line="1515"/>
         <source>复制成功</source>
         <translation>تم النسخ بنجاح</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1633"/>
+        <location filename="qml/MainWindow.qml" line="1745"/>
         <source>API接口</source>
         <translation>واجهة برمجة التطبيقات</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1635"/>
+        <location filename="qml/MainWindow.qml" line="1747"/>
         <source>http://%1:18182/docs</source>
         <translation>http://%1:18182/docs</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1677"/>
+        <location filename="qml/MainWindow.qml" line="1789"/>
         <source>重置主机将删除该主机上的全部云机及相关数据，确认执行此操作吗？</source>
         <translation>إعادة ضبط الجهاز المضيف سيحذف جميع الأجهزة السحابية والبيانات المرتبطة بها على هذا المضيف، هل تريد تأكيد تنفيذ هذه العملية؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1700"/>
+        <location filename="qml/MainWindow.qml" line="1812"/>
         <source>清理未使用的镜像将释放存储空间，确认执行此操作吗？</source>
         <translation>سيؤدي تنظيف الصور غير المستخدمة إلى تحرير مساحة التخزين، هل تريد متابعة هذا الإجراء؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1766"/>
+        <location filename="qml/MainWindow.qml" line="1878"/>
         <source>主机</source>
         <translation>المضيف</translation>
     </message>
@@ -2826,22 +2843,22 @@
         <translation type="vanished">VMOSCloud الهاتف المحمول السحابي</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1816"/>
+        <location filename="qml/MainWindow.qml" line="1928"/>
         <source>修改语言需要重启程序，是否立即重启？</source>
         <translation>تغيير اللغة يتطلب إعادة تشغيل البرنامج، هل ترغب في إعادة التشغيل الآن؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1869"/>
+        <location filename="qml/MainWindow.qml" line="1981"/>
         <source>机型设置</source>
         <translation>إعدادات الطراز</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1878"/>
+        <location filename="qml/MainWindow.qml" line="1990"/>
         <source>版本：v%1</source>
         <translation>الإصدار: v%1</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2070"/>
+        <location filename="qml/MainWindow.qml" line="2182"/>
         <source>添加主机</source>
         <translation>إضافة مضيف</translation>
     </message>
@@ -2887,17 +2904,17 @@
         <translation type="vanished">تصغير إلى الدرج</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="286"/>
+        <location filename="qml/MainWindow.qml" line="399"/>
         <source>长度限制：2-11字符</source>
         <translation>حد الطول: 2-11 حرفًا</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="290"/>
+        <location filename="qml/MainWindow.qml" line="403"/>
         <source>支持字符：[a-zA-Z0-9_.-]</source>
         <translation>الأحرف المدعومة: [a-zA-Z0-9_.-]</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="294"/>
+        <location filename="qml/MainWindow.qml" line="407"/>
         <source>首字符和尾字符必须为[a-zA-Z0-9]</source>
         <translation>يجب أن يكون أول حرف وآخر حرف من النوع [a-zA-Z0-9]</translation>
     </message>
@@ -2906,33 +2923,33 @@
         <translation type="vanished">يُسمح فقط باستخدام الأرقام/الحروف/الشرطة السفلية، ولا يمكن أن يتجاوز الحد الأقصى 10 أحرف</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="558"/>
-        <location filename="qml/MainWindow.qml" line="1468"/>
+        <location filename="qml/MainWindow.qml" line="671"/>
+        <location filename="qml/MainWindow.qml" line="1580"/>
         <source>重置云机</source>
         <translation>إعادة ضبط الجهاز السحابي</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="594"/>
-        <location filename="qml/MainWindow.qml" line="1489"/>
+        <location filename="qml/MainWindow.qml" line="707"/>
+        <location filename="qml/MainWindow.qml" line="1601"/>
         <source>关闭云机</source>
         <oldsource>关机云机</oldsource>
         <translation>إغلاق الجهاز السحابي</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="667"/>
-        <location filename="qml/MainWindow.qml" line="673"/>
-        <location filename="qml/MainWindow.qml" line="1532"/>
-        <location filename="qml/MainWindow.qml" line="1535"/>
+        <location filename="qml/MainWindow.qml" line="780"/>
+        <location filename="qml/MainWindow.qml" line="786"/>
+        <location filename="qml/MainWindow.qml" line="1644"/>
+        <location filename="qml/MainWindow.qml" line="1647"/>
         <source>修改名称</source>
         <translation>تعديل الاسم</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1573"/>
+        <location filename="qml/MainWindow.qml" line="1685"/>
         <source>设置代理</source>
         <translation>تعيين الوكيل</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="913"/>
+        <location filename="qml/MainWindow.qml" line="1025"/>
         <source>横屏</source>
         <translation>شاشة أفقية</translation>
     </message>
@@ -2941,29 +2958,29 @@
         <translation type="vanished">سيؤدي تنفيذ هذا الإجراء إلى تعديل دائم لمعلومات التعريف الفريدة للجهاز (بما في ذلك على سبيل المثال لا الحصر معرف الجهاز، وIMEI، ومعرف Android، وما إلى ذلك) وبيانات بيئة التطبيق. سيؤدي هذا إلى محاكاة جهاز جديد لم يتم استخدامه مطلقًا.</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="931"/>
+        <location filename="qml/MainWindow.qml" line="1043"/>
         <source>竖屏</source>
         <translation>وضع عمودي</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1133"/>
-        <location filename="qml/MainWindow.qml" line="2050"/>
+        <location filename="qml/MainWindow.qml" line="1245"/>
+        <location filename="qml/MainWindow.qml" line="2162"/>
         <source>名称长度为2-15字符</source>
         <oldsource>长度限制： 不超过 15 个字符</oldsource>
         <translation>طول الاسم 2-15 حرفاً</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1646"/>
+        <location filename="qml/MainWindow.qml" line="1758"/>
         <source>重启主机</source>
         <translation>إعادة تشغيل المضيف</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1669"/>
+        <location filename="qml/MainWindow.qml" line="1781"/>
         <source>重置主机</source>
         <translation>إعادة ضبط المضيف</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1767"/>
+        <location filename="qml/MainWindow.qml" line="1879"/>
         <source>镜像</source>
         <translation>مرآة</translation>
     </message>
@@ -2972,14 +2989,14 @@
         <translation type="vanished">الإصدار الحالي:</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2633"/>
-        <location filename="qml/MainWindow.qml" line="2698"/>
+        <location filename="qml/MainWindow.qml" line="2745"/>
+        <location filename="qml/MainWindow.qml" line="2810"/>
         <source>确认删除</source>
         <translation>تأكيد الحذف</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2634"/>
-        <location filename="qml/MainWindow.qml" line="2699"/>
+        <location filename="qml/MainWindow.qml" line="2746"/>
+        <location filename="qml/MainWindow.qml" line="2811"/>
         <source>确定要删除镜像 &quot;%1&quot; 吗？此操作将永久删除镜像文件，无法恢复。</source>
         <oldsource>确定要删除镜像 &quot;%1&quot; 吗？
 
@@ -2987,14 +3004,14 @@
         <translation>هل أنت متأكد من رغبتك في حذف الصورة &quot;%1&quot;؟ سيتم حذف ملف الصورة نهائيًا ولن يمكن استعادته.</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2652"/>
-        <location filename="qml/MainWindow.qml" line="2717"/>
+        <location filename="qml/MainWindow.qml" line="2764"/>
+        <location filename="qml/MainWindow.qml" line="2829"/>
         <source>确认更改路径</source>
         <translation>تأكيد تغيير المسار</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2653"/>
-        <location filename="qml/MainWindow.qml" line="2718"/>
+        <location filename="qml/MainWindow.qml" line="2765"/>
+        <location filename="qml/MainWindow.qml" line="2830"/>
         <source>确定要将镜像存储路径更改为：%1 更改后，新导入的镜像将存储在新路径中。</source>
         <oldsource>确定要将镜像存储路径更改为：
 
@@ -3040,17 +3057,17 @@
         <translation type="vanished">تحديثات الفحص</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2843"/>
+        <location filename="qml/MainWindow.qml" line="2955"/>
         <source>当前已经是最新版本</source>
         <translation>البرنامج بالفعل هو الإصدار الأخير</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2887"/>
+        <location filename="qml/MainWindow.qml" line="2999"/>
         <source>正在重启主机...</source>
         <translation>إعادة تشغيل المضيف جارية...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2920"/>
+        <location filename="qml/MainWindow.qml" line="3032"/>
         <source>正在重置主机...</source>
         <translation>يتم إعادة تعيين المضيف...</translation>
     </message>
@@ -3059,27 +3076,27 @@
         <translation type="vanished">يتم إنشاء الآلة السحابية...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3065"/>
+        <location filename="qml/MainWindow.qml" line="3177"/>
         <source>正在删除云机...</source>
         <translation>جارٍ حذف الجهاز السحابي...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3099"/>
+        <location filename="qml/MainWindow.qml" line="3211"/>
         <source>正在重启云机...</source>
         <translation>جاري إعادة تشغيل الجهاز السحابي...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3132"/>
+        <location filename="qml/MainWindow.qml" line="3244"/>
         <source>正在重置云机...</source>
         <translation>يتم إعادة ضبط الجهاز السحابي...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3165"/>
+        <location filename="qml/MainWindow.qml" line="3277"/>
         <source>正在启动云机...</source>
         <translation>جاري تشغيل الجهاز السحابي...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3198"/>
+        <location filename="qml/MainWindow.qml" line="3310"/>
         <source>正在停止云机...</source>
         <translation>يتم إيقاف الجهاز السحابي...</translation>
     </message>
@@ -3092,22 +3109,22 @@
         <translation type="vanished">جاري تنفيذ عملية المزامنة، يُرجى إغلاق عملية المزامنة أولاً</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="100"/>
+        <location filename="qml/MainWindow.qml" line="213"/>
         <source>至少选择1台云机</source>
         <translation>اختر جهازًا افتراضيًا واحدًا على الأقل</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="102"/>
+        <location filename="qml/MainWindow.qml" line="215"/>
         <source>至少选择2台云机</source>
         <translation>يجب اختيار 2 جهاز على الأقل من أجهزة الحوسبة السحابية</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="365"/>
+        <location filename="qml/MainWindow.qml" line="478"/>
         <source>显示主面板</source>
         <translation>عرض اللوحة الرئيسية</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="371"/>
+        <location filename="qml/MainWindow.qml" line="484"/>
         <source>退出</source>
         <translation>خروج</translation>
     </message>
@@ -3116,7 +3133,7 @@
         <translation type="vanished">إغلاق</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1938"/>
+        <location filename="qml/MainWindow.qml" line="2050"/>
         <source>是否退出</source>
         <translation>هل تريد الخروج؟</translation>
     </message>
@@ -3133,7 +3150,7 @@
         <translation type="vanished">مُغلَق</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1765"/>
+        <location filename="qml/MainWindow.qml" line="1877"/>
         <source>云机</source>
         <translation>جهاز سحابي</translation>
     </message>
@@ -3142,32 +3159,32 @@
         <translation type="obsolete">سوق صندوق السحر</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2130"/>
+        <location filename="qml/MainWindow.qml" line="2242"/>
         <source>全选</source>
         <translation>تحديد الكل</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2147"/>
+        <location filename="qml/MainWindow.qml" line="2259"/>
         <source>反选</source>
         <translation>عكس الاختيار</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2157"/>
+        <location filename="qml/MainWindow.qml" line="2269"/>
         <source>您还未勾选云手机</source>
         <translation>لم تقم بتحديد خيار الهاتف السحابي بعد</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2162"/>
+        <location filename="qml/MainWindow.qml" line="2274"/>
         <source>没有可以反选的云手机</source>
         <translation>لا توجد هواتف سحابية قابلة لإلغاء التحديد</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2180"/>
+        <location filename="qml/MainWindow.qml" line="2292"/>
         <source>已选</source>
         <translation>مُختار</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2190"/>
+        <location filename="qml/MainWindow.qml" line="2302"/>
         <source>取消选择</source>
         <translation>إلغاء تحديد</translation>
     </message>
@@ -3176,22 +3193,22 @@
         <translation type="vanished">فلترة سريعة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2236"/>
+        <location filename="qml/MainWindow.qml" line="2348"/>
         <source>同步操作</source>
         <translation>عملية المزامنة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2245"/>
+        <location filename="qml/MainWindow.qml" line="2357"/>
         <source>是否要关闭同步操作模式</source>
         <translation>هل تريد إغلاق وضع تشغيل المزامنة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2299"/>
+        <location filename="qml/MainWindow.qml" line="2411"/>
         <source>开启同步操作，则操作任意一台云手机的同时可同步操作至其它勾选的云手机</source>
         <translation>تشغيل المزامنة، يسمح بتشغيل أي جهاز سحابي واحد مع مزامنة التشغيل إلى أجهزة سحابية أخرى محددة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2210"/>
+        <location filename="qml/MainWindow.qml" line="2322"/>
         <source>批量操作</source>
         <translation>معالجة دفعية</translation>
     </message>
@@ -3200,12 +3217,12 @@
         <translation type="vanished">إدارة الأجهزة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2348"/>
+        <location filename="qml/MainWindow.qml" line="2460"/>
         <source>刷新</source>
         <translation>تحديث</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2377"/>
+        <location filename="qml/MainWindow.qml" line="2489"/>
         <source>视图模式</source>
         <translation>وضع العرض</translation>
     </message>
@@ -3315,9 +3332,9 @@
 <context>
     <name>PadWindow</name>
     <message>
-        <location filename="qml/PadWindow.qml" line="238"/>
-        <location filename="qml/PadWindow.qml" line="416"/>
-        <location filename="qml/PadWindow.qml" line="2503"/>
+        <location filename="qml/PadWindow.qml" line="305"/>
+        <location filename="qml/PadWindow.qml" line="520"/>
+        <location filename="qml/PadWindow.qml" line="2688"/>
         <source>系统提示</source>
         <translation>رسالة النظام</translation>
     </message>
@@ -3326,7 +3343,7 @@
         <translation type="vanished">لم يتم استخدام الجهاز السحابي لفترة طويلة، وقد تم نقله تلقائيًا إلى السحابة (تظل تطبيقات الجهاز السحابي قيد التشغيل)</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="240"/>
+        <location filename="qml/PadWindow.qml" line="307"/>
         <source>退出</source>
         <translation>الخروج</translation>
     </message>
@@ -3335,34 +3352,35 @@
         <translation type="vanished">إعادة الاتصال</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="244"/>
-        <location filename="qml/PadWindow.qml" line="1532"/>
-        <location filename="qml/PadWindow.qml" line="1547"/>
-        <location filename="qml/PadWindow.qml" line="1561"/>
-        <location filename="qml/PadWindow.qml" line="1575"/>
-        <location filename="qml/PadWindow.qml" line="2506"/>
+        <location filename="qml/PadWindow.qml" line="311"/>
+        <location filename="qml/PadWindow.qml" line="1717"/>
+        <location filename="qml/PadWindow.qml" line="1732"/>
+        <location filename="qml/PadWindow.qml" line="1746"/>
+        <location filename="qml/PadWindow.qml" line="1760"/>
+        <location filename="qml/PadWindow.qml" line="2691"/>
         <source>确定</source>
         <translation>نعم</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1035"/>
+        <location filename="qml/PadWindow.qml" line="501"/>
+        <source>只能选择APK或XAPK文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>超清</source>
-        <translation>فائق الوضوح</translation>
+        <translation type="vanished">فائق الوضوح</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1035"/>
         <source>高清</source>
-        <translation>عالية الدقة</translation>
+        <translation type="vanished">عالية الدقة</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1035"/>
         <source>普通</source>
-        <translation>عادي</translation>
+        <translation type="vanished">عادي</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1035"/>
         <source>流畅</source>
-        <translation>سلس</translation>
+        <translation type="vanished">سلس</translation>
     </message>
     <message>
         <source>音量+</source>
@@ -3401,67 +3419,67 @@
         <translation type="vanished">تعيين الأزرار</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1671"/>
+        <location filename="qml/PadWindow.qml" line="1856"/>
         <source>返回</source>
         <translation>رجوع</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1718"/>
+        <location filename="qml/PadWindow.qml" line="1903"/>
         <source>摄像头推流</source>
         <translation>تدفق الكاميرا</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1749"/>
+        <location filename="qml/PadWindow.qml" line="1934"/>
         <source>摄像头</source>
         <translation>كاميرا</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2240"/>
+        <location filename="qml/PadWindow.qml" line="2425"/>
         <source>新增按键</source>
         <translation>زر جديد</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2244"/>
+        <location filename="qml/PadWindow.qml" line="2429"/>
         <source>使用“鼠标左键”新增按键</source>
         <translation>استخدم &quot;زر الفأرة الأيسر&quot; لإضافة مفتاح</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2279"/>
+        <location filename="qml/PadWindow.qml" line="2464"/>
         <source>方向摇杆</source>
         <translation>ذراع التحكم في الاتجاه</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2283"/>
+        <location filename="qml/PadWindow.qml" line="2468"/>
         <source>使用“AWSD”控制人物移动</source>
         <translation>استخدم &quot;AWSD&quot; للتحكم في حركة الشخصية</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2304"/>
+        <location filename="qml/PadWindow.qml" line="2489"/>
         <source>键盘映射开关</source>
         <translation>تبديل تعيين لوحة المفاتيح</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2334"/>
+        <location filename="qml/PadWindow.qml" line="2519"/>
         <source>还原</source>
         <translation>استعادة</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2346"/>
+        <location filename="qml/PadWindow.qml" line="2531"/>
         <source>保存</source>
         <translation>حفظ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1718"/>
+        <location filename="qml/PadWindow.qml" line="1903"/>
         <source>无人直播推流</source>
         <translation>بث مباشر بدون مشغل</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="239"/>
+        <location filename="qml/PadWindow.qml" line="306"/>
         <source>连接已断开，请稍后重连</source>
         <translation>تم قطع الاتصال، يرجى إعادة المحاولة لاحقًا</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="960"/>
+        <location filename="qml/PadWindow.qml" line="1090"/>
         <source>复制成功</source>
         <translation>تم النسخ بنجاح</translation>
     </message>
@@ -3474,152 +3492,151 @@
         <translation type="vanished">يتم المزامنة</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1460"/>
+        <location filename="qml/PadWindow.qml" line="1641"/>
         <source>选择上传文件</source>
         <translation>اختيار ملف للتحميل</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1526"/>
-        <location filename="qml/PadWindow.qml" line="1541"/>
-        <location filename="qml/PadWindow.qml" line="1557"/>
-        <location filename="qml/PadWindow.qml" line="1571"/>
+        <location filename="qml/PadWindow.qml" line="1711"/>
+        <location filename="qml/PadWindow.qml" line="1726"/>
+        <location filename="qml/PadWindow.qml" line="1742"/>
+        <location filename="qml/PadWindow.qml" line="1756"/>
         <source>操作确认</source>
         <translation type="unfinished">تأكيد العملية</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1814"/>
+        <location filename="qml/PadWindow.qml" line="1999"/>
         <source>未发现摄像头，无法开启</source>
         <translation>لم يتم العثور على كاميرا، ولا يمكن التشغيل</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1828"/>
+        <location filename="qml/PadWindow.qml" line="2013"/>
         <source>麦克风</source>
         <translation>ميكروفون</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1893"/>
+        <location filename="qml/PadWindow.qml" line="2078"/>
         <source>未发现麦克风，无法开启</source>
         <translation>لم يتم العثور على ميكروفون، لا يمكن التشغيل</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1917"/>
+        <location filename="qml/PadWindow.qml" line="2102"/>
         <source>请在列表中选择要推流的视频文件</source>
         <translation>اختر ملف فيديو للبث من القائمة</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1957"/>
+        <location filename="qml/PadWindow.qml" line="2142"/>
         <source>结束</source>
         <translation>نهاية</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1972"/>
+        <location filename="qml/PadWindow.qml" line="2157"/>
         <source>全部视频(</source>
         <oldsource>全部视频</oldsource>
         <translation>جميع مقاطع الفيديو(</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1988"/>
+        <location filename="qml/PadWindow.qml" line="2173"/>
         <source>选择上传视频</source>
         <translation>اختيار تحميل الفيديو</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2041"/>
+        <location filename="qml/PadWindow.qml" line="2226"/>
         <source>开启推流</source>
         <translation>بدء البث</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2050"/>
+        <location filename="qml/PadWindow.qml" line="2235"/>
         <source>推流中</source>
         <translation>جارٍ البث</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2062"/>
+        <location filename="qml/PadWindow.qml" line="2247"/>
         <source>删除</source>
         <translation>حذف</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2526"/>
+        <location filename="qml/PadWindow.qml" line="2711"/>
         <source>正在重启云机...</source>
         <translation>جاري إعادة تشغيل الجهاز السحابي...</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2540"/>
+        <location filename="qml/PadWindow.qml" line="2725"/>
         <source>重启云机成功</source>
         <translation>تمت إعادة تشغيل الجهاز السحابي بنجاح</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2561"/>
+        <location filename="qml/PadWindow.qml" line="2746"/>
         <source>正在停止云机...</source>
         <oldsource>正在重置云机...</oldsource>
         <translation>يتم إيقاف الجهاز السحابي...</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2575"/>
+        <location filename="qml/PadWindow.qml" line="2760"/>
         <source>关闭云机成功</source>
         <oldsource>重置云机成功</oldsource>
         <translation>تم إغلاق الجهاز السحابي بنجاح</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2596"/>
+        <location filename="qml/PadWindow.qml" line="2781"/>
         <source>正在一键新机...</source>
         <translation>جارٍ تغيير الجهاز بنقرة واحدة...</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2610"/>
+        <location filename="qml/PadWindow.qml" line="2795"/>
         <source>一键新机成功</source>
         <translation>نجاح إعادة تشغيل الجهاز بنقرة واحدة</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1986"/>
+        <location filename="qml/PadWindow.qml" line="2171"/>
         <source>上传视频</source>
         <translation>رفع الفيديو</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="397"/>
         <source>只能选择APK文件</source>
-        <translation>يمكن اختيار ملفات APK فقط</translation>
+        <translation type="vanished">يمكن اختيار ملفات APK فقط</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1453"/>
+        <location filename="qml/PadWindow.qml" line="1634"/>
         <source>选择安装文件</source>
         <translation>اختر ملف التثبيت</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2089"/>
+        <location filename="qml/PadWindow.qml" line="2274"/>
         <source>连接命令</source>
         <translation>أمر الربط</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2100"/>
-        <location filename="qml/PadWindow.qml" line="2130"/>
-        <location filename="qml/PadWindow.qml" line="2162"/>
+        <location filename="qml/PadWindow.qml" line="2285"/>
+        <location filename="qml/PadWindow.qml" line="2315"/>
+        <location filename="qml/PadWindow.qml" line="2347"/>
         <source>复制</source>
         <translation>نسخ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2104"/>
-        <location filename="qml/PadWindow.qml" line="2134"/>
-        <location filename="qml/PadWindow.qml" line="2166"/>
+        <location filename="qml/PadWindow.qml" line="2289"/>
+        <location filename="qml/PadWindow.qml" line="2319"/>
+        <location filename="qml/PadWindow.qml" line="2351"/>
         <source>已复制到剪贴板</source>
         <translation>تم النسخ إلى الحافظة</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2119"/>
+        <location filename="qml/PadWindow.qml" line="2304"/>
         <source>连接密钥</source>
         <translation>مفتاح الربط</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2151"/>
+        <location filename="qml/PadWindow.qml" line="2336"/>
         <source>ADB地址</source>
         <translation>عنوان ADB</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2179"/>
+        <location filename="qml/PadWindow.qml" line="2364"/>
         <source>ADB过期时间</source>
         <translation>مدة صلاحية ADB</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2194"/>
+        <location filename="qml/PadWindow.qml" line="2379"/>
         <source>开启ADB</source>
         <translation>تشغيل ADB</translation>
     </message>
@@ -3628,10 +3645,10 @@
         <translation type="obsolete">كلمتا المرور اللتان أدخلتهما غير متطابقتين</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2392"/>
-        <location filename="qml/PadWindow.qml" line="2393"/>
-        <location filename="qml/PadWindow.qml" line="2394"/>
-        <location filename="qml/PadWindow.qml" line="2395"/>
+        <location filename="qml/PadWindow.qml" line="2577"/>
+        <location filename="qml/PadWindow.qml" line="2578"/>
+        <location filename="qml/PadWindow.qml" line="2579"/>
+        <location filename="qml/PadWindow.qml" line="2580"/>
         <source>未开启</source>
         <translation>غير مفعل</translation>
     </message>
@@ -3656,31 +3673,31 @@
         <translation type="vanished">هزّها</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1527"/>
+        <location filename="qml/PadWindow.qml" line="1712"/>
         <source>确定要重启云机？</source>
         <translation>هل أنت متأكد من رغبتك في إعادة تشغيل الجهاز الظاهري؟</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1528"/>
-        <location filename="qml/PadWindow.qml" line="1543"/>
-        <location filename="qml/PadWindow.qml" line="1560"/>
-        <location filename="qml/PadWindow.qml" line="1574"/>
+        <location filename="qml/PadWindow.qml" line="1713"/>
+        <location filename="qml/PadWindow.qml" line="1728"/>
+        <location filename="qml/PadWindow.qml" line="1745"/>
+        <location filename="qml/PadWindow.qml" line="1759"/>
         <source>取消</source>
         <translation>إلغاء</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1542"/>
+        <location filename="qml/PadWindow.qml" line="1727"/>
         <source>一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！</source>
         <oldsource>确定要一键新机？云机将清空数据，变更设备ID及设备所有唯一标识(标准云机将随机更换机型，高端云机将更换相同机型)</oldsource>
         <translation type="unfinished">هل تريد حقاً إعادة ضبط الجهاز؟ سيتم مسح بيانات الجهاز السحابي، وتغيير معرف الجهاز وجميع مُعَرّفات الجهاز الفريدة (ستتمّ تبديل طرازات الأجهزة السحابية القياسية بشكل عشوائي، بينما سيتمّ تبديل أجهزة السحابة المتطورة بنماذج مماثلة)</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1558"/>
+        <location filename="qml/PadWindow.qml" line="1743"/>
         <source>当前云机换机后，将会清空云机全部数据，无法恢复，确定进行换机？</source>
         <translation>بعد تغيير الجهاز السحابي الحالي، سيتم مسح جميع بيانات الجهاز السحابي، ولا يمكن استعادتها، هل أنت متأكد من إجراء تغيير الجهاز؟</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1572"/>
+        <location filename="qml/PadWindow.qml" line="1757"/>
         <source>确定要关闭云手机吗？</source>
         <oldsource>确定要重置云机？云机数据将被清空，请谨慎选择！</oldsource>
         <translation>هل تريد إغلاق الهاتف السحابي؟</translation>

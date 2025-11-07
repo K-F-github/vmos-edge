@@ -731,6 +731,45 @@ FluPopup {
             }
 
             RowLayout{
+                Layout.topMargin: 5
+
+
+                RowLayout {
+                    spacing: 5
+
+                    FluText {
+                        text: qsTr("局域网IP");
+                        font.bold: true
+                    }
+
+                    Image {
+                        id: macvlanIcon
+                        source: "qrc:/res/pad/help.svg"
+                        width: 10
+                        height: 10
+
+                        FluTooltip {
+                            parent: macvlanIcon
+                            visible: macvlanMouseArea.containsMouse
+                            text: qsTr("默认机型请在 \"设置\" - \"机型设置\" 中进行操作")
+                            delay: 500
+                            timeout: 3000
+                        }
+
+                        MouseArea {
+                            id: macvlanMouseArea
+                            anchors.fill: parent
+                            hoverEnabled: true
+                        }
+                    }
+
+                    FluToggleSwitch{
+                        id: macvlanToggle
+                    }
+                }
+            }
+
+            RowLayout{
                 
                 FluText {
                     text: qsTr("分辨率");
@@ -1295,7 +1334,6 @@ FluPopup {
             root.isChaining = false
             btnOk.enabled = true  // 恢复按钮状态
         }
-
         onError:
             (status, errorString, result, userData) => {
                 console.debug(status + ";" + errorString + ";" + result)
@@ -1343,7 +1381,6 @@ FluPopup {
         .add("bool_start", root.boolStart)
         .setUserData(ip)
         .bind(root)
-        .setTimeout(600000)
         .go(createDevice)
     }
 
@@ -1391,41 +1428,7 @@ FluPopup {
             }
         onSuccess:
             (result, userData) => {
-                // try {
-                //     console.log("Image upload success:", result);
-                //     var res = JSON.parse(result);
-                //     if(res.code === 200){
-                //         console.log("Image uploaded successfully");
-                        
-                //         // 检查是否需要上传 ADI
-                //         if (root.createDeviceParams && root.createDeviceParams.needUploadAdi) {
-                //             console.log("Need to upload ADI after image upload");
-                //             // 设置等待创建参数与轮询
-                //             root.pendingCreate = Object.assign({}, root.createDeviceParams)
-                //             root.adiPollLeft = 15 // 最多轮询 ~6秒
-                //             reqImportAdi(root.createDeviceParams.ip, root.createDeviceParams.adiPath);
-                //             adiPollTimer.start()
-                //         } else {
-                //             // 直接创建云机
-                //             reqCreateDevice(root.createDeviceParams.ip,
-                //                           root.createDeviceParams.name,
-                //                           root.createDeviceParams.repoName,
-                //                           root.createDeviceParams.resolution,
-                //                           root.createDeviceParams.selinux,
-                //                           root.createDeviceParams.dns,
-                //                           root.createDeviceParams.num,
-                //                           root.createDeviceParams.adiName,
-                //                           root.createDeviceParams.adiPass);
-                //         }
-                //     } else {
-                //         showError(res.msg || "镜像上传失败", 3000);
-                //         btnOk.enabled = true;
-                //     }
-                // } catch (e) {
-                //     console.error("Error parsing image upload response:", e);
-                //     showError("镜像上传响应解析失败", 3000);
-                //     btnOk.enabled = true;
-                // }
+                hideLoading()
             }
         onUploadProgress:
             (sent,total)=>{
@@ -1442,6 +1445,7 @@ FluPopup {
         .setRetry(1)
         .addFile("file", path)
         .setUserData(ip)
+        .setTimeout(400000)
         .bind(root)
         .go(uploadImage)
     }

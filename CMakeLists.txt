@@ -1,17 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
 
-# set(VCPKG_TARGET_ARCHITECTURE x64 arm64)
-# set(VCPKG_OSX_ARCHITECTURES x64 arm64)
-# set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "Build architectures for macOS" FORCE)
-# set(CMAKE_TOOLCHAIN_FILE /Users/xskj/Documents/develop_tools/vcpkg/scripts/buildsystems/vcpkg.cmake)
-# include(/Users/xskj/Documents/develop_tools/vcpkg/scripts/buildsystems/vcpkg.cmake)
-# if(LINUX)
-#     set(CMAKE_TOOLCHAIN_FILE /home/xianghong/vcpkg/scripts/buildsystems/vcpkg.cmake)
-# elseif(WIN32)
-#     set(CMAKE_TOOLCHAIN_FILE D:/develop/vcpkg/scripts/buildsystems/vcpkg.cmake)
-# elseif(APPLE)
-#     set(CMAKE_TOOLCHAIN_FILE /Users/xskj/Documents/develop_tools/vcpkg/scripts/buildsystems/vcpkg.cmake)
-# endif()
 
 project(vmosedge VERSION 1.0)
 
@@ -37,8 +25,8 @@ set(QSC_DEPLOY_PATH ${APPLICATION_DIR_PATH})
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Gui)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui)
 
-# add_subdirectory(armcloud_pc_sdk)
+
 add_subdirectory(FluentUI)
 add_subdirectory(QtScrcpyCore)
 add_subdirectory(src)
-# add_subdirectory(aliyun-oss-cpp-sdk)
+

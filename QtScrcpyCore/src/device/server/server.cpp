@@ -224,8 +224,23 @@ bool Server::execute()
 
 bool Server::start(Server::ServerParams params)
 {
+    // 先停止并清理之前的连接（如果存在）
+    if (m_serverStartStep != SSS_NULL) {
+        stop();
+    }
+    
     m_params = params;
-    m_serverStartStep = SSS_CONNECT;
+    // 如果使用直接TCP连接模式，跳过adb步骤，直接进入TCP连接
+    if (params.useDirectTcp) {
+        m_serverStartStep = SSS_DIRECT_TCP_CONNECT;
+    } else {
+        m_serverStartStep = SSS_CONNECT;
+    }
+    
+    // 重置连接计数和状态
+    m_connectCount = 0;
+    m_asyncState = ACS_IDLE;
+    
     return startServerByStep();
 }
 
@@ -303,10 +318,24 @@ void Server::stop()
     cleanupAsyncSockets();
     m_asyncState = ACS_IDLE;
 
-    if (m_controlSocket) {
-        m_controlSocket->close();
-        m_controlSocket->deleteLater();
+    // 清理已连接的sockets
+    if (m_videoSocket) {
+        m_videoSocket->disconnect();
+        if (m_videoSocket->state() != QAbstractSocket::UnconnectedState) {
+            m_videoSocket->abort();
+        }
+        m_videoSocket->deleteLater();
+        m_videoSocket = nullptr;
     }
+    if (m_controlSocket) {
+        m_controlSocket->disconnect();
+        if (m_controlSocket->state() != QAbstractSocket::UnconnectedState) {
+            m_controlSocket->abort();
+        }
+        m_controlSocket->deleteLater();
+        m_controlSocket = nullptr;
+    }
+    
     // ignore failure
     m_serverProcess.kill();
     if (m_tunnelEnabled) {
@@ -319,6 +348,10 @@ void Server::stop()
         m_tunnelEnabled = false;
     }
     m_serverSocket.close();
+    
+    // 重置连接计数和状态，以便下次重连
+    m_connectCount = 0;
+    m_serverStartStep = SSS_NULL;
 }
 
 bool Server::startServerByStep()
@@ -342,6 +375,10 @@ bool Server::startServerByStep()
         case SSS_EXECUTE_SERVER:
             // server will connect to our server socket
             stepSuccess = execute();
+            break;
+        case SSS_DIRECT_TCP_CONNECT:
+            // 直接TCP连接模式，跳过所有adb步骤
+            stepSuccess = connectDirectTcp();
             break;
         default:
             break;
@@ -400,12 +437,32 @@ bool Server::readInfoAsync(VideoSocket *videoSocket)
         return false;
     }
     
+    // 调试：打印原始数据的前16字节和关键位置的数据
+    qDebug("readInfoAsync: Raw data (first 16 bytes): %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x",
+           buf[0], buf[1], buf[2], buf[3], buf[4], buf[5], buf[6], buf[7],
+           buf[8], buf[9], buf[10], buf[11], buf[12], buf[13], buf[14], buf[15]);
+    qDebug("readInfoAsync: Codec offset[64-67]: %02x %02x %02x %02x",
+           buf[DEVICE_NAME_FIELD_LENGTH], buf[DEVICE_NAME_FIELD_LENGTH+1], 
+           buf[DEVICE_NAME_FIELD_LENGTH+2], buf[DEVICE_NAME_FIELD_LENGTH+3]);
+    qDebug("readInfoAsync: Width offset[68-71]: %02x %02x %02x %02x",
+           buf[DEVICE_NAME_FIELD_LENGTH+4], buf[DEVICE_NAME_FIELD_LENGTH+5],
+           buf[DEVICE_NAME_FIELD_LENGTH+6], buf[DEVICE_NAME_FIELD_LENGTH+7]);
+    qDebug("readInfoAsync: Height offset[72-75]: %02x %02x %02x %02x",
+           buf[DEVICE_NAME_FIELD_LENGTH+8], buf[DEVICE_NAME_FIELD_LENGTH+9],
+           buf[DEVICE_NAME_FIELD_LENGTH+10], buf[DEVICE_NAME_FIELD_LENGTH+11]);
+    
     buf[DEVICE_NAME_FIELD_LENGTH - 1] = '\0'; // in case the client sends garbage
     m_pendingDeviceName = QString::fromUtf8((const char *)buf);
 
     // 前4个字节是AVCodecID,当前只支持H264,所以先不解析
-    m_pendingDeviceSize.setWidth(bufferRead32be(&buf[DEVICE_NAME_FIELD_LENGTH + 4]));
-    m_pendingDeviceSize.setHeight(bufferRead32be(&buf[DEVICE_NAME_FIELD_LENGTH + 8]));
+    quint32 codecId = bufferRead32be(&buf[DEVICE_NAME_FIELD_LENGTH]);
+    quint32 width = bufferRead32be(&buf[DEVICE_NAME_FIELD_LENGTH + 4]);
+    quint32 height = bufferRead32be(&buf[DEVICE_NAME_FIELD_LENGTH + 8]);
+    
+    qDebug("readInfoAsync: Parsed - codecId=%u, width=%u, height=%u", codecId, width, height);
+    
+    m_pendingDeviceSize.setWidth(width);
+    m_pendingDeviceSize.setHeight(height);
 
     qDebug() << "readInfoAsync success, device:" << m_pendingDeviceName 
              << "size:" << m_pendingDeviceSize;
@@ -457,7 +514,11 @@ void Server::onConnectTimer()
 void Server::startAsyncConnect()
 {
     if (m_asyncState != ACS_IDLE) {
-        return;
+        qWarning() << "Server::startAsyncConnect - asyncState is not IDLE, current state:" << m_asyncState << ", cleaning up and resetting";
+        // 如果状态不是IDLE，先清理并重置
+        stopAsyncTimers();
+        cleanupAsyncSockets();
+        m_asyncState = ACS_IDLE;
     }
 
     // 清理之前的连接
@@ -483,11 +544,58 @@ void Server::startAsyncConnect()
         m_asyncConnectTimeoutTimer->setSingleShot(true);
         connect(m_asyncConnectTimeoutTimer, &QTimer::timeout, this, &Server::handleConnectTimeout);
     }
-    m_asyncConnectTimeoutTimer->start(5000); // 5秒总超时
+    // TCP直连模式可能需要更长时间，特别是网络延迟较高时
+    int timeoutMs = m_params.useDirectTcp ? 15000 : 5000; // TCP直连15秒，ADB模式5秒
+    m_asyncConnectTimeoutTimer->start(timeoutMs);
 
     // 开始异步连接video socket
     m_asyncState = ACS_CONNECTING_VIDEO;
-    m_pendingVideoSocket->connectToHost(QHostAddress::LocalHost, m_params.localPort);
+    
+    // 根据连接模式选择目标地址和端口
+    QHostAddress targetHost;
+    quint16 targetPort;
+    if (m_params.useDirectTcp) {
+        // 直接TCP连接模式：使用指定的主机和端口
+        QString hostStr = m_params.tcpHost.isEmpty() ? "localhost" : m_params.tcpHost;
+        if (hostStr == "localhost" || hostStr == "127.0.0.1") {
+            targetHost = QHostAddress::LocalHost;
+        } else {
+            targetHost = QHostAddress(hostStr);
+        }
+        targetPort = m_params.tcpVideoPort;
+    } else {
+        // ADB模式：使用本地端口
+        targetHost = QHostAddress::LocalHost;
+        targetPort = m_params.localPort;
+    }
+    
+    qDebug("Connecting video socket to %s:%d", targetHost.toString().toStdString().c_str(), targetPort);
+    
+    // 验证目标地址
+    if (targetHost.isNull()) {
+        qCritical("Invalid target host address: %s", m_params.tcpHost.toStdString().c_str());
+        handleConnectFailure();
+        return;
+    }
+    
+    // 设置socket选项，提高连接成功率
+    m_pendingVideoSocket->setSocketOption(QAbstractSocket::LowDelayOption, 1);
+    // 对于远程连接，可能需要更长的超时时间
+    if (m_params.useDirectTcp) {
+        // TCP直连模式：设置socket为非阻塞模式，由异步机制处理超时
+        m_pendingVideoSocket->setSocketOption(QAbstractSocket::KeepAliveOption, 1);
+    }
+    
+    qDebug("Attempting to connect video socket...");
+    m_pendingVideoSocket->connectToHost(targetHost, targetPort);
+    
+    // 立即检查连接状态（用于调试）
+    QTimer::singleShot(100, this, [this, targetHost, targetPort]() {
+        if (m_pendingVideoSocket) {
+            qDebug("Video socket state after 100ms: %d, error: %d", 
+                   m_pendingVideoSocket->state(), m_pendingVideoSocket->error());
+        }
+    });
     // control socket会在video socket连接成功后再连接
 }
 
@@ -497,19 +605,78 @@ void Server::onVideoSocketConnected()
         return;
     }
 
+    qDebug("Video socket connected successfully to %s:%d", 
+           m_params.useDirectTcp ? m_params.tcpHost.toStdString().c_str() : "localhost",
+           m_params.useDirectTcp ? m_params.tcpVideoPort : m_params.localPort);
+
     // Video socket连接成功，继续连接control socket
     m_asyncState = ACS_CONNECTING_CONTROL;
-    m_pendingControlSocket->connectToHost(QHostAddress::LocalHost, m_params.localPort);
+    
+    // 根据连接模式选择目标地址和端口
+    QHostAddress targetHost;
+    quint16 targetPort;
+    if (m_params.useDirectTcp) {
+        // 直接TCP连接模式：使用指定的主机和控制端口
+        QString hostStr = m_params.tcpHost.isEmpty() ? "localhost" : m_params.tcpHost;
+        if (hostStr == "localhost" || hostStr == "127.0.0.1") {
+            targetHost = QHostAddress::LocalHost;
+        } else {
+            targetHost = QHostAddress(hostStr);
+        }
+        targetPort = m_params.tcpControlPort;
+    } else {
+        // ADB模式：使用本地端口
+        targetHost = QHostAddress::LocalHost;
+        targetPort = m_params.localPort;
+    }
+    
+    qDebug("Connecting control socket to %s:%d", targetHost.toString().toStdString().c_str(), targetPort);
+    m_pendingControlSocket->connectToHost(targetHost, targetPort);
 }
 
 void Server::onVideoSocketError(QAbstractSocket::SocketError error)
 {
-    Q_UNUSED(error);
     if (m_asyncState == ACS_IDLE) {
         return;
     }
 
-    qWarning("video socket connect to server failed");
+    QString hostStr = m_params.useDirectTcp ? m_params.tcpHost : "localhost";
+    quint16 port = m_params.useDirectTcp ? m_params.tcpVideoPort : m_params.localPort;
+    
+    QString errorString;
+    switch(error) {
+        case QAbstractSocket::ConnectionRefusedError:
+            errorString = "Connection refused (端口可能未监听或防火墙阻止)";
+            break;
+        case QAbstractSocket::RemoteHostClosedError:
+            errorString = "Remote host closed";
+            break;
+        case QAbstractSocket::HostNotFoundError:
+            errorString = "Host not found";
+            break;
+        case QAbstractSocket::NetworkError:
+            errorString = "Network error (网络不可达)";
+            break;
+        case QAbstractSocket::SocketAccessError:
+            errorString = "Socket access error";
+            break;
+        case QAbstractSocket::SocketResourceError:
+            errorString = "Socket resource error";
+            break;
+        case QAbstractSocket::SocketTimeoutError:
+            errorString = "Connection timeout";
+            break;
+        case QAbstractSocket::UnknownSocketError:
+            errorString = "Unknown socket error";
+            break;
+        default:
+            errorString = QString("Error code: %1").arg(static_cast<int>(error));
+            break;
+    }
+    
+    qWarning("video socket connect to server failed: %s:%d, %s", 
+             hostStr.toStdString().c_str(), port, errorString.toStdString().c_str());
+    
     // 连接失败，等待下次重试
     handleConnectFailure();
 }
@@ -519,6 +686,10 @@ void Server::onControlSocketConnected()
     if (m_asyncState != ACS_CONNECTING_CONTROL) {
         return;
     }
+
+    qDebug("Control socket connected successfully to %s:%d", 
+           m_params.useDirectTcp ? m_params.tcpHost.toStdString().c_str() : "localhost",
+           m_params.useDirectTcp ? m_params.tcpControlPort : m_params.localPort);
 
     // 两个socket都连接成功，开始读取设备信息
     m_asyncState = ACS_READING_INFO;
@@ -544,12 +715,47 @@ void Server::onControlSocketConnected()
 
 void Server::onControlSocketError(QAbstractSocket::SocketError error)
 {
-    Q_UNUSED(error);
     if (m_asyncState == ACS_IDLE) {
         return;
     }
 
-    qWarning("control socket connect to server failed");
+    QString hostStr = m_params.useDirectTcp ? m_params.tcpHost : "localhost";
+    quint16 port = m_params.useDirectTcp ? m_params.tcpControlPort : m_params.localPort;
+    
+    QString errorString;
+    switch(error) {
+        case QAbstractSocket::ConnectionRefusedError:
+            errorString = "Connection refused (端口可能未监听或防火墙阻止)";
+            break;
+        case QAbstractSocket::RemoteHostClosedError:
+            errorString = "Remote host closed";
+            break;
+        case QAbstractSocket::HostNotFoundError:
+            errorString = "Host not found";
+            break;
+        case QAbstractSocket::NetworkError:
+            errorString = "Network error (网络不可达)";
+            break;
+        case QAbstractSocket::SocketAccessError:
+            errorString = "Socket access error";
+            break;
+        case QAbstractSocket::SocketResourceError:
+            errorString = "Socket resource error";
+            break;
+        case QAbstractSocket::SocketTimeoutError:
+            errorString = "Connection timeout";
+            break;
+        case QAbstractSocket::UnknownSocketError:
+            errorString = "Unknown socket error";
+            break;
+        default:
+            errorString = QString("Error code: %1").arg(static_cast<int>(error));
+            break;
+    }
+    
+    qWarning("control socket connect to server failed: %s:%d, %s", 
+             hostStr.toStdString().c_str(), port, errorString.toStdString().c_str());
+    
     handleConnectFailure();
 }
 
@@ -559,9 +765,34 @@ void Server::onVideoDataReady()
         return;
     }
 
-    // devices will send 1 byte first on tunnel forward mode
-    // 需要读取完整的设备信息包：1字节 + DEVICE_NAME_FIELD_LENGTH + 12字节
-    const int requiredTotalBytes = 1 + DEVICE_NAME_FIELD_LENGTH + 12;
+    // 根据连接模式决定数据格式
+    // tunnel_forward模式：先发送1字节，然后设备信息
+    // TCP直连模式：可能直接发送设备信息（类似reverse模式）
+    bool needFirstByte = m_tunnelForward && !m_params.useDirectTcp;
+    const int baseBytes = DEVICE_NAME_FIELD_LENGTH + 12;
+    const int requiredTotalBytes = needFirstByte ? (1 + baseBytes) : baseBytes;
+    
+    qint64 available = m_pendingVideoSocket->bytesAvailable();
+    qDebug("onVideoDataReady: bytesAvailable=%lld, required=%d, needFirstByte=%d", 
+           available, requiredTotalBytes, needFirstByte);
+    
+    // 对于TCP直连模式，如果数据比预期多，可能是前面有额外的字节
+    // 先检查并打印前几个字节看看
+    if (m_params.useDirectTcp && available > baseBytes) {
+        QByteArray peekData = m_pendingVideoSocket->peek(qMin(available, (qint64)20));
+        QString hexStr;
+        for (int i = 0; i < peekData.size(); i++) {
+            hexStr += QString::asprintf("%02x ", (unsigned char)peekData[i]);
+        }
+        qDebug("onVideoDataReady: TCP直连模式，前%d字节: %s", peekData.size(), hexStr.toStdString().c_str());
+        
+        // 如果数据比预期多1字节，可能是前面有标识字节，需要跳过
+        if (available == baseBytes + 1) {
+            QByteArray extraByte = m_pendingVideoSocket->read(1);
+            qDebug("onVideoDataReady: TCP直连模式，跳过前导字节: 0x%02x", 
+                   static_cast<unsigned char>(extraByte[0]));
+        }
+    }
     
     if (m_pendingVideoSocket->bytesAvailable() < requiredTotalBytes) {
         // 数据还没完全到达，等待下次readyRead信号
@@ -572,12 +803,15 @@ void Server::onVideoDataReady()
         return;
     }
 
-    // 读取第一个字节（tunnel forward模式的标识）
-    QByteArray firstByte = m_pendingVideoSocket->read(1);
-    if (firstByte.isEmpty()) {
-        qWarning("Failed to read first byte");
-        handleConnectFailure();
-        return;
+    // 如果需要，读取第一个字节（tunnel forward模式的标识）
+    if (needFirstByte) {
+        QByteArray firstByte = m_pendingVideoSocket->read(1);
+        if (firstByte.isEmpty()) {
+            qWarning("Failed to read first byte");
+            handleConnectFailure();
+            return;
+        }
+        qDebug("Read first byte: 0x%02x", static_cast<unsigned char>(firstByte[0]));
     }
 
     // 现在读取设备信息（异步版本）
@@ -587,6 +821,7 @@ void Server::onVideoDataReady()
             m_readInfoTimeoutTimer->stop();
         }
         // 读取成功
+        qDebug("Device info read successfully");
         handleConnectSuccess();
         return;
     }
@@ -610,11 +845,24 @@ void Server::handleConnectSuccess()
     m_controlSocket = m_pendingControlSocket;
 
     // devices will send 1 byte first on tunnel forward mode
-    m_controlSocket->read(1);
+    // 对于TCP直连模式，control socket可能不需要读取第一个字节
+    // 因为TCP直连模式类似reverse模式，不需要这个标识字节
+    if (m_tunnelForward && !m_params.useDirectTcp) {
+        // tunnel_forward模式：读取control socket的第一个字节
+        if (m_controlSocket->bytesAvailable() > 0) {
+            m_controlSocket->read(1);
+        }
+    }
 
-    // we don't need the adb tunnel anymore
-    disableTunnelForward();
-    m_tunnelEnabled = false;
+    // we don't need the adb tunnel anymore (only for ADB mode)
+    if (!m_params.useDirectTcp) {
+        if (m_tunnelForward) {
+            disableTunnelForward();
+        } else {
+            disableTunnelReverse();
+        }
+        m_tunnelEnabled = false;
+    }
     m_restartCount = 0;
 
     m_asyncState = ACS_COMPLETE;
@@ -640,14 +888,18 @@ void Server::handleConnectFailure()
         stop();
         if (MAX_RESTART_COUNT > m_restartCount++) {
             qWarning("restart server auto");
+            // 重置连接计数，以便重试
+            m_connectCount = 0;
             start(m_params);
         } else {
             m_restartCount = 0;
+            m_connectCount = 0;  // 重置连接计数，以便下次手动重连
             emit serverStarted(false);
         }
+    } else {
+        // 未达到最大重试次数，重置状态以便重试
+        m_asyncState = ACS_IDLE;
     }
-
-    m_asyncState = ACS_IDLE;
 }
 
 void Server::handleConnectTimeout()
@@ -656,7 +908,55 @@ void Server::handleConnectTimeout()
         return;
     }
 
-    qWarning("async connect timeout");
+    QString hostStr = m_params.useDirectTcp ? m_params.tcpHost : "localhost";
+    quint16 videoPort = m_params.useDirectTcp ? m_params.tcpVideoPort : m_params.localPort;
+    quint16 controlPort = m_params.useDirectTcp ? m_params.tcpControlPort : m_params.localPort;
+    
+    qWarning("async connect timeout after 15s. Host: %s, Video port: %d, Control port: %d, State: %d", 
+             hostStr.toStdString().c_str(), videoPort, controlPort, m_asyncState);
+    
+    // 输出socket状态信息以便调试
+    if (m_pendingVideoSocket) {
+        QString stateStr;
+        switch(m_pendingVideoSocket->state()) {
+            case QAbstractSocket::UnconnectedState: stateStr = "Unconnected"; break;
+            case QAbstractSocket::HostLookupState: stateStr = "HostLookup"; break;
+            case QAbstractSocket::ConnectingState: stateStr = "Connecting"; break;
+            case QAbstractSocket::ConnectedState: stateStr = "Connected"; break;
+            case QAbstractSocket::BoundState: stateStr = "Bound"; break;
+            case QAbstractSocket::ListeningState: stateStr = "Listening"; break;
+            case QAbstractSocket::ClosingState: stateStr = "Closing"; break;
+            default: stateStr = QString("Unknown(%1)").arg(m_pendingVideoSocket->state()); break;
+        }
+        
+        QString errorStr;
+        QAbstractSocket::SocketError err = m_pendingVideoSocket->error();
+        switch(err) {
+            case QAbstractSocket::ConnectionRefusedError: errorStr = "ConnectionRefused"; break;
+            case QAbstractSocket::RemoteHostClosedError: errorStr = "RemoteHostClosed"; break;
+            case QAbstractSocket::HostNotFoundError: errorStr = "HostNotFound"; break;
+            case QAbstractSocket::NetworkError: errorStr = "NetworkError"; break;
+            case QAbstractSocket::SocketAccessError: errorStr = "SocketAccessError"; break;
+            case QAbstractSocket::SocketResourceError: errorStr = "SocketResourceError"; break;
+            case QAbstractSocket::SocketTimeoutError: errorStr = "SocketTimeoutError"; break;
+            case QAbstractSocket::UnknownSocketError: errorStr = "UnknownError"; break;
+            default: errorStr = QString("Error(%1)").arg(static_cast<int>(err)); break;
+        }
+        
+        qWarning("Video socket state: %s, error: %s", stateStr.toStdString().c_str(), errorStr.toStdString().c_str());
+    }
+    if (m_pendingControlSocket) {
+        QString stateStr;
+        switch(m_pendingControlSocket->state()) {
+            case QAbstractSocket::UnconnectedState: stateStr = "Unconnected"; break;
+            case QAbstractSocket::HostLookupState: stateStr = "HostLookup"; break;
+            case QAbstractSocket::ConnectingState: stateStr = "Connecting"; break;
+            case QAbstractSocket::ConnectedState: stateStr = "Connected"; break;
+            default: stateStr = QString("Unknown(%1)").arg(m_pendingControlSocket->state()); break;
+        }
+        qWarning("Control socket state: %s", stateStr.toStdString().c_str());
+    }
+    
     handleConnectFailure();
 }
 
@@ -690,6 +990,45 @@ void Server::stopAsyncTimers()
     if (m_readInfoTimeoutTimer) {
         m_readInfoTimeoutTimer->stop();
     }
+}
+
+bool Server::connectDirectTcp()
+{
+    // 验证TCP连接参数，如果host为空，使用默认值localhost
+    QString host = m_params.tcpHost.isEmpty() ? "localhost" : m_params.tcpHost;
+    
+    if (m_params.tcpVideoPort == 0) {
+        qCritical("TCP direct connect: tcpVideoPort is invalid");
+        emit serverStarted(false);
+        return false;
+    }
+    
+    if (m_params.tcpControlPort == 0) {
+        qCritical("TCP direct connect: tcpControlPort is invalid");
+        emit serverStarted(false);
+        return false;
+    }
+    
+    // 更新host参数（如果使用了默认值）
+    if (m_params.tcpHost.isEmpty()) {
+        m_params.tcpHost = host;
+    }
+    
+    qInfo("TCP direct connect: connecting to %s:%d (video) and %d (control) and %d (audio)", 
+          m_params.tcpHost.toStdString().c_str(), 
+          m_params.tcpVideoPort, 
+          m_params.tcpControlPort,
+          m_params.tcpAudioPort);
+    
+    // 设置状态为运行中，然后开始连接
+    m_serverStartStep = SSS_RUNNING;
+    m_tunnelEnabled = false;  // 直接TCP模式不使用adb隧道
+    m_tunnelForward = false;  // 不使用forward模式
+    
+    // 启动异步连接
+    startConnectTimeoutTimer();
+    
+    return true;
 }
 
 void Server::onWorkProcessResult(qsc::AdbProcess::ADB_EXEC_RESULT processResult)

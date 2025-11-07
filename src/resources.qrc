@@ -1052,5 +1052,10 @@
         <file>res/pad/pad_apk@1.75x.png</file>
         <file>res/pad/pad_apk@2x.png</file>
         <file>qml/SettingsView.qml</file>
+        <file>res/pad/logo-head.png</file>
+        <file>res/pad/logo-head@1.5x.png</file>
+        <file>res/pad/logo-head@1.25x.png</file>
+        <file>res/pad/logo-head@1.75x.png</file>
+        <file>res/pad/logo-head@2x.png</file>
     </qresource>
 </RCC>

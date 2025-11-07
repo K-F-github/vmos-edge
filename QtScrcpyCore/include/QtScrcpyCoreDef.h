@@ -18,7 +18,7 @@ struct DeviceParams {
     int captureOrientationLock = 0;   // 是否锁定采集方向 0不锁定 1锁定指定方向 2锁定原始方向
     int captureOrientation = 0;       // 采集方向 0 90 180 270
     bool stayAwake = false;           // 是否保持唤醒
-    QString serverVersion = "3.3.1";  // server版本
+    QString serverVersion = "3.3.3";  // server版本
     QString logLevel = "debug";     // log级别 verbose/debug/info/warn/error
     // 编码选项 ""表示默认
     // 例如 CodecOptions="profile=1,level=2"
@@ -39,6 +39,13 @@ struct DeviceParams {
     bool display = true;              // 是否显示画面（或者仅仅后台录制）
     bool renderExpiredFrames = false; // 是否渲染延迟视频帧
     QString gameScript = "";          // 游戏映射脚本
+
+    // TCP直接连接模式（不使用adb）
+    bool useDirectTcp = false;        // 是否使用直接TCP连接模式
+    QString tcpHost = "";             // TCP连接的主机地址（例如：192.168.1.100 或 localhost）
+    quint16 tcpVideoPort = 9999;      // TCP视频流端口
+    quint16 tcpAudioPort = 9998;      // TCP音频流端口（可选）
+    quint16 tcpControlPort = 9997;    // TCP控制流端口
 };
     
 }

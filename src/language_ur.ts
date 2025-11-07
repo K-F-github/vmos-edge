@@ -676,7 +676,7 @@
 <context>
     <name>CloudListView</name>
     <message>
-        <location filename="qml/CloudListView.qml" line="89"/>
+        <location filename="qml/CloudListView.qml" line="151"/>
         <source>云机名称</source>
         <oldsource>云机ID</oldsource>
         <translation>کلاؤڈ مشین کا نام</translation>
@@ -686,7 +686,7 @@
         <translation type="vanished">آئی پی</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="100"/>
+        <location filename="qml/CloudListView.qml" line="162"/>
         <source>ADB地址</source>
         <translation>ای ڈی بی ایڈریس</translation>
     </message>
@@ -696,45 +696,45 @@
         <translation type="obsolete">آئینہ ورژن</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="78"/>
+        <location filename="qml/CloudListView.qml" line="140"/>
         <source>云机ID</source>
         <translation type="unfinished">کلاؤڈ ڈیوائس آئی ڈی</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="111"/>
+        <location filename="qml/CloudListView.qml" line="173"/>
         <source>Android版本</source>
         <oldsource>系统版本</oldsource>
         <translation>Android ورژن</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="120"/>
+        <location filename="qml/CloudListView.qml" line="182"/>
         <source>状态</source>
         <translation>حالت</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="130"/>
+        <location filename="qml/CloudListView.qml" line="192"/>
         <source>创建时间</source>
         <translation>تخلیق کا وقت</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="139"/>
+        <location filename="qml/CloudListView.qml" line="201"/>
         <source>操作</source>
         <translation>آپریشن</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="234"/>
-        <location filename="qml/CloudListView.qml" line="254"/>
-        <location filename="qml/CloudListView.qml" line="273"/>
+        <location filename="qml/CloudListView.qml" line="296"/>
+        <location filename="qml/CloudListView.qml" line="316"/>
+        <location filename="qml/CloudListView.qml" line="335"/>
         <source>复制成功</source>
         <translation>کاپی کامیاب</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="339"/>
+        <location filename="qml/CloudListView.qml" line="401"/>
         <source>开机</source>
         <translation>آن کریں</translation>
     </message>
     <message>
-        <location filename="qml/CloudListView.qml" line="355"/>
+        <location filename="qml/CloudListView.qml" line="417"/>
         <source>打开窗口</source>
         <translation>کھڑکی کھولیں</translation>
     </message>
@@ -776,8 +776,8 @@
     </message>
     <message>
         <location filename="qml/CreateCloudPhonePopup.qml" line="78"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1356"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1432"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1393"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1435"/>
         <source>镜像上传中...</source>
         <oldsource>下载中...</oldsource>
         <translation>تصویر اپ لوڈ ہو رہی ہے۔۔۔</translation>
@@ -870,28 +870,34 @@
     </message>
     <message>
         <location filename="qml/CreateCloudPhonePopup.qml" line="617"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="754"/>
         <source>默认机型请在 &quot;设置&quot; - &quot;机型设置&quot; 中进行操作</source>
         <oldsource>默认机型请在 &quot;设置&quot; - &quot;模板设置&quot; 中进行操作</oldsource>
         <translation>پہلے سے طے شدہ ماڈل براہ کرم &quot;ترتیبات&quot; - &quot;ماڈل سیٹنگز&quot; میں سیٹ کریں</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="817"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="741"/>
+        <source>局域网IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="856"/>
         <source>自动启动</source>
         <oldsource>创建后立即启动云机</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="988"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1027"/>
         <source>找不到对应的 ADI 文件路径</source>
         <translation>مربوطہ ADI فائل کا راستہ نہیں ملا</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1014"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1053"/>
         <source>找不到默认模板的 ADI 文件路径</source>
         <translation>پہلے سے طے شدہ سانچے کی ADI فائل پاتھ نہیں مل سکی</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1453"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1457"/>
         <source>ADI 导入中...</source>
         <translation>ADI درآمدی جاری ہے...</translation>
     </message>
@@ -905,22 +911,22 @@
         <translation>آئینہ منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="759"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="798"/>
         <source>云机名称</source>
         <translation>کلاؤڈ مشین کا نام</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="759"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="798"/>
         <source>云机名称前缀</source>
         <translation>کلاؤڈ مشین نام کا سابقہ</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="766"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="805"/>
         <source>请输入云机名称</source>
         <translation>براہ کرم کلاؤڈ مشین کا نام درج کریں</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="736"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="775"/>
         <source>分辨率</source>
         <translation>&apos;ریزولوشن&apos;</translation>
     </message>
@@ -955,18 +961,18 @@
         <translation>ماڈل</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="834"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="873"/>
         <source>将按前缀自动编号生成%1个云机：</source>
         <oldsource> 台云机：</oldsource>
         <translation>پری فکس کے ذریعے خودکار نمبرنگ سے %1 کلاؤڈ مشینز بنائی جائیں گی</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="834"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="873"/>
         <source>将创建%1台云机：</source>
         <translation>%1 کلاؤڈ مشینیں بنائی جائیں گی:</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="913"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="952"/>
         <source>创建云机数量必须大于0</source>
         <translation>کلاؤڈ مشینوں کی تعداد 0 سے زیادہ ہونی چاہیے</translation>
     </message>
@@ -985,12 +991,12 @@
         <translation type="vanished">زیادہ سے زیادہ تخلیق کیے جا سکنے والی تعداد سے تجاوز کر گیا ہے</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1054"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1093"/>
         <source>自定义DNS不能为空</source>
         <translation>حالی DNS خالی نہیں ہو سکتا</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1060"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1099"/>
         <source>无效的DNS地址: </source>
         <translation>&apos;غیر معارف ڈی این ایس کا پتہ: &apos;</translation>
     </message>
@@ -999,13 +1005,13 @@
         <translation type="vanished">(ڈاؤن لوڈ ہو گیا)</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1148"/>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1179"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1187"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1218"/>
         <source> (已上传)</source>
         <translation>(اپ لوڈ ہو چکا)</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="1291"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="1330"/>
         <source>正在创建云机...</source>
         <translation>کلاؤڈ مشین بنائی جا رہی ہے...</translation>
     </message>
@@ -1016,29 +1022,29 @@
         <translation>براہ کرم DNS پتا درج کریں</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="789"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="828"/>
         <source>云机数量</source>
         <translation>کلاؤڈ مشینوں کی تعداد</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="811"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="850"/>
         <source>单次可创建云机数量不超过 12 台</source>
         <oldsource>单次可创建云机数量不超过 %1 台</oldsource>
         <translation type="unfinished">باقی ماندہ کلاؤڈ مشینوں کی تعداد: %1</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="864"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="903"/>
         <source>镜像上传中..</source>
         <oldsource>镜像下载中..</oldsource>
         <translation>تصویر اپلوڈ ہو رہی ہے۔۔</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="895"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="934"/>
         <source>取消</source>
         <translation>منسوخ</translation>
     </message>
     <message>
-        <location filename="qml/CreateCloudPhonePopup.qml" line="901"/>
+        <location filename="qml/CreateCloudPhonePopup.qml" line="940"/>
         <source>确定</source>
         <translation>ٹھیک ہے</translation>
     </message>
@@ -1988,14 +1994,14 @@
         <translation type="vanished">کم از کم ایک کلاؤڈ مشین منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="146"/>
+        <location filename="qml/MainWindow.qml" line="259"/>
         <source>不能包含关机设备，请重新选择</source>
         <translation>نہیں بند کرنے والے آلے شامل کیے جا سکتے، براہ کرم دوبارہ منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="150"/>
-        <location filename="qml/MainWindow.qml" line="163"/>
-        <location filename="qml/MainWindow.qml" line="172"/>
+        <location filename="qml/MainWindow.qml" line="263"/>
+        <location filename="qml/MainWindow.qml" line="276"/>
+        <location filename="qml/MainWindow.qml" line="285"/>
         <source>不能包含异常设备，请重新选择</source>
         <translation>غیر معمولی آلات شامل نہیں ہو سکتے، براہ کرم دوبارہ منتخب کریں</translation>
     </message>
@@ -2004,46 +2010,46 @@
         <translation type="vanished">پیکیج والے آلات شامل نہیں ہو سکتے، دوبارہ منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="159"/>
+        <location filename="qml/MainWindow.qml" line="272"/>
         <source>不能包含已开机设备，请重新选择</source>
         <translation>٪1 شامل نہیں کیا جا سکتا کیونکہ یہ پہلے ہی چل رہا ہے، براہ کرم دوبارہ منتخب کریں۔</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="225"/>
-        <location filename="qml/MainWindow.qml" line="255"/>
+        <location filename="qml/MainWindow.qml" line="338"/>
+        <location filename="qml/MainWindow.qml" line="368"/>
         <source>天</source>
         <translation>آسمان</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="226"/>
-        <location filename="qml/MainWindow.qml" line="256"/>
+        <location filename="qml/MainWindow.qml" line="339"/>
+        <location filename="qml/MainWindow.qml" line="369"/>
         <source>时</source>
         <translation>وقت</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="227"/>
-        <location filename="qml/MainWindow.qml" line="257"/>
+        <location filename="qml/MainWindow.qml" line="340"/>
+        <location filename="qml/MainWindow.qml" line="370"/>
         <source>分</source>
         <translation>دقیقہ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="228"/>
-        <location filename="qml/MainWindow.qml" line="258"/>
+        <location filename="qml/MainWindow.qml" line="341"/>
+        <location filename="qml/MainWindow.qml" line="371"/>
         <source>秒</source>
         <translation>سیکنڈ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="315"/>
+        <location filename="qml/MainWindow.qml" line="428"/>
         <source>开始扫描主机...</source>
         <translation>میزبان کی اسکیننگ شروع ہو رہی ہے...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="338"/>
+        <location filename="qml/MainWindow.qml" line="451"/>
         <source>主机 %1 已存在</source>
         <translation>میزبان %1 پہلے سے موجود ہے</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="444"/>
+        <location filename="qml/MainWindow.qml" line="557"/>
         <source>重命名</source>
         <translation>نام تبدیل کریں</translation>
     </message>
@@ -2052,63 +2058,63 @@
         <translation type="vanished">اسم داخل کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="453"/>
-        <location filename="qml/MainWindow.qml" line="567"/>
-        <location filename="qml/MainWindow.qml" line="604"/>
-        <location filename="qml/MainWindow.qml" line="640"/>
-        <location filename="qml/MainWindow.qml" line="721"/>
-        <location filename="qml/MainWindow.qml" line="757"/>
-        <location filename="qml/MainWindow.qml" line="1159"/>
-        <location filename="qml/MainWindow.qml" line="1265"/>
-        <location filename="qml/MainWindow.qml" line="1474"/>
-        <location filename="qml/MainWindow.qml" line="1495"/>
-        <location filename="qml/MainWindow.qml" line="1516"/>
-        <location filename="qml/MainWindow.qml" line="1597"/>
-        <location filename="qml/MainWindow.qml" line="1618"/>
-        <location filename="qml/MainWindow.qml" line="1656"/>
-        <location filename="qml/MainWindow.qml" line="1679"/>
-        <location filename="qml/MainWindow.qml" line="1702"/>
-        <location filename="qml/MainWindow.qml" line="1817"/>
-        <location filename="qml/MainWindow.qml" line="1939"/>
-        <location filename="qml/MainWindow.qml" line="2246"/>
-        <location filename="qml/MainWindow.qml" line="2300"/>
-        <location filename="qml/MainWindow.qml" line="2550"/>
-        <location filename="qml/MainWindow.qml" line="2568"/>
-        <location filename="qml/MainWindow.qml" line="2586"/>
-        <location filename="qml/MainWindow.qml" line="2604"/>
-        <location filename="qml/MainWindow.qml" line="2636"/>
-        <location filename="qml/MainWindow.qml" line="2655"/>
-        <location filename="qml/MainWindow.qml" line="2701"/>
-        <location filename="qml/MainWindow.qml" line="2720"/>
+        <location filename="qml/MainWindow.qml" line="566"/>
+        <location filename="qml/MainWindow.qml" line="680"/>
+        <location filename="qml/MainWindow.qml" line="717"/>
+        <location filename="qml/MainWindow.qml" line="753"/>
+        <location filename="qml/MainWindow.qml" line="834"/>
+        <location filename="qml/MainWindow.qml" line="870"/>
+        <location filename="qml/MainWindow.qml" line="1271"/>
+        <location filename="qml/MainWindow.qml" line="1377"/>
+        <location filename="qml/MainWindow.qml" line="1586"/>
+        <location filename="qml/MainWindow.qml" line="1607"/>
+        <location filename="qml/MainWindow.qml" line="1628"/>
+        <location filename="qml/MainWindow.qml" line="1709"/>
+        <location filename="qml/MainWindow.qml" line="1730"/>
+        <location filename="qml/MainWindow.qml" line="1768"/>
+        <location filename="qml/MainWindow.qml" line="1791"/>
+        <location filename="qml/MainWindow.qml" line="1814"/>
+        <location filename="qml/MainWindow.qml" line="1929"/>
+        <location filename="qml/MainWindow.qml" line="2051"/>
+        <location filename="qml/MainWindow.qml" line="2358"/>
+        <location filename="qml/MainWindow.qml" line="2412"/>
+        <location filename="qml/MainWindow.qml" line="2662"/>
+        <location filename="qml/MainWindow.qml" line="2680"/>
+        <location filename="qml/MainWindow.qml" line="2698"/>
+        <location filename="qml/MainWindow.qml" line="2716"/>
+        <location filename="qml/MainWindow.qml" line="2748"/>
+        <location filename="qml/MainWindow.qml" line="2767"/>
+        <location filename="qml/MainWindow.qml" line="2813"/>
+        <location filename="qml/MainWindow.qml" line="2832"/>
         <source>取消</source>
         <translation>ردّ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="454"/>
-        <location filename="qml/MainWindow.qml" line="566"/>
-        <location filename="qml/MainWindow.qml" line="603"/>
-        <location filename="qml/MainWindow.qml" line="639"/>
-        <location filename="qml/MainWindow.qml" line="720"/>
-        <location filename="qml/MainWindow.qml" line="756"/>
-        <location filename="qml/MainWindow.qml" line="1158"/>
-        <location filename="qml/MainWindow.qml" line="1264"/>
-        <location filename="qml/MainWindow.qml" line="1473"/>
-        <location filename="qml/MainWindow.qml" line="1494"/>
-        <location filename="qml/MainWindow.qml" line="1515"/>
-        <location filename="qml/MainWindow.qml" line="1596"/>
-        <location filename="qml/MainWindow.qml" line="1617"/>
-        <location filename="qml/MainWindow.qml" line="1655"/>
-        <location filename="qml/MainWindow.qml" line="1678"/>
-        <location filename="qml/MainWindow.qml" line="1701"/>
-        <location filename="qml/MainWindow.qml" line="1821"/>
-        <location filename="qml/MainWindow.qml" line="2251"/>
-        <location filename="qml/MainWindow.qml" line="2306"/>
-        <location filename="qml/MainWindow.qml" line="2549"/>
-        <location filename="qml/MainWindow.qml" line="2567"/>
-        <location filename="qml/MainWindow.qml" line="2585"/>
-        <location filename="qml/MainWindow.qml" line="2603"/>
-        <location filename="qml/MainWindow.qml" line="2654"/>
-        <location filename="qml/MainWindow.qml" line="2719"/>
+        <location filename="qml/MainWindow.qml" line="567"/>
+        <location filename="qml/MainWindow.qml" line="679"/>
+        <location filename="qml/MainWindow.qml" line="716"/>
+        <location filename="qml/MainWindow.qml" line="752"/>
+        <location filename="qml/MainWindow.qml" line="833"/>
+        <location filename="qml/MainWindow.qml" line="869"/>
+        <location filename="qml/MainWindow.qml" line="1270"/>
+        <location filename="qml/MainWindow.qml" line="1376"/>
+        <location filename="qml/MainWindow.qml" line="1585"/>
+        <location filename="qml/MainWindow.qml" line="1606"/>
+        <location filename="qml/MainWindow.qml" line="1627"/>
+        <location filename="qml/MainWindow.qml" line="1708"/>
+        <location filename="qml/MainWindow.qml" line="1729"/>
+        <location filename="qml/MainWindow.qml" line="1767"/>
+        <location filename="qml/MainWindow.qml" line="1790"/>
+        <location filename="qml/MainWindow.qml" line="1813"/>
+        <location filename="qml/MainWindow.qml" line="1933"/>
+        <location filename="qml/MainWindow.qml" line="2363"/>
+        <location filename="qml/MainWindow.qml" line="2418"/>
+        <location filename="qml/MainWindow.qml" line="2661"/>
+        <location filename="qml/MainWindow.qml" line="2679"/>
+        <location filename="qml/MainWindow.qml" line="2697"/>
+        <location filename="qml/MainWindow.qml" line="2715"/>
+        <location filename="qml/MainWindow.qml" line="2766"/>
+        <location filename="qml/MainWindow.qml" line="2831"/>
         <source>确定</source>
         <translation>موافق</translation>
     </message>
@@ -2137,14 +2143,14 @@
         <translation type="vanished">عمليات إزالة التثبيت بالجملة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1554"/>
+        <location filename="qml/MainWindow.qml" line="1666"/>
         <source>修改镜像</source>
         <oldsource>升级镜像</oldsource>
         <translation>تصویر میں ترمیم کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="712"/>
-        <location filename="qml/MainWindow.qml" line="1591"/>
+        <location filename="qml/MainWindow.qml" line="825"/>
+        <location filename="qml/MainWindow.qml" line="1703"/>
         <source>一键新机</source>
         <translation>ایک کلک نیا فون</translation>
     </message>
@@ -2169,8 +2175,8 @@
         <translation type="vanished">دسترسی لغو شد</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="747"/>
-        <location filename="qml/MainWindow.qml" line="1612"/>
+        <location filename="qml/MainWindow.qml" line="860"/>
+        <location filename="qml/MainWindow.qml" line="1724"/>
         <source>重启云机</source>
         <oldsource>批量重启</oldsource>
         <translation>کلاؤڈ مشین دوبارہ شروع کریں</translation>
@@ -2220,8 +2226,8 @@
         <translation type="vanished">دِکھائیں بند کرنے والے آلے</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2635"/>
-        <location filename="qml/MainWindow.qml" line="2700"/>
+        <location filename="qml/MainWindow.qml" line="2747"/>
+        <location filename="qml/MainWindow.qml" line="2812"/>
         <source>删除</source>
         <translation>حذف کریں</translation>
     </message>
@@ -2230,7 +2236,7 @@
         <translation type="vanished">آلات منتقل</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="477"/>
+        <location filename="qml/MainWindow.qml" line="590"/>
         <source>下次不再提示</source>
         <translation>اگلی بار خبردار نہ کریں</translation>
     </message>
@@ -2259,27 +2265,27 @@
         <translation type="vanished">دستگاه کی اجازت</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="829"/>
+        <location filename="qml/MainWindow.qml" line="941"/>
         <source>默认排序</source>
         <translation>ڈیفالٹ ترتیب</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="835"/>
+        <location filename="qml/MainWindow.qml" line="947"/>
         <source>按创建时间降序</source>
         <translation>تخلیق کے وقت کے مطابق نزولی ترتیب</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="841"/>
+        <location filename="qml/MainWindow.qml" line="953"/>
         <source>按创建时间升序</source>
         <translation>تخلیق کے وقت کے حساب سے چڑھتے ترتیب میں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="848"/>
+        <location filename="qml/MainWindow.qml" line="960"/>
         <source>按剩余时长降序</source>
         <translation>بقیہ وقت کے حساب سے نزولی ترتیب</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="855"/>
+        <location filename="qml/MainWindow.qml" line="967"/>
         <source>按剩余时长升序</source>
         <translation>&apos;باقی وقت کی ترتیب میں اضافہ&apos;</translation>
     </message>
@@ -2296,42 +2302,42 @@
         <translation type="vanished">مُعْرَضُ الطَّرِيقَةِ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="950"/>
+        <location filename="qml/MainWindow.qml" line="1062"/>
         <source>大视图</source>
         <translation>نمای بزرگ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="969"/>
+        <location filename="qml/MainWindow.qml" line="1081"/>
         <source>中视图</source>
         <translation>مركز العرض</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="988"/>
+        <location filename="qml/MainWindow.qml" line="1100"/>
         <source>小视图</source>
         <translation>چھوٹا نظارہ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1839"/>
+        <location filename="qml/MainWindow.qml" line="1951"/>
         <source>设置</source>
         <translation>ترتیبات</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1854"/>
+        <location filename="qml/MainWindow.qml" line="1966"/>
         <source>帮助中心</source>
         <translation>مرکز کمک</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1860"/>
+        <location filename="qml/MainWindow.qml" line="1972"/>
         <source>通用设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2360"/>
+        <location filename="qml/MainWindow.qml" line="2472"/>
         <source>刷新过于频繁，请稍后再试</source>
         <translation>بہت زیادہ تازہ کاری، براہ کرم بعد میں کوشش کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2602"/>
+        <location filename="qml/MainWindow.qml" line="2714"/>
         <source>删除主机仅适用于永久离线或IP已变更的主机。若主机恢复在线，系统的自动发现功能会重新将其添加至列表。</source>
         <translation>میزبان کو صرف اس صورت میں حذف کریں جب وہ مستقل طور پر آف لائن ہو یا اس کا IP تبدیل ہو چکا ہو۔ اگر میزبان دوبارہ آن لائن ہو جاتا ہے، تو سسٹم کی خودکار دریافت کی خصوصیت اسے خود بخود فہرست میں واپس شامل کر دے گی۔</translation>
     </message>
@@ -2344,29 +2350,29 @@
         <translation type="vanished">تبدیل ترتیب</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="564"/>
-        <location filename="qml/MainWindow.qml" line="601"/>
-        <location filename="qml/MainWindow.qml" line="637"/>
-        <location filename="qml/MainWindow.qml" line="718"/>
-        <location filename="qml/MainWindow.qml" line="754"/>
-        <location filename="qml/MainWindow.qml" line="1156"/>
-        <location filename="qml/MainWindow.qml" line="1262"/>
-        <location filename="qml/MainWindow.qml" line="1471"/>
-        <location filename="qml/MainWindow.qml" line="1492"/>
-        <location filename="qml/MainWindow.qml" line="1513"/>
-        <location filename="qml/MainWindow.qml" line="1594"/>
-        <location filename="qml/MainWindow.qml" line="1615"/>
-        <location filename="qml/MainWindow.qml" line="1653"/>
-        <location filename="qml/MainWindow.qml" line="1676"/>
-        <location filename="qml/MainWindow.qml" line="1699"/>
-        <location filename="qml/MainWindow.qml" line="1815"/>
-        <location filename="qml/MainWindow.qml" line="1935"/>
-        <location filename="qml/MainWindow.qml" line="2242"/>
-        <location filename="qml/MainWindow.qml" line="2296"/>
-        <location filename="qml/MainWindow.qml" line="2547"/>
-        <location filename="qml/MainWindow.qml" line="2565"/>
-        <location filename="qml/MainWindow.qml" line="2583"/>
-        <location filename="qml/MainWindow.qml" line="2601"/>
+        <location filename="qml/MainWindow.qml" line="677"/>
+        <location filename="qml/MainWindow.qml" line="714"/>
+        <location filename="qml/MainWindow.qml" line="750"/>
+        <location filename="qml/MainWindow.qml" line="831"/>
+        <location filename="qml/MainWindow.qml" line="867"/>
+        <location filename="qml/MainWindow.qml" line="1268"/>
+        <location filename="qml/MainWindow.qml" line="1374"/>
+        <location filename="qml/MainWindow.qml" line="1583"/>
+        <location filename="qml/MainWindow.qml" line="1604"/>
+        <location filename="qml/MainWindow.qml" line="1625"/>
+        <location filename="qml/MainWindow.qml" line="1706"/>
+        <location filename="qml/MainWindow.qml" line="1727"/>
+        <location filename="qml/MainWindow.qml" line="1765"/>
+        <location filename="qml/MainWindow.qml" line="1788"/>
+        <location filename="qml/MainWindow.qml" line="1811"/>
+        <location filename="qml/MainWindow.qml" line="1927"/>
+        <location filename="qml/MainWindow.qml" line="2047"/>
+        <location filename="qml/MainWindow.qml" line="2354"/>
+        <location filename="qml/MainWindow.qml" line="2408"/>
+        <location filename="qml/MainWindow.qml" line="2659"/>
+        <location filename="qml/MainWindow.qml" line="2677"/>
+        <location filename="qml/MainWindow.qml" line="2695"/>
+        <location filename="qml/MainWindow.qml" line="2713"/>
         <source>操作确认</source>
         <oldsource>系统提示</oldsource>
         <translation>آپریشن کی تصدیق</translation>
@@ -2380,8 +2386,8 @@
         <translation type="vanished">گھڑیال آلہ شامل نہیں کیا جا سکتا، براہ کرم دوبارہ منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="565"/>
-        <location filename="qml/MainWindow.qml" line="1472"/>
+        <location filename="qml/MainWindow.qml" line="678"/>
+        <location filename="qml/MainWindow.qml" line="1584"/>
         <source>重置云机将清除云手机上的所有数据，云手机参数不会改变，请谨慎操作！</source>
         <oldsource>确定要重置云机？云机数据将被清空，请谨慎选择！</oldsource>
         <translation>کلاؤڈ فون کو دوبارہ ترتیب دینے سے کلاؤڈ فون پر تمام ڈیٹا صاف ہو جائے گا، کلاؤڈ فون کی ترتیبات تبدیل نہیں ہوں گی، براہ کرم احتیاط سے عمل کریں!</translation>
@@ -2391,8 +2397,8 @@
         <translation type="vanished">کیا آپ واقعی ایک کلک کے ساتھ نیا ڈیوائس بنانا چاہتے ہیں؟ کلاؤڈ ڈیوائس ڈیٹا صاف کر دے گی، ڈیوائس آئی ڈی اور تمام منفرد شناخت کاروں کو تبدیل کر دے گی (معیاری کلاؤڈ ڈیوائس بے ترتیب ماڈل تبدیل کرے گی، اعلیٰ درجے کی کلاؤڈ ڈیوائس تبدیل کرے گی)</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="638"/>
-        <location filename="qml/MainWindow.qml" line="1514"/>
+        <location filename="qml/MainWindow.qml" line="751"/>
+        <location filename="qml/MainWindow.qml" line="1626"/>
         <source>删除云机将清除云手机及其所有数据，操作后无法恢复，请谨慎操作！</source>
         <oldsource>删除设备云机数据将被清空，请谨慎删除！</oldsource>
         <translation>کلاؤڈ فون کو حذف کرنا کلاؤڈ فون اور اس کے تمام ڈیٹا کو صاف کر دے گا، آپریشن کے بعد بحال نہیں کیا جا سکے گا، براہ کرم احتیاط سے کام کریں</translation>
@@ -2455,12 +2461,12 @@
         <translation type="vanished">کیا آپ اکاؤنٹ تبدیل کرنا چاہتے ہیں؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1948"/>
+        <location filename="qml/MainWindow.qml" line="2060"/>
         <source>最小化到托盘</source>
         <translation>ٹرے میں چھوٹا کرنا</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2015"/>
+        <location filename="qml/MainWindow.qml" line="2127"/>
         <source>请输入云机名称、IP</source>
         <oldsource>请输入ID、名称、IP</oldsource>
         <translation>براہ کرم کلاؤڈ مشین کا نام، آئی پی درج کریں</translation>
@@ -2486,8 +2492,8 @@
         <translation type="vanished">مجاز شدہ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2038"/>
-        <location filename="qml/MainWindow.qml" line="2044"/>
+        <location filename="qml/MainWindow.qml" line="2150"/>
+        <location filename="qml/MainWindow.qml" line="2156"/>
         <source>添加分组</source>
         <oldsource>新建分组</oldsource>
         <translation>گروپ شامل کریں</translation>
@@ -2501,12 +2507,12 @@
         <translation type="vanished">1 سے 500 تک نمبر درج کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2269"/>
+        <location filename="qml/MainWindow.qml" line="2381"/>
         <source>云机播放窗口已打开，请先关闭后同步操作</source>
         <translation>کلاؤڈ پلے ونڈو کھلا ہوا ہے، براہ کرم پہلے اسے بند کریں پھر سنک کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2290"/>
+        <location filename="qml/MainWindow.qml" line="2402"/>
         <source>魔盒设备不能和云机设备一起同步操作，请分开进行同步操作</source>
         <translation>جادو باکس آلہ اور کلاؤڈ ڈیوائس کو ایک ساتھ مطابقت پذیر آپریشن کے ساتھ استعمال نہیں کیا جا سکتا، براہ کرم مطابقت پذیر آپریشن الگ سے کریں۔</translation>
     </message>
@@ -2591,27 +2597,27 @@
         <translation type="vanished">مین پینل بند کرتے وقت</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3005"/>
+        <location filename="qml/MainWindow.qml" line="3117"/>
         <source>正在更新中...</source>
         <translation>اپ ڈیٹ ہو رہا ہے...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3706"/>
+        <location filename="qml/MainWindow.qml" line="3818"/>
         <source>正在更新CBS程序，请稍候...</source>
         <translation>CBS پروگرام کو اپ ڈیٹ کیا جا رہا ہے، براہ کرم انتظار کریں...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3716"/>
+        <location filename="qml/MainWindow.qml" line="3828"/>
         <source>CBS自动升级完成</source>
         <translation>سی بی ایس خودکار اپ گریڈ مکمل</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1940"/>
+        <location filename="qml/MainWindow.qml" line="2052"/>
         <source>退出程序</source>
         <translation>پروگرام سے باہر نکلیں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="351"/>
+        <location filename="qml/MainWindow.qml" line="464"/>
         <source>IP地址访问异常！</source>
         <translation>آئی پی ایڈریس تک رسائی میں غیر معمولی صورت حال!</translation>
     </message>
@@ -2620,8 +2626,8 @@
         <translation type="vanished">آئی ڈی کاپی کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="536"/>
-        <location filename="qml/MainWindow.qml" line="1460"/>
+        <location filename="qml/MainWindow.qml" line="649"/>
+        <location filename="qml/MainWindow.qml" line="1572"/>
         <source>启动云机</source>
         <oldsource>开机</oldsource>
         <translation>کلاؤڈ مشین شروع کریں</translation>
@@ -2631,47 +2637,47 @@
         <translation type="vanished">شٹ ڈاؤن</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="630"/>
-        <location filename="qml/MainWindow.qml" line="1510"/>
+        <location filename="qml/MainWindow.qml" line="743"/>
+        <location filename="qml/MainWindow.qml" line="1622"/>
         <source>删除云机</source>
         <translation>کلاؤڈ مشین کو حذف کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="879"/>
+        <location filename="qml/MainWindow.qml" line="991"/>
         <source>列表模式</source>
         <translation>فہرست موڈ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="895"/>
+        <location filename="qml/MainWindow.qml" line="1007"/>
         <source>窗口模式</source>
         <oldsource>预览模式</oldsource>
         <translation>ونڈو موڈ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1157"/>
+        <location filename="qml/MainWindow.qml" line="1269"/>
         <source>确定要删除分组吗？</source>
         <translation>کیا آپ واقعی گروپ کو حذف کرنا چاہتے ہیں؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2584"/>
+        <location filename="qml/MainWindow.qml" line="2696"/>
         <source>重置主机会将该主机上所有的云机和数据清除，确认重置吗？</source>
         <translation>کیا آپ واقعی میزبان کو دوبارہ سیٹ کرنا چاہتے ہیں؟ اس سے اس میزبان پر تمام کلاؤڈ مشینیں اور ڈیٹا صاف ہو جائیں گے۔</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1263"/>
+        <location filename="qml/MainWindow.qml" line="1375"/>
         <source>重启主机会将该主机上所有的云机重启，确认重启吗？</source>
         <translation>میزبان کو دوبارہ شروع کرنے سے اس میزبان پر تمام کلاؤڈ مشینیں دوبارہ شروع ہوجائیں گی۔ کیا آپ دوبارہ شروع کرنے کی تصدیق کرتے ہیں؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="755"/>
-        <location filename="qml/MainWindow.qml" line="1616"/>
+        <location filename="qml/MainWindow.qml" line="868"/>
+        <location filename="qml/MainWindow.qml" line="1728"/>
         <source>重启云机将重新启动云手机系统，运行中的任务可能会中断，请谨慎操作！</source>
         <oldsource>确定要进行重启操作吗？重启指令下发成功后，被重启的云机将在1-3分钟之内完成重启！</oldsource>
         <translation>کلاؤڈ فون کو دوبارہ شروع کرنے سے کلاؤڈ فون کا نظام دوبارہ شروع ہو جائے گا، چل رہے کاموں میں رکاوٹ آ سکتی ہے، براہ کرم احتیاط سے عمل کریں!</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="602"/>
-        <location filename="qml/MainWindow.qml" line="1493"/>
+        <location filename="qml/MainWindow.qml" line="715"/>
+        <location filename="qml/MainWindow.qml" line="1605"/>
         <source>确定要关闭云手机吗？</source>
         <translation>کیا آپ کلاؤڈ فون بند کرنا چاہتے ہیں؟</translation>
     </message>
@@ -2680,108 +2686,119 @@
         <translation type="vanished">&apos;میزبان کی تفصیلات&apos;</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1654"/>
-        <location filename="qml/MainWindow.qml" line="2566"/>
+        <location filename="qml/MainWindow.qml" line="1766"/>
+        <location filename="qml/MainWindow.qml" line="2678"/>
         <source>确定要重启主机吗？</source>
         <translation>کیا آپ یقینی طور پر ہوسٹ کو دوبارہ شروع کرنا چاہتے ہیں؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1692"/>
+        <location filename="qml/MainWindow.qml" line="1804"/>
         <source>清理镜像</source>
         <translation>کلین اپ مرر</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2548"/>
+        <location filename="qml/MainWindow.qml" line="2660"/>
         <source>确定要清理未使用的镜像获取更多的存储空间吗？</source>
         <translation>کیا آپ غیر استعمال شدہ امیجز کو صاف کرنا چاہتے ہیں تاکہ زیادہ اسٹوریج حاصل کی جا سکے؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1754"/>
+        <location filename="qml/MainWindow.qml" line="1866"/>
         <source>VMOS Edge</source>
         <translation>&apos;VMOS ایج&apos;</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="136"/>
-        <location filename="qml/MainWindow.qml" line="142"/>
+        <location filename="qml/MainWindow.qml" line="139"/>
+        <location filename="qml/MainWindow.qml" line="196"/>
+        <source>启动 scrcpy_server 失败: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="qml/MainWindow.qml" line="155"/>
-        <location filename="qml/MainWindow.qml" line="168"/>
+        <source>启动 scrcpy_server 失败</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/MainWindow.qml" line="249"/>
+        <location filename="qml/MainWindow.qml" line="255"/>
+        <location filename="qml/MainWindow.qml" line="268"/>
+        <location filename="qml/MainWindow.qml" line="281"/>
         <source>不能包含离线设备，请重新选择</source>
         <translation>آف لائن آلات شامل نہیں کیے جا سکتے، براہ کرم دوبارہ منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="177"/>
+        <location filename="qml/MainWindow.qml" line="290"/>
         <source>不能包含创建中设备，请重新选择</source>
         <translation>تشکیل ہونے والے آلات شامل نہیں ہو سکتے، براہ کرم دوبارہ منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="674"/>
-        <location filename="qml/MainWindow.qml" line="1537"/>
+        <location filename="qml/MainWindow.qml" line="787"/>
+        <location filename="qml/MainWindow.qml" line="1649"/>
         <source>长度限制 2–11 个字符，仅允许使用 [a–zA–Z0–9_.-]，且首尾字符不得为[._-]</source>
         <translation>لمبائی حد 2-11 حروف، صرف اجازت ہے [a-zA-Z0-9_.-]، اور پہلا اور آخری حرف [._-] نہیں ہو سکتا</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="719"/>
-        <location filename="qml/MainWindow.qml" line="1595"/>
+        <location filename="qml/MainWindow.qml" line="832"/>
+        <location filename="qml/MainWindow.qml" line="1707"/>
         <source>一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！</source>
         <translation>ایک کلک نیا مشین کلاؤڈ فون پر تمام ڈیٹا کو صاف کر دے گا، کلاؤڈ فون کی ترتیبات دوبارہ تخلیق ہو جائیں گی، براہ کرم احتیاط سے عمل کریں!</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="785"/>
+        <location filename="qml/MainWindow.qml" line="898"/>
         <source>一键投屏</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="805"/>
+        <location filename="qml/MainWindow.qml" line="917"/>
         <source>一键排序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="809"/>
+        <location filename="qml/MainWindow.qml" line="921"/>
         <source>已按默认排序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="814"/>
+        <location filename="qml/MainWindow.qml" line="926"/>
         <source>一键关闭</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="818"/>
+        <location filename="qml/MainWindow.qml" line="930"/>
         <source>已关闭所有云机窗口</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1127"/>
+        <location filename="qml/MainWindow.qml" line="1239"/>
         <source>修改分组名称</source>
         <translation>گروپ کا نام تبدیل کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1403"/>
+        <location filename="qml/MainWindow.qml" line="1515"/>
         <source>复制成功</source>
         <translation type="unfinished">کاپی کامیاب</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1633"/>
+        <location filename="qml/MainWindow.qml" line="1745"/>
         <source>API接口</source>
         <translation>API انٹرفیس</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1635"/>
+        <location filename="qml/MainWindow.qml" line="1747"/>
         <source>http://%1:18182/docs</source>
         <translation>http://%1:18182/docs</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1677"/>
+        <location filename="qml/MainWindow.qml" line="1789"/>
         <source>重置主机将删除该主机上的全部云机及相关数据，确认执行此操作吗？</source>
         <translation>میزبان کو ری سیٹ کرنے سے اس میزبان پر موجود تمام کلاؤڈ مشینیں اور متعلقہ ڈیٹا حذف ہو جائیں گے۔ کیا آپ اس عمل کو جاری رکھنا چاہتے ہیں؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1700"/>
+        <location filename="qml/MainWindow.qml" line="1812"/>
         <source>清理未使用的镜像将释放存储空间，确认执行此操作吗？</source>
         <translation>غیر استعمال شدہ امیجز کو صاف کرنے سے اسٹوریج کی جگہ خالی ہو جائے گی، کیا آپ اس عمل کو جاری رکھنا چاہتے ہیں؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1766"/>
+        <location filename="qml/MainWindow.qml" line="1878"/>
         <source>主机</source>
         <translation>&apos;میزبان&apos;</translation>
     </message>
@@ -2794,22 +2811,22 @@
         <translation type="vanished">&apos;VMOSCloud کلاؤڈ فون&apos;</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1816"/>
+        <location filename="qml/MainWindow.qml" line="1928"/>
         <source>修改语言需要重启程序，是否立即重启？</source>
         <translation>زبان تبدیل کرنے کے لیے پروگرام کو دوبارہ شروع کرنا ضروری ہے۔ کیا آپ ابھی دوبارہ شروع کرنا چاہتے ہیں؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1869"/>
+        <location filename="qml/MainWindow.qml" line="1981"/>
         <source>机型设置</source>
         <translation>ماڈل سیٹنگ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1878"/>
+        <location filename="qml/MainWindow.qml" line="1990"/>
         <source>版本：v%1</source>
         <translation>ورژن: v%1</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2070"/>
+        <location filename="qml/MainWindow.qml" line="2182"/>
         <source>添加主机</source>
         <translation>میزبان شامل کریں</translation>
     </message>
@@ -2855,17 +2872,17 @@
         <translation type="vanished">ٹرے کو کم سے کم کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="286"/>
+        <location filename="qml/MainWindow.qml" line="399"/>
         <source>长度限制：2-11字符</source>
         <translation>لمبائی کی حد: 2-11 حروف</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="290"/>
+        <location filename="qml/MainWindow.qml" line="403"/>
         <source>支持字符：[a-zA-Z0-9_.-]</source>
         <translation>سپورٹ کردہ حروف: [a-zA-Z0-9_.-]</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="294"/>
+        <location filename="qml/MainWindow.qml" line="407"/>
         <source>首字符和尾字符必须为[a-zA-Z0-9]</source>
         <translation>پہلا اور آخری کردار [a-zA-Z0-9] ہونا چاہیے</translation>
     </message>
@@ -2874,33 +2891,33 @@
         <translation type="vanished">صرف نمبرز، حروف، اور انڈر سکور استعمال کریں، زیادہ سے زیادہ 10 حروف تک</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="558"/>
-        <location filename="qml/MainWindow.qml" line="1468"/>
+        <location filename="qml/MainWindow.qml" line="671"/>
+        <location filename="qml/MainWindow.qml" line="1580"/>
         <source>重置云机</source>
         <translation>کلاؤڈ مشین کو دوبارہ ترتیب دیں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="594"/>
-        <location filename="qml/MainWindow.qml" line="1489"/>
+        <location filename="qml/MainWindow.qml" line="707"/>
+        <location filename="qml/MainWindow.qml" line="1601"/>
         <source>关闭云机</source>
         <oldsource>关机云机</oldsource>
         <translation>کلاؤڈ مشین بند کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="667"/>
-        <location filename="qml/MainWindow.qml" line="673"/>
-        <location filename="qml/MainWindow.qml" line="1532"/>
-        <location filename="qml/MainWindow.qml" line="1535"/>
+        <location filename="qml/MainWindow.qml" line="780"/>
+        <location filename="qml/MainWindow.qml" line="786"/>
+        <location filename="qml/MainWindow.qml" line="1644"/>
+        <location filename="qml/MainWindow.qml" line="1647"/>
         <source>修改名称</source>
         <translation>نام تبدیل کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1573"/>
+        <location filename="qml/MainWindow.qml" line="1685"/>
         <source>设置代理</source>
         <translation>پروکسی ترتیب دیں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="913"/>
+        <location filename="qml/MainWindow.qml" line="1025"/>
         <source>横屏</source>
         <translation>لینڈ سکیپ</translation>
     </message>
@@ -2909,29 +2926,29 @@
         <translation type="vanished">اس عمل کو انجام دینا آپ کے ڈیوائس کی منفرد شناختی معلومات (جیسے ڈیوائس آئی ڈی، آئی ایم ای آئی، اینڈرائیڈ آئی ڈی وغیرہ) اور ایپ کے ماحولیاتی ڈیٹا کو مستقل طور پر تبدیل کر دے گا۔ اس سے ایک ایسے نئے ڈیوائس کی نقل ہوگی جسے پہلے کبھی استعمال نہیں کیا گیا ہو۔</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="931"/>
+        <location filename="qml/MainWindow.qml" line="1043"/>
         <source>竖屏</source>
         <translation>عمودی اسکرین</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1133"/>
-        <location filename="qml/MainWindow.qml" line="2050"/>
+        <location filename="qml/MainWindow.qml" line="1245"/>
+        <location filename="qml/MainWindow.qml" line="2162"/>
         <source>名称长度为2-15字符</source>
         <oldsource>长度限制： 不超过 15 个字符</oldsource>
         <translation>2 سے 15 حروف کا نام ہونا چاہئے</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1646"/>
+        <location filename="qml/MainWindow.qml" line="1758"/>
         <source>重启主机</source>
         <translation>ہوسٹ کو دوبارہ شروع کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1669"/>
+        <location filename="qml/MainWindow.qml" line="1781"/>
         <source>重置主机</source>
         <translation>میزبان کو دوبارہ ترتیب دیں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1767"/>
+        <location filename="qml/MainWindow.qml" line="1879"/>
         <source>镜像</source>
         <translation>آئینہ</translation>
     </message>
@@ -2940,14 +2957,14 @@
         <translation type="vanished">موجودہ ورژن:</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2633"/>
-        <location filename="qml/MainWindow.qml" line="2698"/>
+        <location filename="qml/MainWindow.qml" line="2745"/>
+        <location filename="qml/MainWindow.qml" line="2810"/>
         <source>确认删除</source>
         <translation>تصدیق حذف</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2634"/>
-        <location filename="qml/MainWindow.qml" line="2699"/>
+        <location filename="qml/MainWindow.qml" line="2746"/>
+        <location filename="qml/MainWindow.qml" line="2811"/>
         <source>确定要删除镜像 &quot;%1&quot; 吗？此操作将永久删除镜像文件，无法恢复。</source>
         <oldsource>确定要删除镜像 &quot;%1&quot; 吗？
 
@@ -2955,14 +2972,14 @@
         <translation>کیا آپ واقعی تصویر &quot;%1&quot; کو حذف کرنا چاہتے ہیں؟ یہ عمل تصویر کی فائل کو مستقل طور پر حذف کر دے گا، اسے واپس نہیں لایا جا سکے گا۔</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2652"/>
-        <location filename="qml/MainWindow.qml" line="2717"/>
+        <location filename="qml/MainWindow.qml" line="2764"/>
+        <location filename="qml/MainWindow.qml" line="2829"/>
         <source>确认更改路径</source>
         <translation>تبدیلی را تصدیق کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2653"/>
-        <location filename="qml/MainWindow.qml" line="2718"/>
+        <location filename="qml/MainWindow.qml" line="2765"/>
+        <location filename="qml/MainWindow.qml" line="2830"/>
         <source>确定要将镜像存储路径更改为：%1 更改后，新导入的镜像将存储在新路径中。</source>
         <oldsource>确定要将镜像存储路径更改为：
 
@@ -3008,17 +3025,17 @@
         <translation type="vanished">اپڈیٹس چیک کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2843"/>
+        <location filename="qml/MainWindow.qml" line="2955"/>
         <source>当前已经是最新版本</source>
         <translation>ابتدائی ورژن پہلے سے ہی تازہ ترین ہے</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2887"/>
+        <location filename="qml/MainWindow.qml" line="2999"/>
         <source>正在重启主机...</source>
         <translation>&apos;میزبان کو دوبارہ شروع کیا جا رہا ہے...&apos;</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2920"/>
+        <location filename="qml/MainWindow.qml" line="3032"/>
         <source>正在重置主机...</source>
         <translation>میزبانی دوبارہ ترتیب دی جا رہی ہے...</translation>
     </message>
@@ -3027,27 +3044,27 @@
         <translation type="vanished">کلاؤڈ مشین بنائی جا رہی ہے...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3065"/>
+        <location filename="qml/MainWindow.qml" line="3177"/>
         <source>正在删除云机...</source>
         <translation>کلاؤڈ مشین حذف ہو رہی ہے...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3099"/>
+        <location filename="qml/MainWindow.qml" line="3211"/>
         <source>正在重启云机...</source>
         <translation>کلاؤڈ مشین دوبارہ شروع ہو رہی ہے...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3132"/>
+        <location filename="qml/MainWindow.qml" line="3244"/>
         <source>正在重置云机...</source>
         <translation>کلاؤڈ مشین کو ری سیٹ کیا جا رہا ہے...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3165"/>
+        <location filename="qml/MainWindow.qml" line="3277"/>
         <source>正在启动云机...</source>
         <translation>کلاؤڈ مشین شروع ہو رہی ہے...</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="3198"/>
+        <location filename="qml/MainWindow.qml" line="3310"/>
         <source>正在停止云机...</source>
         <translation>کلاؤڈ مشین بند کی جا رہی ہے...</translation>
     </message>
@@ -3060,22 +3077,22 @@
         <translation type="vanished">سنکرونائزیشن کا عمل جاری ہے، براہ کرم سنکرونائزیشن کو بند کریں۔</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="100"/>
+        <location filename="qml/MainWindow.qml" line="213"/>
         <source>至少选择1台云机</source>
         <translation>کم از کم %n کلاؤڈ مشین منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="102"/>
+        <location filename="qml/MainWindow.qml" line="215"/>
         <source>至少选择2台云机</source>
         <translation>کم از کم 2 کلاؤڈ مشینیں منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="365"/>
+        <location filename="qml/MainWindow.qml" line="478"/>
         <source>显示主面板</source>
         <translation>مین پینل دکھائیں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="371"/>
+        <location filename="qml/MainWindow.qml" line="484"/>
         <source>退出</source>
         <translation>باہر نکلیں</translation>
     </message>
@@ -3084,7 +3101,7 @@
         <translation type="vanished">بند کریں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1938"/>
+        <location filename="qml/MainWindow.qml" line="2050"/>
         <source>是否退出</source>
         <translation>کیا باہر نکلنا ہے</translation>
     </message>
@@ -3101,7 +3118,7 @@
         <translation type="vanished">بُند ہو گیا</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="1765"/>
+        <location filename="qml/MainWindow.qml" line="1877"/>
         <source>云机</source>
         <translation>کلاؤڈ مشین</translation>
     </message>
@@ -3110,32 +3127,32 @@
         <translation type="obsolete">جادو خانہ شاپ</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2130"/>
+        <location filename="qml/MainWindow.qml" line="2242"/>
         <source>全选</source>
         <translation>منتخب الكل</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2147"/>
+        <location filename="qml/MainWindow.qml" line="2259"/>
         <source>反选</source>
         <translation>تحديد العناصر المعاكسة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2157"/>
+        <location filename="qml/MainWindow.qml" line="2269"/>
         <source>您还未勾选云手机</source>
         <translation>آپ نے ابھی تک کلاؤڈ فون منتخب نہیں کیا ہے۔</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2162"/>
+        <location filename="qml/MainWindow.qml" line="2274"/>
         <source>没有可以反选的云手机</source>
         <translation>کوئی کلاؤڈ فون نہیں ہے جسے آپ ان منتخب کرسکتے ہیں</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2180"/>
+        <location filename="qml/MainWindow.qml" line="2292"/>
         <source>已选</source>
         <translation>منتخب</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2190"/>
+        <location filename="qml/MainWindow.qml" line="2302"/>
         <source>取消选择</source>
         <translation>غیر منتخب کریں</translation>
     </message>
@@ -3144,22 +3161,22 @@
         <translation type="vanished">فِلتْر سريع</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2236"/>
+        <location filename="qml/MainWindow.qml" line="2348"/>
         <source>同步操作</source>
         <translation>متزامن العملية</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2245"/>
+        <location filename="qml/MainWindow.qml" line="2357"/>
         <source>是否要关闭同步操作模式</source>
         <translation>کیا آپ ہم آہنگی آپریشن موڈ بند کرنا چاہتے ہیں؟</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2299"/>
+        <location filename="qml/MainWindow.qml" line="2411"/>
         <source>开启同步操作，则操作任意一台云手机的同时可同步操作至其它勾选的云手机</source>
         <translation>سنکروں کی فعالیت کو چالو کریں، تو کسی بھی ایک کلاؤڈ فون پر آپریشن کرنے کے ساتھ ساتھ دوسرے منتخب کردہ کلاؤڈ فونز پر بھی سنکروں سے کام ہوگا۔</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2210"/>
+        <location filename="qml/MainWindow.qml" line="2322"/>
         <source>批量操作</source>
         <translation>عمليات بالجملة</translation>
     </message>
@@ -3168,12 +3185,12 @@
         <translation type="vanished">إدارة الأجهزة</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2348"/>
+        <location filename="qml/MainWindow.qml" line="2460"/>
         <source>刷新</source>
         <translation>تحديث</translation>
     </message>
     <message>
-        <location filename="qml/MainWindow.qml" line="2377"/>
+        <location filename="qml/MainWindow.qml" line="2489"/>
         <source>视图模式</source>
         <translation>نمایشیں کا طریقہ</translation>
     </message>
@@ -3283,9 +3300,9 @@
 <context>
     <name>PadWindow</name>
     <message>
-        <location filename="qml/PadWindow.qml" line="238"/>
-        <location filename="qml/PadWindow.qml" line="416"/>
-        <location filename="qml/PadWindow.qml" line="2503"/>
+        <location filename="qml/PadWindow.qml" line="305"/>
+        <location filename="qml/PadWindow.qml" line="520"/>
+        <location filename="qml/PadWindow.qml" line="2688"/>
         <source>系统提示</source>
         <translation>سیستم کی اطلاع</translation>
     </message>
@@ -3294,7 +3311,7 @@
         <translation type="vanished">کلائوڈ مشین کو طویل عرصے تک غیر فعال چھوڑنے کے بعد، یہ خود بخود کلاوڈ میں ہوسٹ ہو گیا ہے (کلائوڈ مشین کے اندر ایپلی کیشنز ابھی بھی چل رہی ہیں)</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="240"/>
+        <location filename="qml/PadWindow.qml" line="307"/>
         <source>退出</source>
         <translation>خروج</translation>
     </message>
@@ -3303,12 +3320,12 @@
         <translation type="vanished">کے دوبارہ مربوط کریں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="244"/>
-        <location filename="qml/PadWindow.qml" line="1532"/>
-        <location filename="qml/PadWindow.qml" line="1547"/>
-        <location filename="qml/PadWindow.qml" line="1561"/>
-        <location filename="qml/PadWindow.qml" line="1575"/>
-        <location filename="qml/PadWindow.qml" line="2506"/>
+        <location filename="qml/PadWindow.qml" line="311"/>
+        <location filename="qml/PadWindow.qml" line="1717"/>
+        <location filename="qml/PadWindow.qml" line="1732"/>
+        <location filename="qml/PadWindow.qml" line="1746"/>
+        <location filename="qml/PadWindow.qml" line="1760"/>
+        <location filename="qml/PadWindow.qml" line="2691"/>
         <source>确定</source>
         <translation>موافق</translation>
     </message>
@@ -3353,24 +3370,20 @@
         <translation type="vanished">کی میپنگ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1035"/>
         <source>超清</source>
-        <translation>&apos;ہائی ڈیفینیشن&apos;</translation>
+        <translation type="vanished">&apos;ہائی ڈیفینیشن&apos;</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1035"/>
         <source>高清</source>
-        <translation>&apos;ہائی ڈیفینیشن&apos;</translation>
+        <translation type="vanished">&apos;ہائی ڈیفینیشن&apos;</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1035"/>
         <source>普通</source>
-        <translation>عام</translation>
+        <translation type="vanished">عام</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1035"/>
         <source>流畅</source>
-        <translation>رواں</translation>
+        <translation type="vanished">رواں</translation>
     </message>
     <message>
         <source>吹一吹</source>
@@ -3381,134 +3394,139 @@
         <translation type="vanished">ہلائیں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1527"/>
+        <location filename="qml/PadWindow.qml" line="1712"/>
         <source>确定要重启云机？</source>
         <translation>کیا آپ کلاؤڈ مشین کو دوبارہ شروع کرنا چاہتے ہیں؟</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1528"/>
-        <location filename="qml/PadWindow.qml" line="1543"/>
-        <location filename="qml/PadWindow.qml" line="1560"/>
-        <location filename="qml/PadWindow.qml" line="1574"/>
+        <location filename="qml/PadWindow.qml" line="1713"/>
+        <location filename="qml/PadWindow.qml" line="1728"/>
+        <location filename="qml/PadWindow.qml" line="1745"/>
+        <location filename="qml/PadWindow.qml" line="1759"/>
         <source>取消</source>
         <translation>إلغاء</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1542"/>
+        <location filename="qml/PadWindow.qml" line="1727"/>
         <source>一键新机将清除云手机上的所有数据，云手机参数会重新生成，请谨慎操作！</source>
         <oldsource>确定要一键新机？云机将清空数据，变更设备ID及设备所有唯一标识(标准云机将随机更换机型，高端云机将更换相同机型)</oldsource>
         <translation type="unfinished">کیا آپ ایک کلک سے نئی مشین بنانا چاہتے ہیں؟ کلاؤڈ مشین ڈیٹا صاف کر دے گی، آلہ ID اور آلہ کی منفرد شناخت کو تبدیل کر دے گی (معیاری کلاؤڈ مشین بے ترتیب طور پر ماڈل تبدیل کر دے گی، اعلیٰ درجے کی کلاؤڈ مشین اسی ماڈل کو تبدیل کر دے گی)</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1558"/>
+        <location filename="qml/PadWindow.qml" line="1743"/>
         <source>当前云机换机后，将会清空云机全部数据，无法恢复，确定进行换机？</source>
         <translation>مُباشرَةً بَعْدَ تَغْيِيرِ الآلةِ السَّحَابِيَّةِ، سَيَتِمُّ مَسْحُ جَمِيعِ بَيَانَاتِ الآلةِ السَّحَابِيَّةِ، وَلَا يُمْكِنُ اسْتِعَادَتُهَا، تَأْكِيدُ تَغْيِيرِ الآلةِ؟</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1572"/>
+        <location filename="qml/PadWindow.qml" line="1757"/>
         <source>确定要关闭云手机吗？</source>
         <oldsource>确定要重置云机？云机数据将被清空，请谨慎选择！</oldsource>
         <translation type="unfinished">کیا آپ کلاؤڈ مشین کو ری سیٹ کرنا چاہتے ہیں؟ کلاؤڈ مشین کا ڈیٹا صاف ہو جائے گا، محتاط رہیں!</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1671"/>
+        <location filename="qml/PadWindow.qml" line="1856"/>
         <source>返回</source>
         <translation>واپس</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1718"/>
+        <location filename="qml/PadWindow.qml" line="1903"/>
         <source>摄像头推流</source>
         <translation>کیمرہ اسٹریمنگ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1749"/>
+        <location filename="qml/PadWindow.qml" line="1934"/>
         <source>摄像头</source>
         <translation>کیمرہ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1988"/>
+        <location filename="qml/PadWindow.qml" line="2173"/>
         <source>选择上传视频</source>
         <translation>&apos;اپ لوڈ کرنے کے لیے ویڈیو منتخب کریں&apos;</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2240"/>
+        <location filename="qml/PadWindow.qml" line="2425"/>
         <source>新增按键</source>
         <translation>نیا بٹن</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2244"/>
+        <location filename="qml/PadWindow.qml" line="2429"/>
         <source>使用“鼠标左键”新增按键</source>
         <translation>&quot;بائیں ماؤس بٹن&quot; کا استعمال کرتے ہوئے نیا کلید شامل کریں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2279"/>
+        <location filename="qml/PadWindow.qml" line="2464"/>
         <source>方向摇杆</source>
         <translation>ڈائریکشنل جوسٹک</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2283"/>
+        <location filename="qml/PadWindow.qml" line="2468"/>
         <source>使用“AWSD”控制人物移动</source>
         <translation>&quot;کردار کو حرکت دینے کے لیے &apos;AWSD&apos; استعمال کریں&quot;</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2304"/>
+        <location filename="qml/PadWindow.qml" line="2489"/>
         <source>键盘映射开关</source>
         <translation>کی بورڈ میپنگ سوئچ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2334"/>
+        <location filename="qml/PadWindow.qml" line="2519"/>
         <source>还原</source>
         <translation>بحال کریں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2346"/>
+        <location filename="qml/PadWindow.qml" line="2531"/>
         <source>保存</source>
         <translation>محفوظ کریں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2526"/>
+        <location filename="qml/PadWindow.qml" line="2711"/>
         <source>正在重启云机...</source>
         <translation type="unfinished">کلاؤڈ مشین دوبارہ شروع ہو رہی ہے...</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2540"/>
+        <location filename="qml/PadWindow.qml" line="2725"/>
         <source>重启云机成功</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2561"/>
+        <location filename="qml/PadWindow.qml" line="2746"/>
         <source>正在停止云机...</source>
         <oldsource>正在重置云机...</oldsource>
         <translation type="unfinished">کلاؤڈ مشین کو ری سیٹ کیا جا رہا ہے...</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2575"/>
+        <location filename="qml/PadWindow.qml" line="2760"/>
         <source>关闭云机成功</source>
         <oldsource>重置云机成功</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2596"/>
+        <location filename="qml/PadWindow.qml" line="2781"/>
         <source>正在一键新机...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2610"/>
+        <location filename="qml/PadWindow.qml" line="2795"/>
         <source>一键新机成功</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1718"/>
+        <location filename="qml/PadWindow.qml" line="1903"/>
         <source>无人直播推流</source>
         <translation>بغیر کسی کے لائیو سٹریمنگ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="239"/>
+        <location filename="qml/PadWindow.qml" line="306"/>
         <source>连接已断开，请稍后重连</source>
         <translation>کنکشن منقطع ہو گیا ہے، براہ کرم بعد میں دوبارہ کوشش کریں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="960"/>
+        <location filename="qml/PadWindow.qml" line="501"/>
+        <source>只能选择APK或XAPK文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/PadWindow.qml" line="1090"/>
         <source>复制成功</source>
         <translation>کاپی کامیاب</translation>
     </message>
@@ -3521,115 +3539,110 @@
         <translation type="vanished">ھم وقت سازی کر رہے ہیں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1460"/>
+        <location filename="qml/PadWindow.qml" line="1641"/>
         <source>选择上传文件</source>
         <translation>اپ لوڈ کرنے کے لیے فائل منتخب کریں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1526"/>
-        <location filename="qml/PadWindow.qml" line="1541"/>
-        <location filename="qml/PadWindow.qml" line="1557"/>
-        <location filename="qml/PadWindow.qml" line="1571"/>
+        <location filename="qml/PadWindow.qml" line="1711"/>
+        <location filename="qml/PadWindow.qml" line="1726"/>
+        <location filename="qml/PadWindow.qml" line="1742"/>
+        <location filename="qml/PadWindow.qml" line="1756"/>
         <source>操作确认</source>
         <translation type="unfinished">آپریشن کی تصدیق</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1814"/>
+        <location filename="qml/PadWindow.qml" line="1999"/>
         <source>未发现摄像头，无法开启</source>
         <translation>کیمرہ نہیں ملا، آن نہیں کیا جا سکتا</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1828"/>
+        <location filename="qml/PadWindow.qml" line="2013"/>
         <source>麦克风</source>
         <translation>مائیکروفون</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1893"/>
+        <location filename="qml/PadWindow.qml" line="2078"/>
         <source>未发现麦克风，无法开启</source>
         <translation>مائیکروفون نہیں ملا، چالو نہیں کیا جا سکتا</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1917"/>
+        <location filename="qml/PadWindow.qml" line="2102"/>
         <source>请在列表中选择要推流的视频文件</source>
         <translation>براہ کرم فہرست میں وہ ویڈیو فائل منتخب کریں جسے آپ اسٹریم کرنا چاہتے ہیں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1957"/>
+        <location filename="qml/PadWindow.qml" line="2142"/>
         <source>结束</source>
         <translation>ختم</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1972"/>
+        <location filename="qml/PadWindow.qml" line="2157"/>
         <source>全部视频(</source>
         <oldsource>全部视频</oldsource>
         <translation>تمام ویڈیوز (</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2041"/>
+        <location filename="qml/PadWindow.qml" line="2226"/>
         <source>开启推流</source>
         <translation>اسٹریمنگ شروع کریں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2050"/>
+        <location filename="qml/PadWindow.qml" line="2235"/>
         <source>推流中</source>
         <translation>سٹریم ہو رہا ہے</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2062"/>
+        <location filename="qml/PadWindow.qml" line="2247"/>
         <source>删除</source>
         <translation>حذف کریں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="1986"/>
+        <location filename="qml/PadWindow.qml" line="2171"/>
         <source>上传视频</source>
         <translation>ویڈیو اپ لوڈ کریں</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="397"/>
-        <source>只能选择APK文件</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/PadWindow.qml" line="1453"/>
+        <location filename="qml/PadWindow.qml" line="1634"/>
         <source>选择安装文件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2089"/>
+        <location filename="qml/PadWindow.qml" line="2274"/>
         <source>连接命令</source>
         <translation>کنیکشن کمانڈ</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2100"/>
-        <location filename="qml/PadWindow.qml" line="2130"/>
-        <location filename="qml/PadWindow.qml" line="2162"/>
+        <location filename="qml/PadWindow.qml" line="2285"/>
+        <location filename="qml/PadWindow.qml" line="2315"/>
+        <location filename="qml/PadWindow.qml" line="2347"/>
         <source>复制</source>
         <translation>کاپی</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2104"/>
-        <location filename="qml/PadWindow.qml" line="2134"/>
-        <location filename="qml/PadWindow.qml" line="2166"/>
+        <location filename="qml/PadWindow.qml" line="2289"/>
+        <location filename="qml/PadWindow.qml" line="2319"/>
+        <location filename="qml/PadWindow.qml" line="2351"/>
         <source>已复制到剪贴板</source>
         <translation>کلپ بورڈ میں کاپی ہو گیا</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2119"/>
+        <location filename="qml/PadWindow.qml" line="2304"/>
         <source>连接密钥</source>
         <translation>کنکشن کی</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2151"/>
+        <location filename="qml/PadWindow.qml" line="2336"/>
         <source>ADB地址</source>
         <translation>ADB ایڈریس</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2179"/>
+        <location filename="qml/PadWindow.qml" line="2364"/>
         <source>ADB过期时间</source>
         <translation>ADB کی میعاد ختم ہونے کا وقت</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2194"/>
+        <location filename="qml/PadWindow.qml" line="2379"/>
         <source>开启ADB</source>
         <translation>ADB کھولیں</translation>
     </message>
@@ -3642,10 +3655,10 @@
         <translation type="obsolete">پاس ورڈ دو بار مختلف ہے</translation>
     </message>
     <message>
-        <location filename="qml/PadWindow.qml" line="2392"/>
-        <location filename="qml/PadWindow.qml" line="2393"/>
-        <location filename="qml/PadWindow.qml" line="2394"/>
-        <location filename="qml/PadWindow.qml" line="2395"/>
+        <location filename="qml/PadWindow.qml" line="2577"/>
+        <location filename="qml/PadWindow.qml" line="2578"/>
+        <location filename="qml/PadWindow.qml" line="2579"/>
+        <location filename="qml/PadWindow.qml" line="2580"/>
         <source>未开启</source>
         <translation>کھلا نہیں</translation>
     </message>

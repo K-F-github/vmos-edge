@@ -120,13 +120,7 @@ VMOS Edge 是一款面向开发者与高性能用户的边缘算力盒，通过�
 
 - pkgconf
 - spdlog
-- jsoncpp
-- curl
-- cryptopp
 - libyuv
-- libwebp
-- ixwebsocket
-- protobuf
 - openssl
 - stb
 - ffmpeg

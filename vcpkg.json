@@ -4,13 +4,7 @@
 	"dependencies": [
             "pkgconf",
             "spdlog",
-            "jsoncpp",
-            "curl",
-            "cryptopp",
             "libyuv",
-            "libwebp",
-            "ixwebsocket",
-            "protobuf",
             "openssl",
             "stb",
             "ffmpeg",

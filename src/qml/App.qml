@@ -17,7 +17,7 @@ FluLauncher {
         console.log("log path", logPath)
         ReportHelper.init(AppConfig.reportHost, AppConfig.projectName, AppConfig.channel, AppConfig.versionName, AppConfig.versionCode)
 
-        Network.openLog = true
+        Network.openLog = false
 
         FluApp.init(app)
         FluApp.useSystemAppBar = false

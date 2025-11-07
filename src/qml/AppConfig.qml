@@ -12,10 +12,10 @@ QtObject  {
     // 终端
     property string client: FluTools.isMacos() ? "mac" : FluTools.isLinux() ? "linux" : "win"
     // 版本
-    property int versionCode: 100000025
+    property int versionCode: 100000026
     // 版本
 
-    property string versionName: "1.0.25"
+    property string versionName: "1.0.26"
     // CBS版本信息
     property string cbsConfigPath: FluTools.getApplicationDirPath() + "/cbs/cbs_config.json"
     property string cbsVersion: "1.0.21"
@@ -45,4 +45,7 @@ QtObject  {
     property string projectIcon: "qrc:/res/vmosedge.ico"
     // 颜色配置
     property var deviceColorList: ["", "#141619", "#FF4C4C", "#F49322", "#18CECF", "#30BF8F", "#0079F2", "#7549F2"]
+    
+    // 连接模式配置：true=TCP直连模式，false=ADB模式
+    property bool useDirectTcp: true
 }

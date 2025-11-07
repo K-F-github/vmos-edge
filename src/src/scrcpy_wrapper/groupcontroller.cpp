@@ -48,10 +48,8 @@ void GroupController::updateDeviceState(const QString &serial)
     }
 
     if (isHost(serial)) {
-        qDebug() << serial << "===============registerDeviceObserver";
         device->registerDeviceObserver(this);
     } else {
-        qDebug() << serial << "=================deRegisterDeviceObserver";
         device->deRegisterDeviceObserver(this);
     }
 }

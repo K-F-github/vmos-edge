@@ -3,9 +3,8 @@
 
 #include <QObject>
 #include <QVector>
-
+#include "../sdk_wrapper/video_render_sink.h"
 #include "QtScrcpyCore.h"
-#include "scrcpy_controller.h"
 
 class GroupController : public QObject, public qsc::DeviceObserver
 {

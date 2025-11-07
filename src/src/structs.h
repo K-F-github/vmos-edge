@@ -41,7 +41,10 @@ enum DeviceRoles {
     ShortIdRole,
     StateRole,
     WidthRole,
-    UpdateTimeRole
+    UpdateTimeRole,
+    TcpVideoPortRole,
+    TcpAudioPortRole,
+    TcpControlPortRole
 };
 
 // 设备数据结构体
@@ -70,6 +73,9 @@ struct DeviceData {
     bool checked;                     // 是否勾选
     bool selected;                    // 是否选定
     bool refresh;                     // 是否需要重连
+    int tcpVideoPort;                 // TCP视频流端口
+    int tcpAudioPort;                 // TCP音频流端口
+    int tcpControlPort;               // TCP控制流端口
 };
 
 inline bool operator==(const DeviceData& a, const DeviceData& b) {
@@ -95,7 +101,10 @@ inline bool operator==(const DeviceData& a, const DeviceData& b) {
            a.aospVersion == b.aospVersion &&
            a.hostIp == b.hostIp &&
            a.checked == b.checked &&
-           a.selected == b.selected;
+           a.selected == b.selected &&
+           a.tcpVideoPort == b.tcpVideoPort &&
+           a.tcpAudioPort == b.tcpAudioPort &&
+           a.tcpControlPort == b.tcpControlPort;
 }
 
 Q_DECLARE_METATYPE(DeviceData)

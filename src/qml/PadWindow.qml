@@ -33,6 +33,9 @@ FluWindow {
     property real aspectRatio : (16.0 / 9.0)
     property int spaceWidth: 40
     property int spaceHeight: 80
+    // 设备实际屏幕大小（从onScreenInfo信号获取）
+    property int deviceScreenWidth: 0
+    property int deviceScreenHeight: 0
     property bool isRestoringWindow: false  // 标记是否正在恢复窗口大小
     property int savedWindowWidth: 0  // 保存的窗口宽度（用于恢复时）
     property int savedWindowHeight: 0  // 保存的窗口高度（用于恢复时）
@@ -45,7 +48,8 @@ FluWindow {
     property var joystickStatus: []
     property var joystickState: ({ active: false, x: 0.0, y: 0.0, keys: [] })
     property real joystickUpdateInterval: 50 // ms
-    property string deviceAddress: `${root.argument.hostIp}:${root.argument.adb}`
+    // 根据配置动态计算设备标识（已废弃，改为根据配置动态获取）
+    // property string deviceAddress: `${root.argument.hostIp}:${root.argument.adb}`
 
     function getFileSize(size) {
         const KB = 1024;
@@ -73,8 +77,13 @@ FluWindow {
     }
 
     function mapMouseToVideo(mouseX, mouseY, viewWidth, viewHeight, aspectRatio) {
+        console.log("=== mapMouseToVideo 开始 ===")
+        console.log("输入参数: mouseX=", mouseX, "mouseY=", mouseY, "viewWidth=", viewWidth, "viewHeight=", viewHeight, "aspectRatio=", aspectRatio)
+        console.log("方向信息: direction=", direction, "(0=竖屏,1=横屏)", "remoteDirection=", remoteDirection, "(0=竖屏,1=横屏)")
+        
         const isPortrait = (direction === 0 || direction === 180)
         const viewRatio = isPortrait ? (viewHeight / viewWidth) : (viewWidth / viewHeight)
+        console.log("isPortrait=", isPortrait, "viewRatio=", viewRatio)
 
         let contentRatio = aspectRatio
         let displayWidth, displayHeight, offsetX, offsetY
@@ -88,6 +97,7 @@ FluWindow {
                     : viewWidth / contentRatio
             offsetX = 0
             offsetY = (viewHeight - displayHeight) / 2
+            console.log("黑边在上下: displayWidth=", displayWidth, "displayHeight=", displayHeight, "offsetX=", offsetX, "offsetY=", offsetY)
         } else {
             // 黑边在左右
             displayHeight = viewHeight
@@ -96,34 +106,60 @@ FluWindow {
                     : viewHeight * contentRatio
             offsetX = (viewWidth - displayWidth) / 2
             offsetY = 0
+            console.log("黑边在左右: displayWidth=", displayWidth, "displayHeight=", displayHeight, "offsetX=", offsetX, "offsetY=", offsetY)
         }
 
         // 映射坐标（去除黑边）
         let x = mouseX - offsetX
         let y = mouseY - offsetY
+        console.log("去除黑边后: x=", x, "y=", y)
 
-        // 方向不一致则旋转坐标
+        // 当本地画布方向与云机实际方向不一致时，需要旋转坐标
+        // remoteDirection: 云机的实际方向（0=竖屏，1=横屏）
+        // direction: 本地画布的显示方向（0=竖屏，1=横屏）
+        // 当 direction !== remoteDirection 时，说明本地画布被旋转了，需要将坐标转换回云机的坐标系
         if (direction !== remoteDirection) {
+            console.log("需要旋转坐标: direction != remoteDirection")
             if(remoteDirection == 0){
+                // 情况：云机竖屏，本地横屏显示
+                // 需要将横屏坐标转换为竖屏坐标
+                // 坐标旋转：逆时针旋转90度 (x, y) -> (height - y, x)
+                console.log("情况：云机竖屏，本地横屏显示")
+                console.log("旋转前: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
                 const rotatedX = displayHeight - y
                 const rotatedY = x
                 x = rotatedX
                 y = rotatedY
 
+                // 交换宽高，因为旋转后显示区域的宽高与云机屏幕相反
                 const tmp = displayWidth
                 displayWidth = displayHeight
                 displayHeight = tmp
+                console.log("旋转后: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
             }else{
+                // 情况：云机横屏，本地竖屏显示
+                // 需要将竖屏坐标转换为横屏坐标
+                // 坐标旋转：顺时针旋转90度 (x, y) -> (y, width - x)
+                console.log("情况：云机横屏，本地竖屏显示")
+                console.log("旋转前: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
                 const rotatedX = y
                 const rotatedY = displayWidth - x
                 x = rotatedX
                 y = rotatedY
 
+                // 交换宽高，因为旋转后显示区域的宽高与云机屏幕相反
                 const tmp = displayWidth
                 displayWidth = displayHeight
                 displayHeight = tmp
+                console.log("旋转后: x=", x, "y=", y, "displayWidth=", displayWidth, "displayHeight=", displayHeight)
             }
+        } else {
+            console.log("不需要旋转坐标: direction == remoteDirection")
         }
+        // 当 direction === remoteDirection 时，本地和云机方向一致，不需要旋转坐标
+
+        console.log("最终结果: x=", x, "y=", y, "videoWidth=", displayWidth, "videoHeight=", displayHeight)
+        console.log("=== mapMouseToVideo 结束 ===")
 
         return {
             x: x,
@@ -135,106 +171,137 @@ FluWindow {
 
     function stop(){
         // client.stop()
-        const deviceAddress = `${root.argument.hostIp}:${root.argument.adb}`
-        deviceManager.disconnectDevice(deviceAddress)
+        // 根据配置选择使用哪种serial格式断开连接
+        var deviceSerial = ""
+        if (AppConfig.useDirectTcp) {
+            // TCP直连模式：使用dbId作为serial
+            deviceSerial = root.argument.dbId || root.argument.db_id || root.argument.id || root.argument.name || ""
+        } else {
+            // ADB模式：使用hostIp:adb格式
+            deviceSerial = `${root.argument.hostIp}:${root.argument.adb}`
+        }
+        
+        if (deviceSerial) {
+            deviceManager.disconnectDevice(deviceSerial)
+        } else {
+            console.warn("无法断开设备，serial为空")
+        }
+        
         isConnect = false
         ReportHelper.reportLog("phone_play_stop", root.argument.padCode, {duration: Utils.milliseconds() - startTime})
     }
 
     function start(token){
         startTime = Utils.milliseconds()
-
-        // const config = {
-        //     padCode: root.argument.padCode,
-        //     userId: Utils.getMachineId() + "_" + SettingsHelper.get("userId"),
-        //     token: token,
-        //     uuid: Utils.getMachineId(),
-        //     level: AppConfig.videoLevel[SettingsHelper.get("videoLevel", AppConfig.defaultVideoLevel)],
-        //     expireTime: 3600, // 云机token有效时间
-        //     idleExpireTime: 1800 // 云机空闲超时时间
-        // };
-
-        // client = ArmcloudEngine.createPhoneClient();
-        // client.setVideoSink(videoItem)
-        // client.setSessionObserver(sessionObserver)
-        // client.start(config)
-
-        var quality = "hd"
-        const videoLevel = SettingsHelper.get("videoLevel", AppConfig.defaultVideoLevel)
-        if (videoLevel == 0) {
-            quality = "uhd";
-        }
-        else if (videoLevel == 1) {
-            quality = "hd";
-        }
-        else if (videoLevel == 2) {
-            quality = "sd";
-        }
-        else if (videoLevel == 3) {
-            quality = "smooth";
-        }
-        ReportHelper.reportLog("phone_play", root.argument.padCode, {label: "start", str1: "pro", str2: quality, str3: "multiWindow", str4: "local"})
     }
 
-    ScrcpyController {
-        id: scrcpyController
+    // 设备序列号（根据配置动态确定）
+    property string deviceSerial: {
+        if (AppConfig.useDirectTcp) {
+            return root.argument.dbId || root.argument.db_id || root.argument.id || root.argument.name || ""
+        } else {
+            return `${root.argument.hostIp}:${root.argument.adb}`
+        }
+    }
+    
+    // 设备observer对象（用于连接信号）
+    property var deviceObserver: null
+    
+    // 连接DeviceManager的信号
+    Connections {
+        target: deviceManager
+        
+        function onScreenInfo(serial, width, height) {
+            if (serial !== root.deviceSerial) return
+            
+            // 保存设备实际屏幕大小
+            root.deviceScreenWidth = width
+            root.deviceScreenHeight = height
+            
+            const rotation = height > width ? 0 : 1
+            console.log("Screen changed: ", width, height, rotation)
 
-        onScreenInfo:
-            (width, height) => {
-                const rotation = height > width ? 0 : 1
-                console.log("Screen changed: ", width, height, rotation)
+            aspectRatio = rotation === 0 ? (height / width) : (width / height)
+            console.log("云机实际比例", aspectRatio)
+            remoteDirection = rotation === 0 ? 0 : 1
 
-                aspectRatio = rotation === 0 ? (height / width) : (width / height)
-                console.log("云机实际比例", aspectRatio)
-                remoteDirection = rotation === 0 ? 0 : 1
-
-                // 如果正在恢复窗口大小，只更新方向和旋转，不改变窗口大小
-                if(isRestoringWindow){
-                    if(direction !== remoteDirection){
-                        direction = remoteDirection
-                        if(direction == 0){
-                            videoItem.rotation = 0
-                        }else{
-                            videoItem.rotation = 270
-                        }
-                    }
-                    return
-                }
-
+            // 如果正在恢复窗口大小，只更新方向和旋转，不改变窗口大小
+            if(isRestoringWindow){
                 if(direction !== remoteDirection){
                     direction = remoteDirection
-                    console.log("云机方向", direction == 0 ? "竖屏" : "横屏")
                     if(direction == 0){
-                        // 竖屏
-                        const realWidth = root.width - spaceWidth
-                        const realHeight = root.height - spaceHeight
-
-                        root.width = realHeight + spaceWidth
-                        root.height= (realHeight * aspectRatio) + spaceHeight
-                    }else if(direction == 1){
-                        // 横屏
-                        const realWidth = root.width - spaceWidth
-                        const realHeigth = root.height - spaceHeight
-
-                        root.width= (realWidth * aspectRatio) + spaceWidth
-                        root.height= realWidth + spaceHeight
-                    }
-                    if(direction == 0){
-                        // 竖屏
                         videoItem.rotation = 0
-
                     }else{
-                        // 横屏
                         videoItem.rotation = 270
                     }
                 }
+                return
             }
 
-        onConnectionEstablished: {
+            if(direction !== remoteDirection){
+                direction = remoteDirection
+                console.log("云机方向", direction == 0 ? "竖屏" : "横屏")
+                if(direction == 0){
+                    // 竖屏
+                    const realWidth = root.width - spaceWidth
+                    const realHeight = root.height - spaceHeight
 
+                    root.width = realHeight + spaceWidth
+                    root.height= (realHeight * aspectRatio) + spaceHeight
+                }else if(direction == 1){
+                    // 横屏
+                    const realWidth = root.width - spaceWidth
+                    const realHeigth = root.height - spaceHeight
+
+                    root.width= (realWidth * aspectRatio) + spaceWidth
+                    root.height= realWidth + spaceHeight
+                }
+                if(direction == 0){
+                    // 竖屏
+                    videoItem.rotation = 0
+
+                }else{
+                    // 横屏
+                    videoItem.rotation = 270
+                }
+            }
         }
-
-        onConnectionLost: {
+        
+        function onDeviceConnected(serial, deviceName, size) {
+            if (serial !== root.deviceSerial) return
+            
+            console.log("========onDeviceConnected", serial, deviceName, size, new Date())
+            
+            // 保存设备实际屏幕大小（从size参数获取）
+            if (size && size.width > 0 && size.height > 0) {
+                root.deviceScreenWidth = size.width
+                root.deviceScreenHeight = size.height
+                console.log("onDeviceConnected: 保存设备屏幕大小", root.deviceScreenWidth, root.deviceScreenHeight)
+            }
+            
+            // 设备连接成功后，设置userData和注册observer
+            if (root.deviceSerial) {
+                // 设置videoItem为设备的userData，这样observer可以直接调用onFrame
+                deviceManager.setUserData(root.deviceSerial, videoItem)
+                
+                // 注册observer以接收视频帧和事件
+                if (deviceManager.registerObserver(root.deviceSerial)) {
+                    // 获取observer对象并连接信号（如果需要直接连接信号）
+                    root.deviceObserver = deviceManager.getObserver(root.deviceSerial)
+                    if (root.deviceObserver) {
+                        // 可以在这里直接连接observer的信号（如果需要）
+                        // root.deviceObserver.screenInfo.connect(...)
+                    }
+                    console.log("设备连接后已注册observer，serial:", root.deviceSerial)
+                } else {
+                    console.warn("设备连接后无法注册observer，serial:", root.deviceSerial)
+                }
+            }
+        }
+        
+        function onDeviceDisconnected(serial) {
+            if (serial !== root.deviceSerial) return
+            
             dialog.title = qsTr("系统提示")
             dialog.message = qsTr("连接已断开，请稍后重连")
             dialog.negativeText = qsTr("退出")
@@ -258,11 +325,6 @@ FluWindow {
         setHitTestVisible(btnHideTool)
         setHitTestVisible(textHostIp)
         console.log("云机初始比例", aspectRatio)
-
-        // if(groupControl.isEventSync() && groupControl.isEventSyncMasterEmpty() && root.argument.checked){
-        //     groupControl.setEventSyncMaster(root.argument.padCode)
-        //     isEventSyncMaster = true
-        // }
 
         initWidth = 0
         const windowModify = SettingsHelper.get("windowModify", 1)
@@ -337,11 +399,21 @@ FluWindow {
         console.log("屏幕比例", aspectRatio)
         // reqStsToken(root.argument.supplierType, root.argument.equipmentId)
 
-        const deviceAddress = `${root.argument.hostIp}:${root.argument.adb}`
-        var deviceObject = deviceManager.getDevice(deviceAddress)
-        if (deviceObject) {
-            // 将设备对象(deviceObject)和渲染组件(videoRenderer)都传给控制器
-            scrcpyController.initialize(deviceObject, videoItem)
+        // 注意：在Component.onCompleted时设备可能还没连接
+        // 所以先尝试注册observer，如果失败则在onDeviceConnected信号中再注册
+        if (root.deviceSerial) {
+            // 先尝试设置userData（如果设备已存在）
+            deviceManager.setUserData(root.deviceSerial, videoItem)
+            
+            // 尝试注册observer（如果设备已连接）
+            if (deviceManager.registerObserver(root.deviceSerial)) {
+                root.deviceObserver = deviceManager.getObserver(root.deviceSerial)
+                console.log("Component.onCompleted: 已注册设备observer，serial:", root.deviceSerial)
+            } else {
+                console.log("Component.onCompleted: 设备尚未连接，将在onDeviceConnected时注册observer，serial:", root.deviceSerial)
+            }
+        } else {
+            console.warn("设备序列号为空，无法设置userData和注册observer")
         }
     }
 
@@ -350,6 +422,11 @@ FluWindow {
         //     groupControl.setEventSyncMaster("")
         // }
 
+        // 注销observer
+        if (root.deviceSerial && root.deviceObserver) {
+            deviceManager.deRegisterObserver(root.deviceSerial)
+        }
+        
         stop()
     }
 
@@ -359,6 +436,8 @@ FluWindow {
         nameFilters: [
             "All files(*)",
             "APK (*.apk)",
+            "XAPK (*.xapk)",
+            "APK/XAPK (*.apk *.xapk)",
             "Images (*.png *.jpg *.jpeg *.gif *.bmp *.webp *.heic *.tif *.tiff)",
             "Videos (*.mp4 *.avi *.mkv *.mov *.webm *.flv *.3gp)",
             "Audio (*.mp3 *.aac *.wav *.flac *.m4a *.ogg)",
@@ -386,20 +465,45 @@ FluWindow {
                             const fileName = localPath.split("/").pop()
 
                             if (actionType === "apk") {
-                                // APK 安装按钮：只安装 APK 文件
+                                // APK 安装按钮：安装 APK 或 XAPK 文件
                                 if (lower.endsWith(".apk")) {
-                                    if(scrcpyController){
-                                        scrcpyController.sendInstallApkRequest(localPath)
+                                    if(root.deviceSerial){
+                                        // 根据连接模式确定ADB设备地址
+                                        let adbDeviceAddress = ""
+                                        if (AppConfig.useDirectTcp) {
+                                            // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
+                                            const hostIp = root.argument.hostIp || ""
+                                            const adb = root.argument.adb || 0
+                                            if (hostIp && adb > 0) {
+                                                adbDeviceAddress = `${hostIp}:${adb}`
+                                            }
+                                        }
+                                        // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
+                                        deviceManager.installApk(root.deviceSerial, localPath, adbDeviceAddress)
                                     }
-
+                                } else if (lower.endsWith(".xapk")) {
+                                    if(root.deviceSerial){
+                                        // 根据连接模式确定ADB设备地址
+                                        let adbDeviceAddress = ""
+                                        if (AppConfig.useDirectTcp) {
+                                            // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
+                                            const hostIp = root.argument.hostIp || ""
+                                            const adb = root.argument.adb || 0
+                                            if (hostIp && adb > 0) {
+                                                adbDeviceAddress = `${hostIp}:${adb}`
+                                            }
+                                        }
+                                        // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
+                                        deviceManager.installXapk(root.deviceSerial, localPath, adbDeviceAddress)
+                                    }
                                 } else {
-                                    console.warn("APK按钮选择了非APK文件，忽略:", localPath)
-                                    showError(qsTr("只能选择APK文件"))
+                                    console.warn("APK按钮选择了非APK/XAPK文件，忽略:", localPath)
+                                    showError(qsTr("只能选择APK或XAPK文件"))
                                 }
                             } else {
                                 // 导入按钮：所有文件（包括APK）都上传到云机，不执行安装
-                                if(scrcpyController){
-                                    scrcpyController.sendPushFileRequest(localPath, "/sdcard/Download")
+                                if(root.deviceSerial){
+                                    deviceManager.pushFile(root.deviceSerial, localPath, "/sdcard/Download")
                                 }
                             }
                         })
@@ -680,6 +784,26 @@ FluWindow {
             }
         }
     }
+    
+    // 窗口级别的键盘事件监听：当检测到键盘输入但 inputField 没有焦点时，恢复焦点
+    // 这样当用户点击云机输入框后直接输入时，可以自动恢复焦点
+    // 注意：窗口需要有焦点才能接收键盘事件，但我们会优先让 inputField 获得焦点
+    Keys.onPressed: (event) => {
+        console.log("窗口收到键盘事件:", event.key, "inputField.focus:", inputField.focus, "窗口焦点:", root.activeFocus)
+        // 如果是可打印字符，说明用户想要输入
+        if (event.key >= Qt.Key_Space && event.key <= Qt.Key_ydiaeresis) {
+            if (!inputField.focus) {
+                console.log("检测到键盘输入但 inputField 没有焦点，立即恢复焦点并重新处理输入")
+                // 先恢复 inputField 焦点
+                inputField.forceActiveFocus()
+                // 然后手动触发文本输入（因为当前事件可能已经错过了）
+                // 注意：这里不能直接设置 text，因为会触发 onTextChanged
+                // 但我们可以确保后续输入能被捕获
+            }
+        }
+        // 不阻止事件传播，让其他组件（如 inputField）也能接收到
+        event.accepted = false
+    }
 
     function findJoystickModel() {
         for (var i = 0; i < keymapperModel.rowCount(); ++i) {
@@ -807,11 +931,39 @@ FluWindow {
                                                  const lower = localPath.toLowerCase()
 
                                                  if (lower.endsWith(".apk")){
-                                                     if (scrcpyController){
-                                                         scrcpyController.sendInstallApkRequest(localPath)
+                                                     if(root.deviceSerial){
+                                                         // 根据连接模式确定ADB设备地址
+                                                         let adbDeviceAddress = ""
+                                                         if (AppConfig.useDirectTcp) {
+                                                             // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
+                                                             const hostIp = root.argument.hostIp || ""
+                                                             const adb = root.argument.adb || 0
+                                                             if (hostIp && adb > 0) {
+                                                                 adbDeviceAddress = `${hostIp}:${adb}`
+                                                             }
+                                                         }
+                                                         // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
+                                                         deviceManager.installApk(root.deviceSerial, localPath, adbDeviceAddress)
+                                                     }
+                                                 } else if (lower.endsWith(".xapk")){
+                                                     if(root.deviceSerial){
+                                                         // 根据连接模式确定ADB设备地址
+                                                         let adbDeviceAddress = ""
+                                                         if (AppConfig.useDirectTcp) {
+                                                             // TCP直连模式：使用 hostIp:adb 作为ADB设备地址
+                                                             const hostIp = root.argument.hostIp || ""
+                                                             const adb = root.argument.adb || 0
+                                                             if (hostIp && adb > 0) {
+                                                                 adbDeviceAddress = `${hostIp}:${adb}`
+                                                             }
+                                                         }
+                                                         // 如果adbDeviceAddress为空，则使用deviceSerial（ADB模式）
+                                                         deviceManager.installXapk(root.deviceSerial, localPath, adbDeviceAddress)
                                                      }
                                                  } else {
-                                                     scrcpyController.sendPushFileRequest(localPath, "/sdcard/Download")
+                                                     if(root.deviceSerial){
+                                                         deviceManager.pushFile(root.deviceSerial, localPath, "/sdcard/Download")
+                                                     }
                                                  }
                                              })
                        }
@@ -821,35 +973,6 @@ FluWindow {
     Item{
         id: rootContainer
         anchors.fill: parent
-        // focus: true
-
-        // Keys.onPressed:
-        //     (event) => {
-        //         if (event.isAutoRepeat) return;
-        //         console.log("onPressed2")
-        //         if(1 == SettingsHelper.get("keymap", 0)){
-        //             // 按键映射
-        //             console.log("onPressed3")
-        //             handleKeyPress(event.text.toUpperCase(), true);
-        //         }else{
-        //             console.log("onPressed4")
-        //             scrcpyController.sendKeyEvent(keyEventToVariant(event))
-        //         }
-        //         event.accepted = true;
-        //     }
-        // Keys.onReleased:
-        //     (event) => {
-        //         if (event.isAutoRepeat) return;
-        //         if(1 == SettingsHelper.get("keymap", 0)){
-        //             // 按键映射
-        //             console.log("onReleased2")
-        //             handleKeyPress(event.text.toUpperCase(), false);
-        //         }else{
-        //             console.log("onReleased3")
-        //             scrcpyController.sendKeyEvent(keyEventToVariant(event))
-        //         }
-        //         event.accepted = true;
-        //     }
 
         TextInput {
             id: inputField
@@ -866,6 +989,11 @@ FluWindow {
                 };
             }
 
+            // 监听焦点变化（仅用于调试）
+            onFocusChanged: {
+                console.log("inputField focus changed:", focus)
+            }
+
             onTextChanged: {
                 console.log("onTextChanged:", inputField.text)
                 if(!inputField.text){
@@ -873,8 +1001,8 @@ FluWindow {
                     return
                 }
 
-                if (scrcpyController) {
-                    scrcpyController.sendTextInput(inputField.text);
+                if (root.deviceSerial) {
+                    deviceManager.textInput(root.deviceSerial, inputField.text);
                     inputField.text = ""
                 }
             }
@@ -891,7 +1019,9 @@ FluWindow {
                     const newKey = KeyMapper.getAndroidKeyCode(event.key)
                     if(newKey !== -1){
                         console.log("Keys.onPressed2")
-                        scrcpyController.sendKeyEvent(eventToVariant(event, 6))
+                        if(root.deviceSerial){
+                            deviceManager.sendKeyEvent(root.deviceSerial, 6, event.key, event.modifiers, event.text)
+                        }
                     }
                     event.accepted = true;
                 }
@@ -905,7 +1035,7 @@ FluWindow {
                     }
                     const newKey = KeyMapper.getAndroidKeyCode(event.key)
                     if(newKey !== -1){
-                        scrcpyController.sendKeyEvent(eventToVariant(event, 7))
+                        deviceManager.sendKeyEvent(root.deviceSerial, 7, event.key, event.modifiers, event.text)
                     }
                 }
         }
@@ -963,59 +1093,6 @@ FluWindow {
                             }
                         }
 
-                        // Rectangle{
-                        //     width: 80
-                        //     height: 30
-                        //     border.width: 1
-                        //     border.color: ThemeUI.primaryColor
-                        //     radius: 15
-                        //     // visible: groupControl.isEventSync() && isEventSyncMaster && root.argument.checked
-                        //     color: "transparent"
-
-                        //     RowLayout{
-                        //         anchors.fill: parent
-                        //         anchors.margins: 8
-
-                        //         Rectangle{
-                        //             width: 8
-                        //             height: 8
-                        //             radius: 4
-                        //             color: ThemeUI.primaryColor
-                        //         }
-
-                        //         FluText{
-                        //             text: qsTr("操作中")
-                        //             font.pixelSize: 10
-                        //             color: ThemeUI.primaryColor
-                        //         }
-                        //     }
-                        // }
-
-                        // Rectangle{
-                        //     width: 80
-                        //     height: 30
-                        //     radius: 15
-                        //     // visible: groupControl.isEventSync() && !isEventSyncMaster && root.argument.checked
-                        //     color: "#f0f3ff"
-
-                        //     RowLayout{
-                        //         anchors.fill: parent
-                        //         anchors.margins: 8
-
-                        //         Rectangle{
-                        //             width: 8
-                        //             height: 8
-                        //             radius: 4
-                        //             color: ThemeUI.primaryColor
-                        //         }
-
-                        //         FluText{
-                        //             text: qsTr("同步中")
-                        //             font.pixelSize: 10
-                        //             color: ThemeUI.primaryColor
-                        //         }
-                        //     }
-                        // }
                     }
 
                     RowLayout{
@@ -1026,22 +1103,6 @@ FluWindow {
                         implicitWidth: childrenRect.width
                         anchors.leftMargin: 4
                         anchors.rightMargin: 4
-
-                        ComboBox{
-                            Layout.preferredWidth: 50
-                            Layout.preferredHeight: 22
-                            visible: false
-                            editable: false
-                            model: [qsTr("超清"), qsTr("高清"), qsTr("普通"), qsTr("流畅")]
-                            currentIndex: SettingsHelper.get("videoLevel", AppConfig.defaultVideoLevel)
-                            onActivated: {
-                                SettingsHelper.save("videoLevel", currentIndex)
-                                const videoLevel = AppConfig.videoLevel[currentIndex]
-                                if(client){
-                                    client.setVideoLevel(videoLevel.resolution, videoLevel.fps, videoLevel.bitrate)
-                                }
-                            }
-                        }
 
                         Item{
                             implicitWidth: 24
@@ -1174,22 +1235,54 @@ FluWindow {
 
                             onPressed:
                                 (mouse)=> {
+                                    console.log("=== 鼠标按下事件 ===")
+                                    console.log("鼠标坐标: mouse.x=", mouse.x, "mouse.y=", mouse.y)
+                                    console.log("视频区域大小: parent.width=", parent.width, "parent.height=", parent.height)
+                                    console.log("设备屏幕大小: deviceScreenWidth=", root.deviceScreenWidth, "deviceScreenHeight=", root.deviceScreenHeight)
+                                    
                                     // 如果按下的是鼠标滚轮（中键），发送HOME键
                                     if (mouse.button === Qt.MiddleButton) {
-                                        scrcpyController.sendGoHome()
+                                        if(root.deviceSerial){
+                                            deviceManager.goHome(root.deviceSerial)
+                                        }
                                         return
                                     }
                                     
                                     // 如果按下的是鼠标右键，发送返回键
                                     if (mouse.button === Qt.RightButton) {
-                                        scrcpyController.sendGoBack()
+                                        if(root.deviceSerial){
+                                            deviceManager.goBack(root.deviceSerial)
+                                        }
                                         return
                                     }
                                     
                                     videoItem.isPressed = true
                                     const result = mapMouseToVideo(mouse.x, mouse.y, parent.width, parent.height, aspectRatio)
+                                    console.log("mapMouseToVideo 返回结果: x=", result.x, "y=", result.y, "videoWidth=", result.videoWidth, "videoHeight=", result.videoHeight)
+                                    
                                     var mappedEvent = mouseEventToVariant(mouse, 2, result.x, result.y)
-                                    scrcpyController.sendMouseEvent(mappedEvent, result.videoWidth, result.videoHeight)
+                                    if(root.deviceSerial){
+                                        // 使用设备实际屏幕大小作为frameSize，而不是显示区域大小
+                                        const frameWidth = root.deviceScreenWidth > 0 ? root.deviceScreenWidth : result.videoWidth
+                                        const frameHeight = root.deviceScreenHeight > 0 ? root.deviceScreenHeight : result.videoHeight
+                                        
+                                        // 当方向不一致时，showSize 应该使用旋转后的尺寸（与 result.videoWidth/videoHeight 对应）
+                                        // 这样 InputConvertNormal 才能正确缩放坐标
+                                        let showWidth = parent.width
+                                        let showHeight = parent.height
+                                        if (direction !== remoteDirection) {
+                                            // 方向不一致时，showSize 需要与旋转后的坐标系统对应
+                                            showWidth = result.videoWidth
+                                            showHeight = result.videoHeight
+                                            console.log("方向不一致，使用旋转后的 showSize: showWidth=", showWidth, "showHeight=", showHeight)
+                                        }
+                                        
+                                        console.log("发送鼠标事件到云机: x=", mappedEvent.x, "y=", mappedEvent.y, "frameWidth=", frameWidth, "frameHeight=", frameHeight, "showWidth=", showWidth, "showHeight=", showHeight)
+                                        deviceManager.sendMouseEvent(root.deviceSerial, mappedEvent.type, mappedEvent.x, mappedEvent.y,
+                                                                     mappedEvent.button, mappedEvent.buttons, 0,
+                                                                     frameWidth, frameHeight, showWidth, showHeight)
+                                    }
+                                    console.log("=== 鼠标按下事件结束 ===")
                                 }
 
                             onPositionChanged:
@@ -1201,7 +1294,23 @@ FluWindow {
                                     // if (now - videoItem.lastMoveTime >= 10) {
                                     const result = mapMouseToVideo(mouse.x, mouse.y, parent.width, parent.height, aspectRatio)
                                     var mappedEvent = mouseEventToVariant(mouse, 5, result.x, result.y)
-                                    scrcpyController.sendMouseEvent(mappedEvent, result.videoWidth, result.videoHeight)
+                                    if(root.deviceSerial){
+                                        // 使用设备实际屏幕大小作为frameSize，而不是显示区域大小
+                                        const frameWidth = root.deviceScreenWidth > 0 ? root.deviceScreenWidth : result.videoWidth
+                                        const frameHeight = root.deviceScreenHeight > 0 ? root.deviceScreenHeight : result.videoHeight
+                                        
+                                        // 当方向不一致时，showSize 应该使用旋转后的尺寸
+                                        let showWidth = parent.width
+                                        let showHeight = parent.height
+                                        if (direction !== remoteDirection) {
+                                            showWidth = result.videoWidth
+                                            showHeight = result.videoHeight
+                                        }
+                                        
+                                        deviceManager.sendMouseEvent(root.deviceSerial, mappedEvent.type, mappedEvent.x, mappedEvent.y,
+                                                                     mappedEvent.button, mappedEvent.buttons, 0,
+                                                                     frameWidth, frameHeight, showWidth, showHeight)
+                                    }
                                     // videoItem.lastMoveTime = now
                                     // }
                                 }
@@ -1210,8 +1319,58 @@ FluWindow {
                                 (mouse)=> {
                                     const result = mapMouseToVideo(mouse.x, mouse.y, parent.width, parent.height, aspectRatio)
                                     var mappedEvent = mouseEventToVariant(mouse, 3, result.x, result.y)
-                                    scrcpyController.sendMouseEvent(mappedEvent, result.videoWidth, result.videoHeight)
+                                    if(root.deviceSerial){
+                                        // 使用设备实际屏幕大小作为frameSize，而不是显示区域大小
+                                        const frameWidth = root.deviceScreenWidth > 0 ? root.deviceScreenWidth : result.videoWidth
+                                        const frameHeight = root.deviceScreenHeight > 0 ? root.deviceScreenHeight : result.videoHeight
+                                        
+                                        // 当方向不一致时，showSize 应该使用旋转后的尺寸
+                                        let showWidth = parent.width
+                                        let showHeight = parent.height
+                                        if (direction !== remoteDirection) {
+                                            showWidth = result.videoWidth
+                                            showHeight = result.videoHeight
+                                        }
+                                        
+                                        deviceManager.sendMouseEvent(root.deviceSerial, mappedEvent.type, mappedEvent.x, mappedEvent.y,
+                                                                     mappedEvent.button, mappedEvent.buttons, 0,
+                                                                     frameWidth, frameHeight, showWidth, showHeight)
+                                    }
                                     videoItem.isPressed = false
+                                    
+                                    // 点击视频区域后，立即恢复 inputField 焦点
+                                    // 这样当用户点击云机输入框时，窗口输入框也会立即获得焦点
+                                    // 使用短延迟确保鼠标事件处理完成，但尽量快速
+                                    Qt.callLater(function() {
+                                        // 检查是否有其他组件有焦点（如按钮）
+                                        const activeFocusItem = root.activeFocusItem
+                                        // 如果焦点不在按钮上，则恢复 inputField 焦点
+                                        let shouldRestoreFocus = true
+                                        if (activeFocusItem && activeFocusItem !== inputField) {
+                                            // 检查焦点是否在工具栏区域的按钮上
+                                            let item = activeFocusItem
+                                            while (item && item !== root) {
+                                                // 如果焦点在工具栏区域，可能是按钮，不恢复焦点
+                                                if (item.parent === layoutTool || item.parent === layoutExtra) {
+                                                    shouldRestoreFocus = false
+                                                    console.log("焦点在工具栏，不恢复 inputField 焦点")
+                                                    break
+                                                }
+                                                item = item.parent
+                                            }
+                                        }
+                                        
+                                        if (shouldRestoreFocus) {
+                                            if (inputField && !inputField.focus) {
+                                                console.log("点击视频区域后，恢复 inputField 焦点（可能点击了云机输入框）")
+                                                inputField.forceActiveFocus()
+                                            }
+                                            // 确保窗口激活，以便接收键盘事件
+                                            if (!root.active) {
+                                                root.requestActivate()
+                                            }
+                                        }
+                                    })
                                 }
 
                             onCanceled:
@@ -1231,7 +1390,23 @@ FluWindow {
                                         "buttons": event.buttons,
                                         "modifiers": event.modifiers
                                     };
-                                    scrcpyController.sendWheelEvent(wheelEventData, result.videoWidth, result.videoHeight);
+                                    if(root.deviceSerial){
+                                        // 使用设备实际屏幕大小作为frameSize，而不是显示区域大小
+                                        const frameWidth = root.deviceScreenWidth > 0 ? root.deviceScreenWidth : result.videoWidth
+                                        const frameHeight = root.deviceScreenHeight > 0 ? root.deviceScreenHeight : result.videoHeight
+                                        
+                                        // 当方向不一致时，showSize 应该使用旋转后的尺寸
+                                        let showWidth = parent.width
+                                        let showHeight = parent.height
+                                        if (direction !== remoteDirection) {
+                                            showWidth = result.videoWidth
+                                            showHeight = result.videoHeight
+                                        }
+                                        
+                                        deviceManager.sendWheelEvent(root.deviceSerial, wheelEventData.angleDelta.x, wheelEventData.angleDelta.y,
+                                                                     wheelEventData.x, wheelEventData.y, wheelEventData.modifiers,
+                                                                     frameWidth, frameHeight, showWidth, showHeight)
+                                    }
                                 }
                         }
 
@@ -1242,7 +1417,7 @@ FluWindow {
 
                             Image {
                                 anchors.centerIn: parent
-                                source: ThemeUI.loadRes("login/logo-head.png")
+                                source: ThemeUI.loadRes("pad/logo-head.png")
                                 Layout.alignment: Qt.AlignHCenter
                             }
                         }
@@ -1340,7 +1515,9 @@ FluWindow {
                             hoveredImage: "qrc:/res/pad/pad_back.png"
                             pushedImage: "qrc:/res/pad/pad_back.png"
                             onClicked: {
-                                scrcpyController.sendGoBack()
+                                if(root.deviceSerial){
+                                    deviceManager.goBack(root.deviceSerial)
+                                }
                             }
                         }
                         Item{
@@ -1353,7 +1530,9 @@ FluWindow {
                             hoveredImage: "qrc:/res/pad/pad_home.png"
                             pushedImage: "qrc:/res/pad/pad_home.png"
                             onClicked: {
-                                scrcpyController.sendGoHome()
+                                if(root.deviceSerial){
+                                    deviceManager.goHome(root.deviceSerial)
+                                }
                             }
                         }
                         Item{
@@ -1366,7 +1545,9 @@ FluWindow {
                             hoveredImage: "qrc:/res/pad/pad_task.png"
                             pushedImage: "qrc:/res/pad/pad_task.png"
                             onClicked: {
-                                scrcpyController.sendAppSwitch()
+                                if(root.deviceSerial){
+                                    deviceManager.appSwitch(root.deviceSerial)
+                                }
                             }
                         }
                         Item{
@@ -1451,7 +1632,7 @@ FluWindow {
                                 console.log("点击了按钮", modelData.name)
                                 if(modelData.name === "apk"){
                                     fileDialog.title = qsTr("选择安装文件")
-                                    fileDialog.nameFilters = ["APK (*.apk)"]
+                                    fileDialog.nameFilters = ["APK/XAPK (*.apk *.xapk)", "APK (*.apk)", "XAPK (*.xapk)"]
                                     fileDialog.actionType = "apk"  // 标记为 APK 安装操作
                                     fileDialog.folder = StandardPaths.writableLocation(StandardPaths.HomeLocation)
                                     fileDialog.open()
@@ -1472,11 +1653,15 @@ FluWindow {
                                     ReportHelper.reportLog("phone_play_action", root.argument.padCode, {label: "upload"})
                                 }else if(modelData.name === "volume_up"){
                                     // client.volumeUp()
-                                    scrcpyController.sendVolumeUp()
+                                    if(root.deviceSerial){
+                                        deviceManager.volumeUp(root.deviceSerial)
+                                    }
                                     ReportHelper.reportLog("phone_play_action", root.argument.padCode, {label: "volUp"})
                                 }else if(modelData.name === "volume_down"){
                                     // client.volumeDown()
-                                    scrcpyController.sendVolumeDown()
+                                    if(root.deviceSerial){
+                                        deviceManager.volumeDown(root.deviceSerial)
+                                    }
                                     ReportHelper.reportLog("phone_play_action", root.argument.padCode, {label: "volDown"})
                                 }else if(modelData.name === "rotation"){
                                     direction += 1
@@ -1589,13 +1774,13 @@ FluWindow {
                                     sharePopup.open()
                                     ReportHelper.reportLog("phone_play_action", root.argument.padCode, {label: "share"})
                                 }else if(modelData.name === "screenshot_remote"){
-                                    if(scrcpyController){
-                                        scrcpyController.localScreenshot()
+                                    if(root.deviceSerial){
+                                        deviceManager.screenshot(root.deviceSerial)
                                     }
                                     ReportHelper.reportLog("phone_play_action", root.argument.padCode, {label: "screenshot_remote"})
                                 }else if(modelData.name === "screenshot_local"){
-                                    if(scrcpyController){
-                                        scrcpyController.localScreenshot()
+                                    if(root.deviceSerial){
+                                        deviceManager.screenshot(root.deviceSerial)
                                     }
                                     ReportHelper.reportLog("phone_play_action", root.argument.padCode, {label: "screenshot_local"})
                                 }else if(modelData.name === "screenshot_dir"){

@@ -24,6 +24,7 @@ class Server : public QObject
         SSS_ENABLE_TUNNEL_REVERSE,
         SSS_ENABLE_TUNNEL_FORWARD,
         SSS_EXECUTE_SERVER,
+        SSS_DIRECT_TCP_CONNECT,  // 直接TCP连接模式
         SSS_RUNNING,
     };
 
@@ -57,6 +58,13 @@ public:
         QString crop = "";             // 视频裁剪
         bool control = true;           // 安卓端是否接收键鼠控制
         qint32 scid = -1;             // 随机数，作为localsocket名字后缀，方便同时连接同一个设备多次
+
+        // TCP直接连接模式（不使用adb）
+        bool useDirectTcp = false;     // 是否使用直接TCP连接模式
+        QString tcpHost = "";          // TCP连接的主机地址（例如：192.168.1.100 或 localhost）
+        quint16 tcpVideoPort = 9999;  // TCP视频流端口
+        quint16 tcpAudioPort = 9998;   // TCP音频流端口（可选）
+        quint16 tcpControlPort = 9997; // TCP控制流端口
     };
 
     explicit Server(QObject *parent = nullptr);
@@ -117,6 +125,7 @@ private:
     void handleConnectTimeout();
     void handleConnectSuccess();
     void handleConnectFailure();
+    bool connectDirectTcp();  // 直接TCP连接方法
 
 private:
     qsc::AdbProcess m_workProcess;

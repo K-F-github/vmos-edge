@@ -60,6 +60,9 @@ QVariant SelectedListModel::data(const QModelIndex &index, int role) const
         case DeviceRoles::AospVersionRole: return device.aospVersion;
         case DeviceRoles::HostIpRole: return device.hostIp;
         case DeviceRoles::DbIdRole: return device.dbId;
+        case DeviceRoles::TcpVideoPortRole: return device.tcpVideoPort;
+        case DeviceRoles::TcpAudioPortRole: return device.tcpAudioPort;
+        case DeviceRoles::TcpControlPortRole: return device.tcpControlPort;
         default: return QVariant();
     }
 }
@@ -125,11 +128,8 @@ void SelectedListModel::onSourceReset()
                     if (m_sourceModel->data(deviceIndex, DeviceRoles::ItemTypeRole) == TreeModel::TypeDevice) {
                         if (m_sourceModel->data(deviceIndex, DeviceRoles::CheckedRole).toBool()) { // Only include checked items
                             DeviceData device = m_sourceModel->data(deviceIndex, DeviceRoles::ItemDataRole).value<DeviceData>();
-                            if (previouslyCheckedDbIds.contains(device.dbId)) {
-                                device.checked = true;
-                            } else {
-                                device.checked = false;
-                            }
+                            // 如果源模型中 checked 为 true，默认在 selectedlistmodel 中也设置为 true
+                            device.checked = true;
                             device.selected = false;
                             device.refresh = false;
                             m_selectedDevices.append(device);
@@ -163,7 +163,8 @@ void SelectedListModel::onSourceDataChanged(const QModelIndex &topLeft, const QM
             // Add to this model
             int insertRow = m_selectedDevices.count();
             beginInsertRows(QModelIndex(), insertRow, insertRow);
-            device.checked = false;
+            // 如果源模型中 checked 为 true，默认在 selectedlistmodel 中也设置为 true
+            device.checked = true;
             device.selected = false;
             device.refresh = false;
             m_selectedDevices.append(device);
@@ -214,11 +215,8 @@ void SelectedListModel::onSourceRowsInserted(const QModelIndex &parent, int firs
             if (!exists) {
                 DeviceData device = m_sourceModel->data(sourceIndex, DeviceRoles::ItemDataRole).value<DeviceData>();
                 
-                if (checkedDbIdsToPreserve.contains(device.dbId)) {
-                    device.checked = true;
-                } else {
-                    device.checked = false;
-                }
+                // 如果源模型中 checked 为 true，默认在 selectedlistmodel 中也设置为 true
+                device.checked = true;
 
                 device.selected = false;
                 device.refresh = false;

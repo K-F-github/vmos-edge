@@ -93,6 +93,119 @@ FluWindow {
         return false
     }
 
+    // 启动 scrcpy_server（TCP直连模式需要先启动服务）
+    function startScrcpyServer(hostIp, dbId, tcpVideoPort, tcpAudioPort, tcpControlPort, onSuccess, onError) {
+        if (!hostIp || !dbId) {
+            if (onError) onError("hostIp 或 dbId 为空")
+            return
+        }
+        
+        const url = `http://${hostIp}:18182/container_api/v1/scrcpy`
+        console.log("启动 scrcpy_server:", url, "dbId:", dbId, "videoPort:", tcpVideoPort, "audioPort:", tcpAudioPort, "controlPort:", tcpControlPort)
+        
+        // 根据端口判断是否需要启动对应的流
+        const bool_video = tcpVideoPort > 0
+        const bool_audio = tcpAudioPort > 0
+        const bool_control = tcpControlPort > 0
+        
+        Network.postJson(url)
+        .bind(root)
+        .setTimeout(5000)
+        .add("db_id", dbId)
+        .add("bool_video", bool_video)
+        .add("bool_audio", bool_audio)
+        .add("bool_control", bool_control)
+        .go(startScrcpyServerCallable)
+        
+        // 保存回调函数
+        startScrcpyServerCallable._onSuccess = onSuccess
+        startScrcpyServerCallable._onError = onError
+        startScrcpyServerCallable._hostIp = hostIp
+        startScrcpyServerCallable._dbId = dbId
+    }
+    
+    NetworkCallable {
+        id: startScrcpyServerCallable
+        property var _onSuccess: null
+        property var _onError: null
+        property string _hostIp: ""
+        property string _dbId: ""
+        
+        onError: (status, errorString, result, userData) => {
+            console.error("启动 scrcpy_server 失败:", status, errorString, result)
+            if (_onError) {
+                _onError(errorString || "启动 scrcpy_server 失败")
+            } else {
+                showError(qsTr("启动 scrcpy_server 失败: ") + errorString)
+            }
+        }
+        
+        onSuccess: (result, userData) => {
+            var res = JSON.parse(result)
+            if (res.code === 200) {
+                console.log("启动 scrcpy_server 成功:", result)
+                if (_onSuccess) {
+                    _onSuccess(_hostIp, _dbId)
+                }
+            } else {
+                console.error("启动 scrcpy_server 失败:", res.msg)
+                if (_onError) {
+                    _onError(res.msg || "启动 scrcpy_server 失败")
+                } else {
+                    showError(res.msg || qsTr("启动 scrcpy_server 失败"))
+                }
+            }
+        }
+    }
+    
+    // 连接设备（根据配置选择TCP直接连接或ADB模式）
+    function connectDeviceSmart(model) {
+        if (!model || model.state !== "running") {
+            return false
+        }
+        
+        const hostIp = model.hostIp || ""
+        const adb = model.adb || 0
+        const dbId = model.dbId || model.db_id || model.name || ""
+        
+        // 根据配置选择连接模式
+        if (AppConfig.useDirectTcp) {
+            // TCP直接连接模式：先启动 scrcpy_server，再连接
+            const tcpVideoPort = model.tcpVideoPort || 0
+            const tcpAudioPort = model.tcpAudioPort || 0
+            const tcpControlPort = model.tcpControlPort || 0
+            
+            console.log("使用TCP直接连接模式:", hostIp, dbId, "ports:", tcpVideoPort, tcpAudioPort, tcpControlPort)
+            
+            // 先启动 scrcpy_server
+            startScrcpyServer(hostIp, dbId, tcpVideoPort, tcpAudioPort, tcpControlPort,
+                // 启动成功后的回调
+                (hostIp, dbId) => {
+                    console.log("scrcpy_server 启动成功，开始连接设备")
+                    deviceManager.connectDeviceDirectTcp(
+                        dbId,           // serial
+                        hostIp || "localhost",  // host
+                        tcpVideoPort,   // videoPort
+                        tcpAudioPort,   // audioPort
+                        tcpControlPort  // controlPort
+                    )
+                },
+                // 启动失败的回调
+                (error) => {
+                    console.error("启动 scrcpy_server 失败，无法连接设备:", error)
+                    showError(qsTr("启动 scrcpy_server 失败: ") + error)
+                }
+            )
+        } else {
+            // ADB连接模式
+            const deviceAddress = `${hostIp}:${adb}`
+            console.log("使用ADB连接模式:", deviceAddress)
+            deviceManager.connectDevice(deviceAddress)
+        }
+        
+        return true
+    }
+
     function checkAtLeastOne(podList, flag, num){
         num = num || 1
         if(podList.length < num){
@@ -792,9 +905,8 @@ FluWindow {
                 // 批量打开云机窗口
                 podList.forEach(function(item) {
                     if(item.state === "running") {
-                        // 连接设备并打开云机窗口
-                        const deviceAddress = `${item.hostIp}:${item.adb}`
-                        deviceManager.connectDevice(deviceAddress)
+                        // 智能连接设备（TCP直接连接或ADB模式）
+                        root.connectDeviceSmart(item)
                         FluRouter.navigate("/pad", item, undefined, item.dbId || item.id || item.name)
                     }
                 })

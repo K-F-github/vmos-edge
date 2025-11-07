@@ -108,6 +108,9 @@ QByteArray TreeModel::toJson() const
                         deviceObject["width"] = deviceData.width;
                         deviceObject["aospVersion"] = deviceData.aospVersion;
                         deviceObject["hostIp"] = deviceData.hostIp;
+                        deviceObject["tcpVideoPort"] = deviceData.tcpVideoPort;
+                        deviceObject["tcpAudioPort"] = deviceData.tcpAudioPort;
+                        deviceObject["tcpControlPort"] = deviceData.tcpControlPort;
                         devicesArray.append(deviceObject);
                     }
                 }
@@ -1304,6 +1307,30 @@ void TreeModel::parseDevice(const QJsonObject& padObject, DeviceData& device)
     device.width = padObject["width"].toString();
     device.aospVersion = aospVersion.isEmpty() ? padObject["aosp_version"].toString() : aospVersion;
     device.hostIp = hostIp.isEmpty() ? padObject["host_ip"].toString() : hostIp;
+    // TCP端口字段
+    // 接口返回的字段名为 tcp_port, tcp_audio_port, tcp_control_port
+    // 配置文件保存的字段名为 tcpVideoPort, tcpAudioPort, tcpControlPort
+    // 优先使用接口字段名（下划线），如果不存在则使用配置文件字段名（驼峰）
+    QJsonValue tcpPortValue;
+    QJsonValue tcpAudioPortValue;
+    QJsonValue tcpControlPortValue;
+    
+    if (padObject.contains("tcp_port")) {
+        // 从接口数据读取（下划线命名）
+        tcpPortValue = padObject["tcp_port"];
+        tcpAudioPortValue = padObject["tcp_audio_port"];
+        tcpControlPortValue = padObject["tcp_control_port"];
+    } else {
+        // 从配置文件读取（驼峰命名）
+        tcpPortValue = padObject["tcpVideoPort"];
+        tcpAudioPortValue = padObject["tcpAudioPort"];
+        tcpControlPortValue = padObject["tcpControlPort"];
+    }
+    
+    device.tcpVideoPort = tcpPortValue.isDouble() ? tcpPortValue.toInt() : (tcpPortValue.isString() ? tcpPortValue.toString().toInt() : 0);
+    device.tcpAudioPort = tcpAudioPortValue.isDouble() ? tcpAudioPortValue.toInt() : (tcpAudioPortValue.isString() ? tcpAudioPortValue.toString().toInt() : 0);
+    device.tcpControlPort = tcpControlPortValue.isDouble() ? tcpControlPortValue.toInt() : (tcpControlPortValue.isString() ? tcpControlPortValue.toString().toInt() : 0);
+    
     device.checked = false;
     device.selected = false;
     device.refresh = false;
@@ -1482,6 +1509,18 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const
                 case SelectedRole: return m_selectedDeviceIds.contains(device.dbId);
                 case AospVersionRole: return device.aospVersion;
                 case HostIpRole: return device.hostIp;
+                case TcpVideoPortRole: {
+                    qDebug() << "data() TcpVideoPortRole for" << device.dbId << "=" << device.tcpVideoPort;
+                    return device.tcpVideoPort;
+                }
+                case TcpAudioPortRole: {
+                    qDebug() << "data() TcpAudioPortRole for" << device.dbId << "=" << device.tcpAudioPort;
+                    return device.tcpAudioPort;
+                }
+                case TcpControlPortRole: {
+                    qDebug() << "data() TcpControlPortRole for" << device.dbId << "=" << device.tcpControlPort;
+                    return device.tcpControlPort;
+                }
                 default: return QVariant();
             }
         }
@@ -1678,6 +1717,9 @@ QHash<int, QByteArray> TreeModel::roleNames() const
     roles[WidthRole] = "width";
     roles[AospVersionRole] = "aospVersion";
     roles[HostIpRole] = "hostIp";
+    roles[TcpVideoPortRole] = "tcpVideoPort";
+    roles[TcpAudioPortRole] = "tcpAudioPort";
+    roles[TcpControlPortRole] = "tcpControlPort";
     return roles;
 }
 
@@ -2032,8 +2074,14 @@ void TreeModel::updateDeviceList(const QString &hostIp, const QVariantList &newD
                 changedRoles.append(HostIpRole); 
             }
             if (oldDevice.created != newDeviceFromServer.created) { oldDevice.created = newDeviceFromServer.created; changedRoles.append(CreatedRole); }
+            if (oldDevice.tcpVideoPort != newDeviceFromServer.tcpVideoPort) { oldDevice.tcpVideoPort = newDeviceFromServer.tcpVideoPort; changedRoles.append(TcpVideoPortRole); }
+            if (oldDevice.tcpAudioPort != newDeviceFromServer.tcpAudioPort) { oldDevice.tcpAudioPort = newDeviceFromServer.tcpAudioPort; changedRoles.append(TcpAudioPortRole); }
+            if (oldDevice.tcpControlPort != newDeviceFromServer.tcpControlPort) { oldDevice.tcpControlPort = newDeviceFromServer.tcpControlPort; changedRoles.append(TcpControlPortRole); }
 
             if (!changedRoles.isEmpty()) {
+                // 同步更新 backingDeviceList（m_devicesByHost 的引用），这样 toJson() 才能正确序列化
+                backingDeviceList[oldDeviceRow] = oldDevice;
+                
                 QModelIndex deviceIndex = index(oldDeviceRow, 0, hostIndex);
                 static_cast<DeviceItem*>(deviceIndex.internalPointer())->deviceData() = oldDevice;
                 emit dataChanged(deviceIndex, deviceIndex, changedRoles);
@@ -2230,6 +2278,9 @@ void TreeModel::updateDeviceListV3(const QString &hostIp, const QVariantList &pa
         if (m.contains("data")) updateIf("data", m.value("data"), dev.data, DataRole);
         if (m.contains("dbId")) updateIf("dbId", m.value("dbId"), dev.dbId, DbIdRole);
         if (m.contains("db_id")) updateIf("db_id", m.value("db_id"), dev.dbId, DbIdRole);
+        if (m.contains("tcp_port")) updateIfInt("tcp_port", m.value("tcp_port"), dev.tcpVideoPort, TcpVideoPortRole);
+        if (m.contains("tcp_audio_port")) updateIfInt("tcp_audio_port", m.value("tcp_audio_port"), dev.tcpAudioPort, TcpAudioPortRole);
+        if (m.contains("tcp_control_port")) updateIfInt("tcp_control_port", m.value("tcp_control_port"), dev.tcpControlPort, TcpControlPortRole);
         if (m.contains("dns")) updateIf("dns", m.value("dns"), dev.dns, DnsRole);
         if (m.contains("height")) updateIf("height", m.value("height"), dev.height, HeightRole);
         if (m.contains("ip")) updateIf("ip", m.value("ip"), dev.ip, IpRole);

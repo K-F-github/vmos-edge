@@ -29,11 +29,40 @@ Device::Device(DeviceParams params, QObject *parent) : IDevice(parent), m_params
         }, this);
         m_fileHandler = new FileHandler(this);
         m_controller = new Controller([this](const QByteArray& buffer) -> qint64 {
-            if (!m_server || !m_server->getControlSocket()) {
+            if (!m_server) {
+                qWarning() << "Device::sendControl - server is null";
+                return 0;
+            }
+            
+            QTcpSocket* controlSocket = m_server->getControlSocket();
+            if (!controlSocket) {
+                qWarning() << "Device::sendControl - control socket is null";
+                return 0;
+            }
+            
+            // 检查socket是否已连接（允许UnconnectedState，因为可能是异步连接中）
+            QAbstractSocket::SocketState state = controlSocket->state();
+            if (state != QAbstractSocket::ConnectedState) {
+                qWarning() << "Device::sendControl - control socket is not connected, state:" << state;
                 return 0;
             }
 
-            return m_server->getControlSocket()->write(buffer.data(), buffer.length());
+            qint64 written = controlSocket->write(buffer.data(), buffer.length());
+            if (written < 0) {
+                qWarning() << "Device::sendControl - write failed, error:" << controlSocket->errorString();
+                return 0;
+            } else if (written != buffer.length()) {
+                qWarning() << "Device::sendControl - partial write, written:" << written << "expected:" << buffer.length();
+            } else {
+                qDebug() << "Device::sendControl - successfully wrote" << written << "bytes to control socket";
+            }
+            
+            // 刷新socket缓冲区，确保数据立即发送（特别是对于TCP直连模式）
+            // 注意：对于TCP socket，write() 通常会自动发送数据
+            // 暂时注释掉flush()，因为可能在某些情况下会导致问题
+            // controlSocket->flush();
+            
+            return written;
         }, params.gameScript, this);
     }
 
@@ -274,7 +303,13 @@ void Device::initSignals()
 
 bool Device::connectDevice()
 {
-    if (!m_server || m_serverStartSuccess) {
+    if (!m_server) {
+        return false;
+    }
+    
+    // 如果已经连接成功，不允许重复连接
+    // 但如果连接失败（m_serverStartSuccess == false），允许重试
+    if (m_serverStartSuccess) {
         return false;
     }
 
@@ -303,6 +338,13 @@ bool Device::connectDevice()
         params.codecOptions = m_params.codecOptions;
         params.codecName = m_params.codecName;
         params.scid = m_params.scid;
+
+        // TCP直接连接参数
+        params.useDirectTcp = m_params.useDirectTcp;
+        params.tcpHost = m_params.tcpHost;
+        params.tcpVideoPort = m_params.tcpVideoPort;
+        params.tcpAudioPort = m_params.tcpAudioPort;
+        params.tcpControlPort = m_params.tcpControlPort;
 
         params.crop = "";
         params.control = true;

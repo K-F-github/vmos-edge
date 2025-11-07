@@ -41,6 +41,7 @@ void InputConvertNormal::mouseEvent(const QMouseEvent *from, const QSize &frameS
     QPointF pos = from->position();
 #endif
     // convert pos
+    QPointF originalPos = pos;
     pos.setX(pos.x() * frameSize.width() / showSize.width());
     pos.setY(pos.y() * frameSize.height() / showSize.height());
 
@@ -49,12 +50,24 @@ void InputConvertNormal::mouseEvent(const QMouseEvent *from, const QSize &frameS
     if (!controlMsg) {
         return;
     }
+    
+    // QRect(QPoint, QSize) 构造函数创建一个从指定点开始、具有指定大小的矩形
+    // 对于 scrcpy 协议，position 应该是 (x, y, screenWidth, screenHeight)
+    // 所以应该使用 QRect(x, y, width, height) 构造函数
+    QRect touchRect(pos.toPoint().x(), pos.toPoint().y(), frameSize.width(), frameSize.height());
+    qDebug() << "InputConvertNormal::mouseEvent - action:" << action 
+             << "originalPos:" << originalPos 
+             << "convertedPos:" << pos 
+             << "frameSize:" << frameSize 
+             << "showSize:" << showSize
+             << "touchRect:" << touchRect;
+    
     controlMsg->setInjectTouchMsgData(
         static_cast<quint64>(POINTER_ID_GENERIC_FINGER),
         action,
         convertMouseButton(from->button()),
         convertMouseButtons(from->buttons()),
-        QRect(pos.toPoint(), frameSize),
+        touchRect,
         AMOTION_EVENT_ACTION_DOWN == action ? 1.0f : 0.0f);
     sendControlMsg(controlMsg);
 }

@@ -42,8 +42,21 @@ bool DeviceManage::connectDevice(qsc::DeviceParams params)
     // 使用互斥锁保护端口分配和设备添加，避免并发冲突
     QMutexLocker locker(&m_portMutex);
     
+    // 如果设备已存在，先断开并清理，以便重新连接
     if (m_devices.contains(params.serial)) {
-        return false;
+        auto existingDevice = m_devices[params.serial];
+        if (existingDevice) {
+            // 设备存在且有效，不允许重复连接
+            qWarning() << "Device already connected:" << params.serial;
+            return false;
+        } else {
+            // 设备存在但为 nullptr（可能是之前的连接失败留下的），清理它
+            qInfo() << "Cleaning up stale device entry:" << params.serial;
+            m_devices.remove(params.serial);
+            if (m_allocatedPorts.contains(params.serial)) {
+                m_allocatedPorts.remove(params.serial);
+            }
+        }
     }
     if (DM_MAX_DEVICES_NUM < m_devices.size()) {
         qInfo("over the maximum number of connections");
